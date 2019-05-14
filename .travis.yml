@@ -37,4 +37,4 @@ branches:
 env:
   global:
     - GH_REF: github.com/imxushuai/imxushuai.github.io.git
-    - GH_TOKEN: 10c736305f74c9e150a583e92c3b356f3788d13e
+    - GH_TOKEN: 573e21c7913af3210aa3950bab0725e7fde5b7fe
