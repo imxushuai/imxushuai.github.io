@@ -1,0 +1,94 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta name="generator" content="Hexo 3.8.0"><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="使用hexo搭建炫酷的个人博客"><meta name="keywords" content="hexo,blog,个人博客"><meta name="author" content="imxushuai"><meta name="copyright" content="imxushuai"><title>使用hexo搭建个人博客 | imxushuai</title><link rel="shortcut icon" href="/melody-favicon.ico"><link rel="stylesheet" href="/css/index.css?version=1.6.1"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css?version=1.6.1"><link rel="dns-prefetch" href="https://cdn.staticfile.org"><link rel="dns-prefetch" href="https://cdn.bootcss.com"><link rel="dns-prefetch" href="https://creativecommons.org"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  }
+} </script></head><body><canvas class="fireworks"></canvas><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar"><div class="toggle-sidebar-info text-center"><span data-toggle="切换文章详情">切换站点概览</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Hexo介绍"><span class="toc-number">1.</span> <span class="toc-text">Hexo介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#搭建Hexo博客环境"><span class="toc-number">2.</span> <span class="toc-text">搭建Hexo博客环境</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置-Hexo"><span class="toc-number">3.</span> <span class="toc-text">配置 Hexo</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#主要需要修改的配置："><span class="toc-number">3.0.1.</span> <span class="toc-text">主要需要修改的配置：</span></a></li></ol></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="/img/avatar.png"></div><div class="author-info__name text-center">imxushuai</div><div class="author-info__description text-center">博客</div><div class="follow-button"><a href="https://github.com/imxushuai">Follow Me</a></div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">文章</span><span class="pull-right">24</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">标签</span><span class="pull-right">26</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">分类</span><span class="pull-right">16</span></a></div><hr><div class="author-info-links"><div class="author-info-links__title text-center">Links</div><a class="author-info-links__name text-center" href="https://molunerfinn.com">CSDN</a></div></div></div><div id="content-outer"><div id="top-container" style="background-image: url(https://images.xushuai.fun/background.jpg)"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">imxushuai</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus"><a class="site-page" href="/">Home</a><a class="site-page" href="/archives">Archives</a><a class="site-page" href="/tags">Tags</a><a class="site-page" href="/categories">Categories</a></span></div><div id="post-info"><div id="post-title">使用hexo搭建个人博客</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2018-11-25</time><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/其他/">其他</a><div class="post-meta-wordcount"><span>字数总计: </span><span class="word-count">617</span><span class="post-meta__separator">|</span><span>阅读时长: 2 分钟</span></div></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><center><i>使用hexo搭建炫酷的个人博客</i></center>
+
+<p><img src="https://raw.githubusercontent.com/imxushuai/ForPicGo/master/006ifTg0gy1fxq63qyv3xj30yx0a7t99.jpg" alt></p>
+<a id="more"></a>
+<center><font size="6px">Hexo搭建个人博客</font></center>
+
+<hr>
+<h3 id="Hexo介绍"><a href="#Hexo介绍" class="headerlink" title="Hexo介绍"></a>Hexo介绍</h3><p>hexo是一款基于Node.js的静态博客框架。   </p>
+<p><a href="https://hexo.io/zh-cn/index.html" target="_blank" rel="noopener">hexo中文网</a></p>
+<h3 id="搭建Hexo博客环境"><a href="#搭建Hexo博客环境" class="headerlink" title="搭建Hexo博客环境"></a>搭建Hexo博客环境</h3><blockquote>
+<p>系统：centos 7   </p>
+</blockquote>
+<ol>
+<li>安装 Hexo 需要的环境<br>由于Hexo是基于<code>Node.js</code>的，所以NodeJS环境肯定是必须的。</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install nodejs -y</span><br></pre></td></tr></table></figure>
+<p>也可以参考：<a href="http://www.runoob.com/nodejs/nodejs-install-setup.html" target="_blank" rel="noopener">node.js安装教程</a></p>
+<ol start="2">
+<li><p>安装 git</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">yum install git -y</span><br><span class="line"><span class="meta">#</span> 设置github的账户信息</span><br><span class="line">git config --global user.email "你的github邮箱"</span><br><span class="line">git config --global user.name  "自定义名称"</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建github仓库</p>
+<blockquote>
+<p>我这里采用github作为博客文章的仓库，如果还没有github，请自行注册并创建仓库。</p>
+</blockquote>
+</li>
+</ol>
+<p>仓库名称为<code>custom.github.io</code>，其中<code>custom</code>为自定义部分，如：<code>mayun.github.io</code></p>
+<ol start="4">
+<li><p>安装 Hexo</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-cli -g</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>初始化 Hexo</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span># custom以你创建的仓库名为准</span><br><span class="line">hexo init custom.github.io</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<blockquote>
+<p>此时在当前目录会出现<code>custom.github.io</code>文件夹</p>
+</blockquote>
+<h3 id="配置-Hexo"><a href="#配置-Hexo" class="headerlink" title="配置 Hexo"></a>配置 Hexo</h3><ol>
+<li>更换一个好看的主题<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span># 进入customer.github.io文件夹</span><br><span class="line">cd custom.github.io</span><br><span class="line"><span class="meta">#</span># 使用git下载一款喜欢的主题,我这里下载的是 next 主题</span><br><span class="line">git clone https://github.com/iissnan/hexo-theme-next.git themes/next</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p><a href="https://github.com/iissnan/hexo-theme-next" target="_blank" rel="noopener">附: next主题github</a></p>
+<ol start="2">
+<li>博客配置<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span># 修改custom.github.io中的_config.yml文件</span><br><span class="line">vim _config.yml</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<blockquote>
+<h5 id="主要需要修改的配置："><a href="#主要需要修改的配置：" class="headerlink" title="主要需要修改的配置："></a>主要需要修改的配置：</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">title: title #网站名称   </span><br><span class="line">Subtitle: Subtitle #二级标题   </span><br><span class="line">description: description #网页描述   </span><br><span class="line">author: author #作者   </span><br><span class="line">language: zh-Hans #不同的主题，这里的值可能不一样   </span><br><span class="line">timezone: Asia/Shanghai #时区   </span><br><span class="line">url: http://xxxxx  #可以是ip或域名 </span><br><span class="line">theme: next #修改主题   </span><br><span class="line">port: 4000 #若没有，可自行添加该配置项</span><br><span class="line">server_ip: localhost #若没有，可自行添加该配置项</span><br><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: https://github.com/xs1031893936/xushuai.github.io.git #你的github仓库地址</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p><a href="https://hexo.io/zh-cn/docs/configuration.html" target="_blank" rel="noopener">其他配置项参考</a></p>
+<blockquote>
+<p><strong>注意的坑</strong>：   配置文件为yml格式, 所以每个配置项 <code>:</code>必须有一个空格,配置文件中还有很多地方配置的值为<code>:year</code>这种形式,此<code>:</code>后不能有空格</p>
+</blockquote>
+<ol start="3">
+<li><p>编写测试博客</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span># 进入`customer.github.io/source/_post/`目录中新建文件</span><br><span class="line">touch test-blog.md</span><br><span class="line"><span class="meta">#</span># 编辑，若没有vim，使用vi编辑器</span><br><span class="line">vim test-blog.md</span><br><span class="line"><span class="meta">#</span># 内容---------------------------------</span><br><span class="line">---</span><br><span class="line">title: test-blog</span><br><span class="line">---</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> hello hexo!</span><br><span class="line"><span class="meta">#</span># 内容---------------------------------</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>运行hexo</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<blockquote>
+<p>若未正常运行，注意查看报错</p>
+</blockquote>
+<ol start="5">
+<li><p>访问博客</p>
+</li>
+<li><p>安装自动部署发布工具</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>发布到github</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo clean &amp;&amp; hexo g &amp;&amp; hexo d</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<blockquote>
+<p>提交需要输入github账号和密码</p>
+</blockquote>
+<p>基本上hexo博客的搭建已经完成。</p>
+<p><a href="https://juejin.im/entry/59d2da336fb9a00a5015e16b" target="_blank" rel="noopener">附:hexo主题自定义</a></p>
+</div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">imxushuai</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://www.imxushuai.com/2018/11/25/使用hexo搭建个人博客/">https://www.imxushuai.com/2018/11/25/使用hexo搭建个人博客/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://www.imxushuai.com">imxushuai</a>！</span></div></div><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/hexo-blog-个人博客/">hexo,blog,个人博客</a></div><div class="post-qr-code"><div class="post-qr-code-item"><img class="post-qr-code__img" src="/img/alipay.jpg"><div class="post-qr-code__desc">支付宝打赏</div></div><div class="post-qr-code-item"><img class="post-qr-code__img" src="/img/wechatpay.jpg"><div class="post-qr-code__desc">微信打赏</div></div></div><nav id="pagination"><div class="prev-post pull-left"><a href="/2018/11/27/Ngxin安装/"><i class="fa fa-chevron-left">  </i><span>Ngxin安装</span></a></div></nav></div></div><footer class="footer-bg" style="background-image: url(https://images.xushuai.fun/background.jpg)"><div class="layout" id="footer"><div class="copyright">&copy;2018 - 2019 By imxushuai</div><!--.framework-info--><!--  span= _p('footer.driven') + ' - '--><!--  a(href='http://hexo.io')--><!--    span Hexo--><!--  span.footer-separator |--><!--  span= _p('footer.theme') + ' - '--><!--  a(href='https://github.com/Molunerfinn/hexo-theme-melody')--><!--    span Melody--><div class="icp"><a><span>愿做美丽的苍蓝野兽</span></a></div><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fa fa-eye"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.6.1"></script><script src="/js/fancybox.js?version=1.6.1"></script><script src="/js/sidebar.js?version=1.6.1"></script><script src="/js/copy.js?version=1.6.1"></script><script src="/js/fireworks.js?version=1.6.1"></script><script src="/js/transition.js?version=1.6.1"></script><script src="/js/scroll.js?version=1.6.1"></script><script src="/js/head.js?version=1.6.1"></script><script>if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+  $('#nav').addClass('is-mobile')
+  $('footer').addClass('is-mobile')
+}</script></body></html>
