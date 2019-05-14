@@ -55,7 +55,7 @@ github fas: https://github.com/imxushuai
 # Algolia search
 # ---------------
 algolia_search:
-  enable: false
+  enable: true
   hits:
     per_page: 10
   labels:

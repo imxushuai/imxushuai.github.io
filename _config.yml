@@ -4,7 +4,7 @@
 
 # Site
 title: imxushuai
-subtitle: 天道酬勤
+subtitle: 天道酬勤，上善若水
 description: 博客
 keywords:
   - 博客
@@ -20,7 +20,7 @@ keywords:
   - Coder
   - IT技术
 author: imxushuai
-language: zh-Hans
+language: en
 timezone: Asia/Shanghai
 
 # URL
@@ -99,11 +99,10 @@ deploy:
     message: commit
 
 algolia:
-  applicationID: '0AG6VKDJB8'
-  apiKey: '93fe949691d66b4082f614e560d918d5'
+  apiKey: '1acca465cd19291fd2e30fc0bde470b9'
   indexName: 'search'
-  appId: "Z7A3XW4R2I"
-  adminApiKey: "40321c7c207e7f73b63a19aa24c4761b"
+  appId: "0AG6VKDJB8"
+  adminApiKey: "93fe949691d66b4082f614e560d918d5"
   chunkSize: 5000
   fields:
     - content:strip:truncate,0,500
@@ -114,6 +113,6 @@ algolia:
     - slug
     - tags
     - title
-
-plugins:
-  - hexo-algoliasearch
+Extensions:
+  plugins:
+    - hexo-algoliasearch
