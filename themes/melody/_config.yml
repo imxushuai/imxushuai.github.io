@@ -208,7 +208,7 @@ disqus:
 # client_secret:
 
 gitalk:
-  enable: false
+  enable: true
   client_id: 5d894987ff69ff0ceb17
   client_secret: 411e2ea94ae376885bd6355986f98bf42462b8f3
   repo: gitalk
