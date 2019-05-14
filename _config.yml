@@ -97,3 +97,23 @@ deploy:
       # coding: https://git.coding.net/xs1031893936/xushuai.coding.io.git
     branch: master
     message: commit
+
+algolia:
+  applicationID: '0AG6VKDJB8'
+  apiKey: '93fe949691d66b4082f614e560d918d5'
+  indexName: 'search'
+  appId: "Z7A3XW4R2I"
+  adminApiKey: "40321c7c207e7f73b63a19aa24c4761b"
+  chunkSize: 5000
+  fields:
+    - content:strip:truncate,0,500
+    - excerpt:strip
+    - gallery
+    - permalink
+    - photos
+    - slug
+    - tags
+    - title
+
+plugins:
+  - hexo-algoliasearch
