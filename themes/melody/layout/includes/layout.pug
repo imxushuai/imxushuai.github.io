@@ -1,5 +1,7 @@
 
-- var pageTitle = page.title || config.subtitle || ''
+// - var pageTitle = page.title || config.subtitle || ''
+  // 修改首页的title
+- var pageTitle = page.title || ''
 - if (is_archive()) pageTitle = _p('page.archives')
 - if (is_tag()) pageTitle = _p('page.tag') + ': ' + page.tag
 - if (is_category()) pageTitle = _p('page.category') + ': ' + page.category
