@@ -1,5 +1,5 @@
 ---
-title: Java视频教程资源'
+title: Java视频教程资源
 date: 2019-01-01 00:00:00
 tags:
   - 资源
