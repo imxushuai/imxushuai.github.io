@@ -50,7 +50,7 @@ highlight_theme: default
 # And you need to add the `fa` or `fab` prefix by your self.
 # ---------------
 social:
-github fas: https://github.com/imxushuai
+#  github fas: https://github.com/imxushuai
 
 # Algolia search
 # ---------------
@@ -89,9 +89,9 @@ fireworks: true
 
 # Analysis
 # ---------------
-baidu_analytics:
+baidu_analytics: ee77185761e9c3e3a277dac848c66c44
 
-google_analytics:
+google_analytics: UA-140233731-1
 
 # Tencent_analytics ID
 tencent_analytics:
@@ -264,6 +264,7 @@ links_title: Links
 links:
   GitHub: https://github.com/imxushuai
   CSDN: https://me.csdn.net/qq1031893936
+  Spring: https://spring.io/projects
 
 # Follow Me Button
 follow:
@@ -275,7 +276,9 @@ follow:
 # ---------------
 # Google Adsense
 google_adsense:
-  enable: false
+  enable: true
   js: //pagead2.googlesyndication.com/pagead/js/adsbygoogle.js
-  client: ca-pub-...........
+  client: ca-pub-8123778246943935
   enable_page_level_ads: true
+
+url: https://www.imxushuai.com
