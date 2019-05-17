@@ -5,21 +5,27 @@
 # Site
 title: imxushuai
 subtitle: 人不怕走在黑夜里，就怕心中没有阳光。
-description: 做最好的自己
+description: 本站是imxushuai的个人博客。内容包含有学习资源分享、IT技术分享和生活周边，记录下生活的点滴，愿与君共勉。
 keywords:
   - imxushuai
-  - 博客
-  - blog
+  - IT技术
+  - Spring
+  - Spring Boot
+  - Spring Cloud
+  - Elasticsearch
+  - RabbitMQ
+  - Nginx
   - java
-  - JAVA
   - Java
+  - JAVA
   - 开发者
   - 后端开发
   - 程序猿
   - Developer
   - Programmer
   - Coder
-  - IT技术
+  - 博客
+  - blog
 author: imxushuai
 language: zh-Hans
 timezone: Asia/Shanghai

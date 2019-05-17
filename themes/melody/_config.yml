@@ -15,10 +15,10 @@ theme_color:
 
 # Main menu navigation
 menu:
-  Home: /
-  Archives: /archives
-  Tags: /tags
-  Categories: /categories
+  首页: /
+  文章总览: /archives
+  标签: /tags
+  分类: /categories
   #XXX: /xxx
 
 # Favicon
@@ -142,7 +142,7 @@ wordcount:
 
 toc:
   enable: true
-  # number: true
+  number: true
 
 post_copyright:
   enable: true
@@ -235,11 +235,11 @@ gitalk:
 # ---------------
 since: 2018
 
-# footer_custom_text:
+footer_custom_text:
 
 ICP:
-  enable: true
-  text: 愿做美丽的苍蓝野兽
+  enable: false
+  text: 蜀ICP备18037877号
 
 # busuanzi count for PV / UV in site
 busuanzi:
