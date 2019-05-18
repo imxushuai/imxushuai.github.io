@@ -1,11 +1,13 @@
 ---
 title: Spring Cloud简述
 photo:
-  - https://raw.githubusercontent.com/imxushuai/ForPicGo/master/006ifTg0gy1fxspi88u31j32a40nygmk.jpg
-date: 2018-12-02 21:04:41
+  - >-
+    https://raw.githubusercontent.com/imxushuai/ForPicGo/master/006ifTg0gy1fxspi88u31j32a40nygmk.jpg
 tags: Spring Cloud
 categories: Spring Cloud
 description: 让我们一起走进微服务的世界！
+abbrlink: 34585
+date: 2018-12-02 21:04:41
 ---
 
 <center><i>让我们一起走进微服务的世界！</i></center>

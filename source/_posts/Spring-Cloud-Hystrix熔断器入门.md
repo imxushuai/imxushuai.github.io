@@ -1,14 +1,17 @@
 ---
 title: Spring Cloud Hystrix熔断器入门
 photo:
-  - https://raw.githubusercontent.com/imxushuai/ForPicGo/master/006ifTg0gy1fxtylsthm1j30mb08fac1.jpg 
-date: 2018-12-03 23:04:48
-tags: 
+  - >-
+    https://raw.githubusercontent.com/imxushuai/ForPicGo/master/006ifTg0gy1fxtylsthm1j30mb08fac1.jpg
+tags:
   - Spring Cloud
   - Hystrix
-categories: 
-  - [Spring Cloud,Hystrix]
+categories:
+  - - Spring Cloud
+    - Hystrix
 description: 微服务的安全措施Hystrix熔断器
+abbrlink: 32084
+date: 2018-12-03 23:04:48
 ---
 
 <center><i>微服务的安全措施Hystrix熔断器</i></center>

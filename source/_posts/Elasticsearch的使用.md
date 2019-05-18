@@ -2,7 +2,6 @@
 title: Elasticsearch的使用
 photo:
   - 'https://images.xushuai.fun/elasticsearch-logo.png'
-date: 2019-03-29 15:26:10
 tags:
   - 全文检索
   - elasticsearch
@@ -11,6 +10,8 @@ categories:
   - 全文检索
   - elasticsearch
 description: elasticsearch的基本使用。包括原生api的使用以及java客户端的使用
+abbrlink: 44334
+date: 2019-03-29 15:26:10
 ---
 
 <center><i>elasticsearch的基本使用。包括原生api的使用以及java客户端的使用</i></center>

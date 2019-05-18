@@ -2,7 +2,6 @@
 title: RabbitMQ详解
 photo:
   - 'https://raw.githubusercontent.com/imxushuai/ForPicGo/master/rabbitmq.png'
-date: 2019-05-08 20:59:55
 tags:
   - RabbitMQ
   - 消息中间件
@@ -10,6 +9,8 @@ categories:
   - 消息中间件
   - RabbitMQ
 description: 部署最广泛的开源消息中间件 - RabbitMQ
+abbrlink: 30470
+date: 2019-05-08 20:59:55
 ---
 
 <center><i>部署最广泛的开源消息中间件 - RabbitMQ</i></center>

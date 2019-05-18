@@ -16,9 +16,9 @@ theme_color:
 # Main menu navigation
 menu:
   首页: /
-  文章总览: /archives
-  标签: /tags
   分类: /categories
+  文章总览: /archives
+  学习资源: /2000/01/01/%e5%ad%a6%e4%b9%a0%e8%b5%84%e6%ba%90/
   关于: /about
   #XXX: /xxx
 

@@ -1,16 +1,20 @@
 ---
 title: Spring Cloud服务调用与负载均衡组件
 photo:
-  - https://raw.githubusercontent.com/imxushuai/ForPicGo/master/006ifTg0gy1fxspi88u31j32a40nygmk.jpg 
-date: 2018-12-03 19:55:10
-tags: 
+  - >-
+    https://raw.githubusercontent.com/imxushuai/ForPicGo/master/006ifTg0gy1fxspi88u31j32a40nygmk.jpg
+tags:
   - Spring Cloud
   - Ribbon
   - feign
-categories: 
-  - [Spring Cloud,Ribbon]
-  - [Spring Cloud,Feign]
+categories:
+  - - Spring Cloud
+    - Ribbon
+  - - Spring Cloud
+    - Feign
 description: 使用Spring Cloud服务调用实现微服务的调用和负载均衡
+abbrlink: 63370
+date: 2018-12-03 19:55:10
 ---
 
 <center><i>使用Spring Cloud服务调用实现微服务的调用和负载均衡</i></center>

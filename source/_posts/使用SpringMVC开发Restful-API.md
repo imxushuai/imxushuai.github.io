@@ -2,13 +2,14 @@
 title: 使用SpringMVC开发Restful API
 photo:
   - 'https://images.xushuai.fun/restful.gif'
-date: 2019-03-29 11:27:54
-tags: 
+tags:
   - Spring MVC
   - Restful API
 categories:
   - 其他
 description: Restful API的正确打开方式~
+abbrlink: 26619
+date: 2019-03-29 11:27:54
 ---
 
 <center><i>Restful API的正确打开方式~</i></center>

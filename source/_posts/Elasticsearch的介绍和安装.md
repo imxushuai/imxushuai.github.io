@@ -2,7 +2,6 @@
 title: Elasticsearch的介绍和安装
 photo:
   - 'https://images.xushuai.fun/elasticsearch-logo.png'
-date: 2019-03-29 15:13:52
 tags:
   - elasticsearch
   - 全文检索
@@ -10,6 +9,8 @@ categories:
   - 全文检索
   - elasticsearch
 description: 全文检索引擎之Elasticsearch的简介及安装
+abbrlink: 41730
+date: 2019-03-29 15:13:52
 ---
 
 <center><i>全文检索引擎之Elasticsearch的简介及安装</i></center>

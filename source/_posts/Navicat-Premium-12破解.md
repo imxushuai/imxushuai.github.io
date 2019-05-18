@@ -1,14 +1,15 @@
 ---
 title: Navicat Premium 12破解
 photo:
-  - https://images.xushuai.fun/18-12-13/40950951.jpg
-date: 2018-12-13 22:22:17
-tags: 
+  - 'https://images.xushuai.fun/18-12-13/40950951.jpg'
+tags:
   - Navicat Premium破解
   - Navicat Premium12 破解
   - Navicat Premium
 categories: 其他
 description: Navicat Premium 12的正确打开方式
+abbrlink: 37118
+date: 2018-12-13 22:22:17
 ---
 
 <center><i>Navicat Premium 12的正确打开方式</i></center>

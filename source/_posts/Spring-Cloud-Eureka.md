@@ -1,15 +1,17 @@
 ---
 title: Spring Cloud Eureka
 photo:
-  - https://raw.githubusercontent.com/imxushuai/ForPicGo/master/006ifTg0gy1fxspi88u31j32a40nygmk.jpg
-date: 2018-12-02 21:27:17
-tags: 
+  - >-
+    https://raw.githubusercontent.com/imxushuai/ForPicGo/master/006ifTg0gy1fxspi88u31j32a40nygmk.jpg
+tags:
   - Spring Cloud
   - Eureka
-categories: 
+categories:
   - Spring Cloud
   - Eureka
 description: Spring Cloud服务注册与发现组件：Eureka
+abbrlink: 13311
+date: 2018-12-02 21:27:17
 ---
 
 <center><i>Spring Cloud服务注册与发现组件：Eureka</i></center>

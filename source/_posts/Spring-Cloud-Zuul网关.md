@@ -1,14 +1,17 @@
 ---
 title: Spring Cloud Zuul网关
 photo:
-  - https://raw.githubusercontent.com/imxushuai/ForPicGo/master/006ifTg0gy1fxspi88u31j32a40nygmk.jpg
-date: 2018-12-05 22:31:06
-tags: 
+  - >-
+    https://raw.githubusercontent.com/imxushuai/ForPicGo/master/006ifTg0gy1fxspi88u31j32a40nygmk.jpg
+tags:
   - Spring Cloud
   - Zuul
-categories: 
-  - [Spring Cloud,Zuul]
+categories:
+  - - Spring Cloud
+    - Zuul
 description: 微服务的门卫大爷Zuul
+abbrlink: 43513
+date: 2018-12-05 22:31:06
 ---
 
 <center><i>微服务的门卫大爷Zuul</i></center>

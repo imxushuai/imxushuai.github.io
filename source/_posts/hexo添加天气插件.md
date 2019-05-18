@@ -1,14 +1,16 @@
 ---
 title: hexo添加天气插件
 photo:
-  - 'https://raw.githubusercontent.com/imxushuai/ForPicGo/master/006ifTg0gy1fxq63qyv3xj30yx0a7t99.jpg'
-date: 2019-03-29 17:27:30
+  - >-
+    https://raw.githubusercontent.com/imxushuai/ForPicGo/master/006ifTg0gy1fxq63qyv3xj30yx0a7t99.jpg
 tags:
   - hexo
   - 天气插件
 categories:
   - 其他
 description: 为自己的hexo博客添加一个实时的天气插件吧
+abbrlink: 14867
+date: 2019-03-29 17:27:30
 ---
 
 <center><i>为自己的hexo博客添加一个实时的天气插件吧</i></center>

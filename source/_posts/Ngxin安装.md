@@ -1,11 +1,13 @@
 ---
 title: Ngxin安装
-date: 2018-11-27 16:59:42
-tags: nginx,服务器代理
+tags: 'nginx,服务器代理'
 categories: nginx
 description: 本文介绍在centos环境下安装nginx
-photos: 
-    - https://raw.githubusercontent.com/imxushuai/ForPicGo/master/006ifTg0gy1fxq195rirbj314k0kat8k.jpg 
+photos:
+  - >-
+    https://raw.githubusercontent.com/imxushuai/ForPicGo/master/006ifTg0gy1fxq195rirbj314k0kat8k.jpg
+abbrlink: 7540
+date: 2018-11-27 16:59:42
 ---
 
 <center><i>CentOS环境下安装nginx</i></center>

@@ -1,11 +1,13 @@
 ---
 title: Spring Boot自动配置原理
-date: 2018-11-28 22:32:04
 tags: Spring Boot
 categories: Spring Boot
 description: 为什么Spring Boot配置那么少？让我们一起走进Spring Boot自动配置
-photos: 
-    - https://raw.githubusercontent.com/imxushuai/ForPicGo/master/006ifTg0gy1fxq697a7goj30sg08fdgl.jpg
+photos:
+  - >-
+    https://raw.githubusercontent.com/imxushuai/ForPicGo/master/006ifTg0gy1fxq697a7goj30sg08fdgl.jpg
+abbrlink: 60852
+date: 2018-11-28 22:32:04
 ---
 
 <center><i>为什么Spring Boot配置那么少？让我们一起走进Spring Boot自动配置</i></center>

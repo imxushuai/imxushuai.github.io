@@ -1,11 +1,13 @@
 ---
 title: 使用hexo搭建个人博客
-date: 2018-11-25 17:22:21
-tags: hexo,blog,个人博客
+tags: 'hexo,blog,个人博客'
 categories: 其他
 description: 使用hexo搭建炫酷的个人博客
-photos: 
-    - https://raw.githubusercontent.com/imxushuai/ForPicGo/master/006ifTg0gy1fxq63qyv3xj30yx0a7t99.jpg
+photos:
+  - >-
+    https://raw.githubusercontent.com/imxushuai/ForPicGo/master/006ifTg0gy1fxq63qyv3xj30yx0a7t99.jpg
+abbrlink: 43303
+date: 2018-11-25 17:22:21
 ---
 
 <center><i>使用hexo搭建炫酷的个人博客</i></center>

@@ -1,14 +1,15 @@
 ---
 title: FastDFS安装
 photo:
-  - https://images.xushuai.fun/fastdfs.jpg 
-date: 2018-12-22 19:01:40
-tags: 
+  - 'https://images.xushuai.fun/fastdfs.jpg'
+tags:
   - 分布式文件系统
   - FastDFS
 categories:
   - FastDFS
 description: centos7下安装FastDFS
+abbrlink: 62564
+date: 2018-12-22 19:01:40
 ---
 
 <center><i>CentOS 7下安装FastDFS</i></center>

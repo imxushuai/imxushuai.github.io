@@ -35,6 +35,7 @@ timezone: Asia/Shanghai
 url: https://www.imxushuai.com
 root: /
 permalink: :year/:month/:day/:title/
+#permalink: posts/:abbrlink/
 permalink_defaults:
   lang: en
 
@@ -123,3 +124,7 @@ algolia:
 Extensions:
   plugins:
     - hexo-algoliasearch
+## abbrlink config
+#abbrlink:
+#  alg: crc32
+#  rep: hex

@@ -1,14 +1,15 @@
 ---
 title: FastDFS简介
 photo:
-  - https://images.xushuai.fun/fastdfs.jpg
-date: 2018-12-22 17:07:05
-tags: 
+  - 'https://images.xushuai.fun/fastdfs.jpg'
+tags:
   - 分布式文件系统
   - FastDFS
 categories:
   - FastDFS
 description: 什么是FastDFS？
+abbrlink: 19757
+date: 2018-12-22 17:07:05
 ---
 
 <center><i>什么是FastDFS？</i></center>

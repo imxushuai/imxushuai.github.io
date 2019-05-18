@@ -2,12 +2,13 @@
 title: Thymeleaf使用详解
 photo:
   - 'https://images.xushuai.fun/springboot-thymeleaf.jpg'
-date: 2019-03-31 22:07:42
 tags:
   - thymeleaf
 categories:
   - thymeleaf
 description: Thymeleaf - 现代化服务器端的Java模板引擎
+abbrlink: 17823
+date: 2019-03-31 22:07:42
 ---
 
 <center><i>Thymeleaf - 现代化服务器端的Java模板引擎</i></center>
