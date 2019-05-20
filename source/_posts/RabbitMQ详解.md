@@ -10,7 +10,7 @@ categories:
   - RabbitMQ
 description: 部署最广泛的开源消息中间件 - RabbitMQ
 abbrlink: 30470
-date: 2019-05-08 20:59:55
+date: 2019-04-01 20:59:55
 ---
 
 <center><i>部署最广泛的开源消息中间件 - RabbitMQ</i></center>

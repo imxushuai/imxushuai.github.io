@@ -4,7 +4,7 @@ tags:
   - 乐优商城
 categories:
   - 乐优商城
-date: 2019-05-19 21:19:23
+date: 2019-04-02 21:19:23
 ---
 
 <center><i>使用RabbitMQ完成商品数据同步</i></center>
