@@ -8,7 +8,7 @@ tags:
 categories:
   - Redis
 abbrlink: 34757
-date: 2019-05-20 20:12:49
+date: 2018-05-20 20:12:49
 ---
 
 <center><i>在CentOS下安装Redis以及Redis配置详解</i></center>

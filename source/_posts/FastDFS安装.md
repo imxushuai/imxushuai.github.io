@@ -9,7 +9,7 @@ categories:
   - FastDFS
 description: centos7下安装FastDFS
 abbrlink: 62564
-date: 2018-12-22 19:01:40
+date: 2018-7-22 19:01:40
 ---
 
 <center><i>CentOS 7下安装FastDFS</i></center>
