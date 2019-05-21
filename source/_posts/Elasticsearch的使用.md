@@ -3,10 +3,11 @@ title: Elasticsearch的使用
 photo:
   - 'https://images.xushuai.fun/elasticsearch-logo.png'
 tags:
-  - 全文检索
+  - elasticsearch教程
+  - elasticsearch入门
   - elasticsearch
-  - elastic search
   - spring data elasticsearch
+  - 全文检索
 categories:
   - 全文检索
   - elasticsearch

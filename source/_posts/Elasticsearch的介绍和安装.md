@@ -5,6 +5,7 @@ photo:
 tags:
   - elasticsearch安装
   - elastic search
+  - elasticsearch教程
   - 全文检索
 categories:
   - 全文检索
