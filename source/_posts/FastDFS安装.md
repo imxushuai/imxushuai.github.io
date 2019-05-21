@@ -5,6 +5,8 @@ photo:
 tags:
   - 分布式文件系统
   - FastDFS
+  - FastDFS安装
+  - FastDFS配置
 categories:
   - FastDFS
 description: centos7下安装FastDFS

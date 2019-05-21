@@ -1,6 +1,8 @@
 ---
 title: Spring Boot自动配置原理
-tags: Spring Boot
+tags: 
+  - Spring Boot
+  - Spring Boot原理
 categories: Spring Boot
 description: 为什么Spring Boot配置那么少？让我们一起走进Spring Boot自动配置
 photos:

@@ -4,6 +4,7 @@ photo:
   - 'https://raw.githubusercontent.com/imxushuai/ForPicGo/master/rabbitmq.png'
 tags:
   - RabbitMQ
+  - RabbitMQ详解
   - 消息中间件
 categories:
   - 消息中间件

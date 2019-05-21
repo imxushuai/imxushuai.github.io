@@ -1,6 +1,9 @@
 ---
 title: 配置Nginx反向代理
-tags: 'ngxin,反向代理'
+tags: 
+  - ngxin
+  - nginx配置反向代理
+  - 反向代理
 categories: nginx
 description: Ngxin反向代理和负载均衡
 photos:

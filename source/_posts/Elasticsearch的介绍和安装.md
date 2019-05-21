@@ -3,7 +3,8 @@ title: Elasticsearch的介绍和安装
 photo:
   - 'https://images.xushuai.fun/elasticsearch-logo.png'
 tags:
-  - elasticsearch
+  - elasticsearch安装
+  - elastic search
   - 全文检索
 categories:
   - 全文检索

@@ -5,6 +5,7 @@ photo:
 tags:
   - 全文检索
   - elasticsearch
+  - elastic search
   - spring data elasticsearch
 categories:
   - 全文检索

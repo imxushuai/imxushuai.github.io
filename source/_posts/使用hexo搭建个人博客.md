@@ -1,6 +1,9 @@
 ---
 title: 使用hexo搭建个人博客
-tags: 'hexo,blog,个人博客'
+tags: 
+  - hexo
+  - blog 
+  - 个人博客
 categories: 其他
 description: 使用hexo搭建炫酷的个人博客
 photos:

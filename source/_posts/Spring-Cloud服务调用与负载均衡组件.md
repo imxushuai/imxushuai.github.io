@@ -5,8 +5,9 @@ photo:
     https://raw.githubusercontent.com/imxushuai/ForPicGo/master/006ifTg0gy1fxspi88u31j32a40nygmk.jpg
 tags:
   - Spring Cloud
-  - Ribbon
-  - feign
+  - Spring Cloud Ribbon
+  - Spring Cloud feign
+  - 微服务调用
 categories:
   - - Spring Cloud
     - Ribbon

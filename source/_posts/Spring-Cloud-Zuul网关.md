@@ -5,7 +5,8 @@ photo:
     https://raw.githubusercontent.com/imxushuai/ForPicGo/master/006ifTg0gy1fxspi88u31j32a40nygmk.jpg
 tags:
   - Spring Cloud
-  - Zuul
+  - Spring Cloud Zuul
+  - 微服务网关
 categories:
   - - Spring Cloud
     - Zuul

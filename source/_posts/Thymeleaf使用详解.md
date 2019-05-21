@@ -4,6 +4,7 @@ photo:
   - 'https://images.xushuai.fun/springboot-thymeleaf.jpg'
 tags:
   - thymeleaf
+  - 模板引擎
 categories:
   - thymeleaf
 description: Thymeleaf - 现代化服务器端的Java模板引擎

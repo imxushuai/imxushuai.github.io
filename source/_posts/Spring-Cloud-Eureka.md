@@ -5,7 +5,7 @@ photo:
     https://raw.githubusercontent.com/imxushuai/ForPicGo/master/006ifTg0gy1fxspi88u31j32a40nygmk.jpg
 tags:
   - Spring Cloud
-  - Eureka
+  - Spring Cloud Eureka
 categories:
   - Spring Cloud
   - Eureka

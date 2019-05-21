@@ -2,6 +2,7 @@
 title: 乐优商城笔记七：商品数据同步(RabbitMQ)
 tags:
   - 乐优商城
+  - 乐优商城笔记
 categories:
   - 乐优商城
 date: 2019-04-08 21:19:23

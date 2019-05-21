@@ -1,6 +1,9 @@
 ---
 title: Ngxin安装
-tags: 'nginx,服务器代理'
+tags: 
+  - nginx
+  - nginx安装
+  - 服务器代理
 categories: nginx
 description: 本文介绍在centos环境下安装nginx
 photos:

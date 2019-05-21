@@ -5,7 +5,8 @@ photo:
     https://raw.githubusercontent.com/imxushuai/ForPicGo/master/006ifTg0gy1fxtylsthm1j30mb08fac1.jpg
 tags:
   - Spring Cloud
-  - Hystrix
+  - Spring Cloud Hystrix
+  - Spring Cloud Hystrix入门
 categories:
   - - Spring Cloud
     - Hystrix
