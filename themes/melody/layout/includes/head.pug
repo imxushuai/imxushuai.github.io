@@ -38,6 +38,20 @@ if (theme.pwa && theme.pwa.enable)
     link(rel="icon" type="image/png" sizes="16x16" href=theme.pwa.favicon_16_16)
   if(theme.pwa.theme_color)
     link(rel="mask-icon" href=theme.pwa.mask_icon color=theme.pwa.theme_color)
+script.
+  ((function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+    bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+  }
+    else {
+    bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+  }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+  })());
+
 
 if (theme.google_adsense && theme.google_adsense.enable)
   script(async src=theme.google_adsense.js)
