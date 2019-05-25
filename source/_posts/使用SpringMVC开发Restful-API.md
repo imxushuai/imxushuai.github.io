@@ -364,16 +364,14 @@ date: 2019-03-29 11:27:54
          }
      ```
 
-     > **注意：**
-  >
-     > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`BindingResult`参数必须紧跟在被`@Valid`标注的参数后面，错误示例：
-     >
-     > ```java
-     > public ResponseEntity<User> addUser(@Valid @RequestBody User user, 
-     >                                         @RequestParam("param") String param, 
-     >                                         BindingResult bindingResult)
-     > ```
-   
+     **注意：**`BindingResult`参数必须紧跟在被`@Valid`标注的参数后面，错误示例：
+    
+     ```java
+     public ResponseEntity<User> addUser(@Valid @RequestBody User user, 
+                                         @RequestParam("param") String param, 
+                                         BindingResult bindingResult)
+     ```
+     
    - 编写测试
    
      ```java
