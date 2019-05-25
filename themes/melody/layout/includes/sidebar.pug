@@ -4,7 +4,7 @@
     let tocNumber
     if (page.toc_number !== undefined) tocNumber = page.toc_number
     else if (theme.toc.number !== undefined) tocNumber = theme.toc.number
-    else tocNumber = true
+    else tocNumber = true && (page.number === undefined || page.number !== false)
   -
   if(showToc)
     .toggle-sidebar-info.text-center
