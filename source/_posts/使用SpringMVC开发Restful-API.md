@@ -364,28 +364,38 @@ date: 2019-03-29 11:27:54
          }
      ```
 
+     > **注意：**
+  >
+     > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`BindingResult`参数必须紧跟在被`@Valid`标注的参数后面，错误示例：
+     >
+     > ```java
+     > public ResponseEntity<User> addUser(@Valid @RequestBody User user, 
+     >                                         @RequestParam("param") String param, 
+     >                                         BindingResult bindingResult)
+     > ```
+   
    - 编写测试
-
+   
      ```java
          @Test
          public void addUserTest() throws Exception {
              //language=JSON
              String param = "{\"username\":\"baker-3\",\"password\":null}";
-             
+          
              String result = mockMvc.perform(MockMvcRequestBuilders.post("/user")
-                     .contentType(MediaType.APPLICATION_JSON_UTF8)
+                  .contentType(MediaType.APPLICATION_JSON_UTF8)
                      .content(param))
-                     .andExpect(MockMvcResultMatchers.status().isCreated())
+                  .andExpect(MockMvcResultMatchers.status().isCreated())
                      .andReturn().getResponse().getContentAsString();
      
              System.out.println(result);
          }
      ```
-
+   
    - 运行
-
+   
      ![](https://images.xushuai.fun/19-1-7/6534844.jpg)
-
+   
      > 依然会执行创建工作，需要配合自定义异常来使用
 
 
@@ -563,4 +573,3 @@ date: 2019-03-29 11:27:54
      ![](https://images.xushuai.fun/19-1-9/75470881.jpg)
 
    > 如果有新的异常信息，只需要在异常枚举中新增即可。
-
