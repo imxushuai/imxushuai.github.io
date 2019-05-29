@@ -21,3 +21,53 @@
         span=theme.ICP.text
   if theme.busuanzi.enable
     include ./count/busuanzi.pug
+  script.
+      (function (T, h, i, n, k, P, a, g, e) {
+          g = function () {
+              P = h.createElement(i);
+              a = h.getElementsByTagName(i)[0];
+              P.src = k;
+              P.charset = "utf-8";
+              P.async = 1;
+              a.parentNode.insertBefore(P, a)
+          };
+          T["ThinkPageWeatherWidgetObject"] = n;
+          T[n] || (T[n] = function () {
+              (T[n].q = T[n].q || []).push(arguments)
+          });
+          T[n].l = +new Date();
+          if (T.attachEvent) {
+              T.attachEvent("onload", g)
+          } else {
+              T.addEventListener("load", g, false)
+          }
+      }(window, document, "script", "tpwidget", "//widget.seniverse.com/widget/chameleon.js"))
+  script.
+      var showFlag = true;
+      var os = function() {var ua = navigator.userAgent,isWindowsPhone = /(?:Windows Phone)/.test(ua),isSymbian = /(?:SymbianOS)/.test(ua) || isWindowsPhone, isAndroid = /(?:Android)/.test(ua), isFireFox = /(?:Firefox)/.test(ua), isChrome = /(?:Chrome|CriOS)/.test(ua), isTablet = /(?:iPad|PlayBook)/.test(ua) || (isAndroid && !/(?:Mobile)/.test(ua)) || (isFireFox && /(?:Tablet)/.test(ua)), isPhone = /(?:iPhone)/.test(ua) && !isTablet, isPc = !isPhone && !isAndroid && !isSymbian;return {isTablet: isTablet, isPhone: isPhone, isAndroid : isAndroid, isPc : isPc};}();
+      if (os.isAndroid || os.isPhone) {
+          showFlag = false;
+      }
+      tpwidget("init", {
+          "flavor": "bubble",
+          "location": "WM6N2PM3WY2K",
+          "geolocation": "enabled",
+          "position": "bottom-right",
+          "margin": "17px 70px",
+          "language": "auto",
+          "unit": "c",
+          "theme": "chameleon",
+          "uid": "UEB839A1CD",
+          "hash": "28ca33b0751401a8e994a76ed0e253cd"
+      })
+      if (showFlag) {
+          tpwidget("show");
+      }
+      window.addEventListener("resize", function(){
+          console.log(document.documentElement.clientWidth)
+          if (document.documentElement.clientWidth < 1065) {
+              console.log("false")
+          } else {
+              console.log("true")
+          }
+      })
