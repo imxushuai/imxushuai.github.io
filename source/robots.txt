@@ -10,5 +10,5 @@ Disallow: /css/
 Disallow: /fonts/
 Disallow: /vendors/
 Disallow: /fancybox/
-Sitemap: https://www.imxushuai.com/sitemap.xml
-Sitemap: https://www.imxushuai.com/baidusitemap.xml
+Sitemap: http://www.imxushuai.com/sitemap.xml
+Sitemap: http://www.imxushuai.com/baidusitemap.xml
