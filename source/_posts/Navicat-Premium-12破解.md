@@ -96,7 +96,7 @@ date: 2018-12-13 22:22:17
 
 2. 输入`Your Name`以及`YourOrganization`，也可以保持默认，然后点击`Generate`按钮。
 
-   ![](https://images.xushuai.fun/18-12-13/42857903.jpg)
+   ![](https://images.xushuai.fun/18-12-1320190531141111.png)
 
 点击后会在`Serial Keyggen`生成注册码
 
@@ -109,6 +109,10 @@ date: 2018-12-13 22:22:17
 2. 点击手动激活后，会弹出一个对话框，里面有请求码，复制请求码到`Request Code`中，点击`Generate`生成`Activation Code`，将生成的`Activation Code`复制粘贴到激活码框中，点击激活按钮，完成激活。
 
    ![](https://images.xushuai.fun/18-12-13/42857903.jpg)
+   
+   > 特殊情况：
+   > 
+   > &nbsp;&nbsp;&nbsp;&nbsp;若是点击了`Generate`左侧的激活码栏内自动产生了激活码，就使用自动产生的激活，无需复制右侧生成的（若自动生成的激活码无法激活，再使用我们自己生成的激活码）。
 
 3. 查看激活状态。
 
