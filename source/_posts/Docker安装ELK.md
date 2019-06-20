@@ -11,7 +11,7 @@ categories:
 date: 2019-05-01 16:51:31
 ---
 
-<center><i>使用Docker安装E(Elasticearch)L(Logstash)K(Kibana)</i></center>
+<center><i>使用 Docker 安装 E(Elasticearch) L(Logstash) K(Kibana)</i></center>
 
 ![](https://raw.githubusercontent.com/imxushuai/ForPicGo/master/ELK.png)
 
