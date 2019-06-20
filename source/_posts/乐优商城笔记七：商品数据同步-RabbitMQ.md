@@ -6,7 +6,7 @@ tags:
 categories:
   - 乐优商城
 abbrlink: 17616
-date: 2019-04-08 21:19:23
+date: 2002-01-01 00:00:07
 ---
 
 <center><i>使用RabbitMQ完成商品数据同步</i></center>
