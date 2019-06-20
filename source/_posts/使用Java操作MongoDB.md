@@ -1,9 +1,10 @@
 ---
 title: 使用Java操作MongoDB
 tags:
-  - null
+  - MongoDB
+  - SpringDataMongoDB
 categories:
-  - null
+  - MongoDB
 date: 2019-04-20 16:49:11
 ---
 

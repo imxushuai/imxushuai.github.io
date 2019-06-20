@@ -1,9 +1,13 @@
 ---
 title: Docker安装ELK
 tags:
-  - null
+  - ELK
+  - Elasticsearch
+  - Logstash
+  - kibana
 categories:
-  - null
+  - 全文检索
+  - elasticsearch
 date: 2019-05-01 16:51:31
 ---
 
