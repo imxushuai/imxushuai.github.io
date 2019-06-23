@@ -85,7 +85,7 @@ MongoDB 的逻辑结构是一种层次结构。主要构成分别为：
 
 2. 下载完毕后将下载的`.tgz`的包上传到服务器。
 
-   ![](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\1560692109626.png)
+   ![](https://raw.githubusercontent.com/imxushuai/ForPicGo/master/1560692109626.png)
 
 3. 解压压缩包
 
@@ -118,7 +118,7 @@ MongoDB 的逻辑结构是一种层次结构。主要构成分别为：
    netstat -neplt
    ```
 
-   ![](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\1560692613635.png)
+   ![](https://raw.githubusercontent.com/imxushuai/ForPicGo/master/1560692613635.png)
 
 7. 绑定通配IP访问
 
