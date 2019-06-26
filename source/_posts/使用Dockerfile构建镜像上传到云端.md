@@ -10,7 +10,7 @@ categories:
 date: 2019-05-06 23:46:34
 ---
 
-<center><i>Dockerfile构建镜像分别上传到Docker hub和私有仓库</i></center>
+<center><i>Dockerfile构建镜像分别上传到 Docker hub和私有仓库</i></center>
 
 ![](https://raw.githubusercontent.com/imxushuai/ForPicGo/master/docker.jpg)
 
