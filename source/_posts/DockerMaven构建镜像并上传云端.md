@@ -9,15 +9,11 @@ categories:
 date: 2019-05-08 21:37:33
 ---
 
-<center><i>使用Docker-Maven-Plugin完成Jar包镜像的构建并上传至云端</i></center>
+<center><i>使用 Docker-Maven-Plugin 完成 Jar 包镜像的构建并上传至云端</i></center>
 
 ![](https://raw.githubusercontent.com/imxushuai/ForPicGo/master/docker.jpg)
 
 <!-- more -->
-
-# DockerMaven插件
-
-使用`Docker Maven`插件完成微服务容器的构建和部署。
 
 ## 推送镜像到Docker Hub
 
