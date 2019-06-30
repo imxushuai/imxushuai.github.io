@@ -11,7 +11,7 @@ categories:
 date: 2019-05-13 18:37:44
 ---
 
-<center><i></i></center>
+<center><i>手把手教你如何安装 Jenkins</i></center>
 
 ![](https://raw.githubusercontent.com/imxushuai/ForPicGo/master/Jenkins.png)
 
