@@ -89,6 +89,43 @@ PS：关于自动化部署，我的博客使用的是`Hexo` + `GitHub Pages` + `
    systemctl start jenkins
    ```
 
+## Yum安装
+
+1. 安装自动索引`yum`源的包。（可选操作）
+
+   ```shell
+   yum install yum-fastestmirror -y
+   ```
+
+2. 添加`Jenkins`的`yum`源
+
+   ```shell
+   wget -O /etc/yum.repos.d/jenkins.repo http://jenkins-ci.org/redhat/jenkins.repo
+   ```
+
+3. 获取`Jenkins`的包签名密钥
+
+   ```shell
+   rpm --import http://pkg.jenkins-ci.org/redhat/jenkins-ci.org.key
+   ```
+
+4. 安装`Jenkins`
+
+   ```shell
+   yum install jenkins -y
+   ```
+
+5. 启动
+
+   ```shell
+   service jenkins start
+   ```
+
+   ![](https://raw.githubusercontent.com/imxushuai/ForPicGo/master/20190630200749.png)
+
+6. 访问`http://ip:port/8080`
+
+   ![](https://raw.githubusercontent.com/imxushuai/ForPicGo/master/20190630200939.png)
 
 ## Docker安装
 
