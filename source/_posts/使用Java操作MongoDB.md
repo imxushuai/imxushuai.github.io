@@ -10,7 +10,7 @@ date: 2019-04-20 16:49:11
 
 <center><i>使用原生API和 SpringBootDataMongodb 操作 MongoDB</i></center>
 
-![](https://raw.githubusercontent.com/imxushuai/ForPicGo/master/mongoDB.png)
+![](https://raw.githubusercontent.com/imxushuai/ForPicGo/master/Mongodb.png)
 
 <!-- more -->
 

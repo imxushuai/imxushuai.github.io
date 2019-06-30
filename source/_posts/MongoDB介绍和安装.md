@@ -11,7 +11,7 @@ date: 2019-04-20 16:46:36
 
 <center><i>MongoDB简介以及安装</i></center>
 
-![](https://raw.githubusercontent.com/imxushuai/ForPicGo/master/mongoDB.png)
+![](https://raw.githubusercontent.com/imxushuai/ForPicGo/master/Mongodb.png)
 
 <!-- more -->
 
