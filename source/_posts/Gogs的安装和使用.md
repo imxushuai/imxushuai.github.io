@@ -7,7 +7,7 @@ tags:
   - Git服务器
 categories:
   - Gogs
-date: 2019-06-30 15:32:50
+date: 2019-05-12 15:32:50
 ---
 
 <center><i>使用 Gogs 自建 Git 服务器</i></center>

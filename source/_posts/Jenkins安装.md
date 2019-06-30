@@ -8,7 +8,7 @@ tags:
 categories:
   - 持续集成
   - Jenkins
-date: 2019-06-30 15:37:44
+date: 2019-05-13 18:37:44
 ---
 
 <center><i></i></center>
