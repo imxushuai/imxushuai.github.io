@@ -118,6 +118,7 @@ PS：关于自动化部署，我的博客使用的是`Hexo` + `GitHub Pages` + `
 5. 启动
 
    ```shell
+   # 若需要配置，配置文件位于：/etc/sysconfig/jenkins
    service jenkins start
    ```
 
