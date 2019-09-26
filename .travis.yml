@@ -23,13 +23,9 @@ script:
   - git add .
   - git commit -m "Update docs"
   - git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:master
+  - git push --force --quiet "https://imxushuai:${CO_TOKEN}@${CO_REF}" master:master
 
 
-# after_script:
-#   - cd ../
-#   - chmod +x ./bin/autoissue
-#   - ./bin/autoissue
-# E: Build LifeCycle
 
 branches:
   only:
@@ -37,3 +33,4 @@ branches:
 env:
   global:
     - GH_REF: github.com/imxushuai/imxushuai.github.io.git
+    - CO_REF: git.dev.tencent.com/imxushuai/imxushuai.coding.me.git
