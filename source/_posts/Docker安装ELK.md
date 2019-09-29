@@ -113,14 +113,19 @@ date: 2019-05-01 16:51:31
 
 1. 拉取`logstash`镜像
 
+   注意：这里需要从elasitc官方镜像库拉取镜像哦，docker hub上的镜像我试的时候是不可用的，不知道是什么原因。
+
    ```shell
-   docker pull logstash
+   docker pull docker.elastic.co/logstash/logstash:6.6.2
+   # 如果拉取速度过慢，可以拉取我传到docker hub上的镜像
+   # 与官方6.6.2的镜像是一致的
+   # docker pull docker.io/imxushuai/logstash:6.6.2
    ```
 
 2. 创建容器
 
    ```shell
-   docker run --rm -di logstash:6.6.1
+   docker run --rm -di docker.elastic.co/logstash/logstash:6.6.2
    ```
 
 3. 查看容器ID
@@ -128,8 +133,6 @@ date: 2019-05-01 16:51:31
    ```shell
    docker ps
    ```
-
-   ![](https://raw.githubusercontent.com/imxushuai/ForPicGo/master/20190619231408.png)
 
 4. 将容器中的配置文件复制到宿主机
 
@@ -150,12 +153,28 @@ date: 2019-05-01 16:51:31
    # 删除原有容器，使用容器ID删除
    docker rm d7405af81c00
    # 创建新容器并挂载目录
-   docker run -di --name=mylogstash -v /etc/logstash/config:/usr/share/logstash/config -v /etc/logstash/pipeline:/usr/share/logstash/pipeline logstash:6.6.1
+   docker run -di --name=mylogstash -v /etc/logstash/config:/usr/share/logstash/config -v /etc/logstash/pipeline:/usr/share/logstash/pipeline docker.elastic.co/logstash/logstash:6.6.2
    ```
 
-6. 使用`docker ps`查看是否成功启动
+6. 使用时只需要将`/etc/logstash/pipeline/logstash.conf`替换为要执行的输入输出，重启容器即可。
 
-7. 使用时只需要将`/etc/logstash/pipeline/logstash.conf`替换为要执行的输入输出，重启容器即可。
+7. 日志查看（排错必备）
+
+   ```shell
+   # logstash运行也需要一些时间，日志会持续打印
+   docker logs -f --tail=30 mylogstash
+   ```
+
+8. 插件安装需要进入容器内部
+
+   ```shell
+   # 进入容器
+   docker exec -it mylogstash bash
+   # 进入logstash的bin目录
+   cd /usr/share/logstash/bin
+   # 安装插件,我这里的示例是安装的jdbc
+   ./logstash-plugin install logstash-input-jdbc
+   ```
 
 # 安装Kibana
 
