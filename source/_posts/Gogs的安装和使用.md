@@ -70,9 +70,9 @@ Gogs 的目标是打造一个最简单、最快速和最轻松的方式搭建自
    # 前台运行
    ./gogs web
    ```
-```
+
    
-![](https://raw.githubusercontent.com/imxushuai/ForPicGo/master/20190630113321.png)
+   ![](https://raw.githubusercontent.com/imxushuai/ForPicGo/master/20190630113321.png)
    
    成功运行！
    
@@ -84,7 +84,7 @@ Gogs 的目标是打造一个最简单、最快速和最轻松的方式搭建自
 
    ```shell
    docker pull gogs/gogs
-```
+    ```
 
 2. 运行容器
 
