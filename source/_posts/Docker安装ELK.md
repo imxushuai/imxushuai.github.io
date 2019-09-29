@@ -42,7 +42,7 @@ date: 2019-05-01 16:51:31
 
    **国内下载镜像速度有点感人，耐心等待。。**
 
-3. 创建用户定义的网络（用于连接到连接到同一网络的其他服务（例如Kibana））：
+3. 创建用户定义的网络（用于连接到同一网络的其他服务（例如Kibana））：
 
    ```shell
    docker network create somenetwork
@@ -83,7 +83,7 @@ date: 2019-05-01 16:51:31
 
 6. 页面访问elasticsearch
 
-   如果得到下面类似放回，说明启动成功。
+   如果得到下面类似返回，说明启动成功。
 
    ![](https://raw.githubusercontent.com/imxushuai/ForPicGo/master/20190619221154.png)
 
