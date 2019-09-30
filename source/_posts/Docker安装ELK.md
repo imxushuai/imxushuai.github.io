@@ -5,6 +5,9 @@ tags:
   - Elasticsearch
   - Logstash
   - kibana
+  - Docker安装Elasticsearch
+  - Docker安装Logstash
+  - Docker安装Kibana
 categories:
   - 全文检索
   - elasticsearch
@@ -42,7 +45,7 @@ date: 2019-05-01 16:51:31
 
    **国内下载镜像速度有点感人，耐心等待。。**
 
-3. 创建用户定义的网络（用于连接到同一网络的其他服务（例如Kibana））：
+3. 创建用户定义的网络（用于连接到同一网络的其他服务，例如Kibana）：
 
    ```shell
    docker network create somenetwork
