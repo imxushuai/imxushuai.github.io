@@ -51,7 +51,7 @@ date: 2019-05-18 22:49:35
 
   熟悉Docker相关操作。
 
-- 数据库：**Mysql/Postgoresql/MSSQL/ORACLE/ONSEL**
+- 数据库：**Mysql/Postgoresql/MSSQL/ORACLE/ONSQL**
 
   熟悉Mysql，MSSQL等关系型数据库；
 
