@@ -8,14 +8,14 @@ categories: nginx
 description: 本文介绍在centos环境下安装nginx
 photos:
   - >-
-    https://raw.githubusercontent.com/imxushuai/ForPicGo/master/006ifTg0gy1fxq195rirbj314k0kat8k.jpg
+    https://www.imxushuai.com/img/asset/006ifTg0gy1fxq195rirbj314k0kat8k.jpg
 abbrlink: 7540
 date: 2018-5-13 16:59:42
 ---
 
 <center><i>CentOS环境下安装nginx</i></center>
 
-![](https://raw.githubusercontent.com/imxushuai/ForPicGo/master/006ifTg0gy1fxq195rirbj314k0kat8k.jpg)
+![](https://www.imxushuai.com/img/asset/006ifTg0gy1fxq195rirbj314k0kat8k.jpg)
 
 <!-- more -->
 
@@ -76,7 +76,7 @@ mkdir -p /var/temp/nginx
 ```
 
 3. 执行生成的Makefile文件   
-![](https://raw.githubusercontent.com/imxushuai/ForPicGo/master/006ifTg0gy1fxmray6fy8j30q402nglr.jpg)
+![](https://www.imxushuai.com/img/asset/006ifTg0gy1fxmray6fy8j30q402nglr.jpg)
 ```shell
 ## 编译Makefile文件
 make
@@ -89,7 +89,7 @@ make install
 ```shell
 cd /usr/local
 ```
-![](https://raw.githubusercontent.com/imxushuai/ForPicGo/master/006ifTg0gy1fxmrbpo0pmj30um02gdfw.jpg)
+![](https://www.imxushuai.com/img/asset/006ifTg0gy1fxmrbpo0pmj30um02gdfw.jpg)
 
 5. 启动 nginx
 ```shell
@@ -101,10 +101,10 @@ nginx/sbin/nginx
 ```shell
 ps aux|grep nginx
 ```
-![](https://raw.githubusercontent.com/imxushuai/ForPicGo/master/006ifTg0gy1fxmrbpwbgcj311d034dg4.jpg)
+![](https://www.imxushuai.com/img/asset/006ifTg0gy1fxmrbpwbgcj311d034dg4.jpg)
 
 7. 访问nginx服务器
-![](https://raw.githubusercontent.com/imxushuai/ForPicGo/master/006ifTg0gy1fxmrbq1202j30wo0dqaas.jpg)
+![](https://www.imxushuai.com/img/asset/006ifTg0gy1fxmrbq1202j30wo0dqaas.jpg)
 
 > 其他命令   
  

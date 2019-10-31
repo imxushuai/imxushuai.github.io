@@ -7,12 +7,13 @@ tags:
   - docker私有仓库
 categories:
   - Docker
+abbrlink: 60185
 date: 2019-05-06 23:46:34
 ---
 
 <center><i>Dockerfile构建镜像分别上传到 Docker hub和私有仓库</i></center>
 
-![](https://raw.githubusercontent.com/imxushuai/ForPicGo/master/docker.jpg)
+![](https://www.imxushuai.com/img/asset/docker.jpg)
 
 <!-- more -->
 
@@ -79,7 +80,7 @@ Dockerfile是用于构建Docker镜像的脚本文件。
    docker images
    ```
 
-   ![](https://raw.githubusercontent.com/imxushuai/ForPicGo/master/20190626220302.png)
+   ![](https://www.imxushuai.com/img/asset/20190626220302.png)
 
 5. 创建容器
 
@@ -95,7 +96,7 @@ Dockerfile是用于构建Docker镜像的脚本文件。
 
    JDK构建成功
 
-   ![](https://raw.githubusercontent.com/imxushuai/ForPicGo/master/20190626220834.png)
+   ![](https://www.imxushuai.com/img/asset/20190626220834.png)
 
 
 
@@ -113,7 +114,7 @@ emmmmm，正常创建即可，实在不会就百度/谷歌一下。
 
 1. Docker hub创建仓库
 
-   ![](https://raw.githubusercontent.com/imxushuai/ForPicGo/master/20190626222248.png)
+   ![](https://www.imxushuai.com/img/asset/20190626222248.png)
 
 2. 宿主机登录到Docker Hub
 
@@ -123,7 +124,7 @@ emmmmm，正常创建即可，实在不会就百度/谷歌一下。
 
    输入账号密码即可完成登录！
 
-   ![](https://raw.githubusercontent.com/imxushuai/ForPicGo/master/20190626221946.png)
+   ![](https://www.imxushuai.com/img/asset/20190626221946.png)
 
 3. 上传镜像到`Docker hub`
 
@@ -137,19 +138,19 @@ emmmmm，正常创建即可，实在不会就百度/谷歌一下。
    docker push imxushuai/jdk1.8
    ```
 
-   ![](https://raw.githubusercontent.com/imxushuai/ForPicGo/master/20190626223638.png)
+   ![](https://www.imxushuai.com/img/asset/20190626223638.png)
 
    由于Docker hub在国外，所以上传可能会花费一些时间，请耐心等待！！！（如果有科学上网的办法，那就真是太棒了）
 
 4. Docker hub查看是否上传成功
 
-   ![](https://raw.githubusercontent.com/imxushuai/ForPicGo/master/20190626223721.png)
+   ![](https://www.imxushuai.com/img/asset/20190626223721.png)
 
    这样就可以在其他能联网的电脑下载到上传到Docker hub的镜像。
 
    拉取镜像：`docker pull imxushuai/jdk1.8`
 
-   ![](https://raw.githubusercontent.com/imxushuai/ForPicGo/master/20190626225046.png)
+   ![](https://www.imxushuai.com/img/asset/20190626225046.png)
 
 ## 上传到私有仓库
 
@@ -171,7 +172,7 @@ emmmmm，正常创建即可，实在不会就百度/谷歌一下。
 
    访问测试：http://192.168.136.104:5000/v2/_catalog
 
-   ![](https://raw.githubusercontent.com/imxushuai/ForPicGo/master/20190626231324.png)
+   ![](https://www.imxushuai.com/img/asset/20190626231324.png)
 
 3. 修改宿主机`daemon.json`
 
@@ -213,6 +214,6 @@ emmmmm，正常创建即可，实在不会就百度/谷歌一下。
 
 3. 查看是否上传成功
 
-   ![](https://raw.githubusercontent.com/imxushuai/ForPicGo/master/20190626233036.png)
+   ![](https://www.imxushuai.com/img/asset/20190626233036.png)
 
    OK！！！

@@ -5,12 +5,13 @@ tags:
   - SpringDataMongoDB
 categories:
   - MongoDB
+abbrlink: 4883
 date: 2019-04-20 16:49:11
 ---
 
 <center><i>使用原生API和 SpringBootDataMongodb 操作 MongoDB</i></center>
 
-![](https://raw.githubusercontent.com/imxushuai/ForPicGo/master/Mongodb.png)
+![](https://www.imxushuai.com/img/asset/Mongodb.png)
 
 <!-- more -->
 
@@ -94,7 +95,7 @@ date: 2019-04-20 16:49:11
 
 2. 运行结果
 
-   ![](https://raw.githubusercontent.com/imxushuai/ForPicGo/master/20190617210451.png)
+   ![](https://www.imxushuai.com/img/asset/20190617210451.png)
 
 > 连接成功后，将@Test注解更换为@Before注解，这样运行其他测试方法的时候，就会先连接到数据库了。
 
@@ -113,11 +114,11 @@ date: 2019-04-20 16:49:11
 
 2. 运行结果
 
-   ![](https://raw.githubusercontent.com/imxushuai/ForPicGo/master/20190617211001.png)
+   ![](https://www.imxushuai.com/img/asset/20190617211001.png)
 
 3. 使用GUI查看
 
-   ![](https://raw.githubusercontent.com/imxushuai/ForPicGo/master/20190617213506.png)
+   ![](https://www.imxushuai.com/img/asset/20190617213506.png)
 
    > 这里使用的是`Navicat Premium 12`，如果需要下载安装的小伙伴可以参考：[Navicat Premium 12破解]([https://www.imxushuai.com/2018/12/13/navicat-premium-12%E7%A0%B4%E8%A7%A3/](https://www.imxushuai.com/2018/12/13/navicat-premium-12破解/))
 
@@ -146,11 +147,11 @@ date: 2019-04-20 16:49:11
 
 2. 运行结果
 
-   ![](https://raw.githubusercontent.com/imxushuai/ForPicGo/master/20190617213220.png)
+   ![](https://www.imxushuai.com/img/asset/20190617213220.png)
 
 3. 使用GUI查看
 
-   ![](https://raw.githubusercontent.com/imxushuai/ForPicGo/master/20190617213407.png)
+   ![](https://www.imxushuai.com/img/asset/20190617213407.png)
 
 ### 查询集合所有数据
 
@@ -169,7 +170,7 @@ date: 2019-04-20 16:49:11
 
 2. 运行结果
 
-   ![](https://raw.githubusercontent.com/imxushuai/ForPicGo/master/20190617214051.png)
+   ![](https://www.imxushuai.com/img/asset/20190617214051.png)
 
 ### 按条件查询数据
 
@@ -191,7 +192,7 @@ date: 2019-04-20 16:49:11
 
 2. 运行结果
 
-   ![](https://raw.githubusercontent.com/imxushuai/ForPicGo/master/20190617214555.png)
+   ![](https://www.imxushuai.com/img/asset/20190617214555.png)
 
 ### 更新文档
 
@@ -211,11 +212,11 @@ date: 2019-04-20 16:49:11
 
 2. 运行结果
 
-   ![](https://raw.githubusercontent.com/imxushuai/ForPicGo/master/20190617215229.png)
+   ![](https://www.imxushuai.com/img/asset/20190617215229.png)
 
 3. 使用GUI查看
 
-   ![](https://raw.githubusercontent.com/imxushuai/ForPicGo/master/20190617215326.png)
+   ![](https://www.imxushuai.com/img/asset/20190617215326.png)
 
 ### 删除文档
 
@@ -233,7 +234,7 @@ date: 2019-04-20 16:49:11
 
 2. 使用GUI查看
 
-   ![](https://raw.githubusercontent.com/imxushuai/ForPicGo/master/20190617221105.png)
+   ![](https://www.imxushuai.com/img/asset/20190617221105.png)
 
    > 另外两条数据成功删除。
 
@@ -338,7 +339,7 @@ date: 2019-04-20 16:49:11
 
 2. GUI查看结果
 
-   ![](https://raw.githubusercontent.com/imxushuai/ForPicGo/master/20190617223927.png)
+   ![](https://www.imxushuai.com/img/asset/20190617223927.png)
 
 ### 插入文档
 
@@ -354,7 +355,7 @@ date: 2019-04-20 16:49:11
 
 2. GUI查看结果
 
-   ![](https://raw.githubusercontent.com/imxushuai/ForPicGo/master/20190617224223.png)
+   ![](https://www.imxushuai.com/img/asset/20190617224223.png)
 
    > 有趣的是，保存后，多了一个`_class`的字段，这个字段是`Spring Data`帮我们生成的，用于记录实体的全类名。
 
@@ -372,7 +373,7 @@ date: 2019-04-20 16:49:11
 
 2. 运行结果
 
-   ![](https://raw.githubusercontent.com/imxushuai/ForPicGo/master/20190617224853.png)
+   ![](https://www.imxushuai.com/img/asset/20190617224853.png)
 
 ### 按条件查询数据
 
@@ -392,7 +393,7 @@ date: 2019-04-20 16:49:11
 
 2. 运行结果
 
-   ![](https://raw.githubusercontent.com/imxushuai/ForPicGo/master/20190617230306.png)
+   ![](https://www.imxushuai.com/img/asset/20190617230306.png)
 
 ### 更新文档
 
@@ -412,7 +413,7 @@ date: 2019-04-20 16:49:11
 
 2. GUI查看结果
 
-   ![](https://raw.githubusercontent.com/imxushuai/ForPicGo/master/20190617231011.png)
+   ![](https://www.imxushuai.com/img/asset/20190617231011.png)
 
 ### 删除文档
 

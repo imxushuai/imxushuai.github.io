@@ -2,7 +2,7 @@
 title: Spring Cloud服务调用与负载均衡组件
 photo:
   - >-
-    https://raw.githubusercontent.com/imxushuai/ForPicGo/master/006ifTg0gy1fxspi88u31j32a40nygmk.jpg
+    https://www.imxushuai.com/img/asset/006ifTg0gy1fxspi88u31j32a40nygmk.jpg
 tags:
   - Spring Cloud
   - Spring Cloud Ribbon
@@ -20,7 +20,7 @@ date: 2018-12-03 19:55:10
 
 <center><i>使用Spring Cloud服务调用实现微服务的调用和负载均衡</i></center>
 
-![](https://raw.githubusercontent.com/imxushuai/ForPicGo/master/006ifTg0gy1fxspi88u31j32a40nygmk.jpg)
+![](https://www.imxushuai.com/img/asset/006ifTg0gy1fxspi88u31j32a40nygmk.jpg)
 
 <!-- more -->
 
@@ -343,7 +343,7 @@ public class ConsumerController {
 ```
   - 调用`consumer`的方法
 
-  ![](https://raw.githubusercontent.com/imxushuai/ForPicGo/master/006ifTg0gy1fxttnvwbu5j30gp04u0sv.jpg)
+  ![](https://www.imxushuai.com/img/asset/006ifTg0gy1fxttnvwbu5j30gp04u0sv.jpg)
   
   > 成功调用服务提供方法，当这种方式看上去有点太。。。但是这种方式我们是通过写死API地址来调用，但实际情况下，服务器的IP地址并不固定，而且一旦并发太高我们会做分布式部署，这时IP地址就不止一个了。所以这种方式，并不能满足需求。
   
@@ -370,7 +370,7 @@ public class ConsumerController {
     
   - 访问该方法
   
-  ![](https://raw.githubusercontent.com/imxushuai/ForPicGo/master/006ifTg0gy1fxtu1xreo8j30ba03x0sr.jpg)
+  ![](https://www.imxushuai.com/img/asset/006ifTg0gy1fxtu1xreo8j30ba03x0sr.jpg)
 
   > 一样可以访问到，但是这种方式还是有问题，虽然ip地址变成动态获取的，但如果要完成负载均衡，我们需要自己手动实现负载均衡算法，而且调用起来也毕竟麻烦。
   
@@ -397,15 +397,15 @@ public class ConsumerController {
 
   - 在运行测试之前，为了能够看到负载均衡的效果，我们再启动一个`provider`，再启动之前修改`ProviderController`中的返回值为`provider -- two`，再将端口号修改为`8082`，或者在`VM Options`中配置。
   
-  ![](https://raw.githubusercontent.com/imxushuai/ForPicGo/master/006ifTg0gy1fxtumr3zrsj30fx0433yp.jpg)
+  ![](https://www.imxushuai.com/img/asset/006ifTg0gy1fxtumr3zrsj30fx0433yp.jpg)
 
-  ![](https://raw.githubusercontent.com/imxushuai/ForPicGo/master/006ifTg0gy1fxtuna877jj30i704w0t1.jpg)
+  ![](https://www.imxushuai.com/img/asset/006ifTg0gy1fxtuna877jj30i704w0t1.jpg)
   
   - 启动测试，访问`ConsumerController`
   
-  ![](https://raw.githubusercontent.com/imxushuai/ForPicGo/master/006ifTg0gy1fxtuobgspgj30c803cdfv.jpg)
+  ![](https://www.imxushuai.com/img/asset/006ifTg0gy1fxtuobgspgj30c803cdfv.jpg)
 
-  ![](https://raw.githubusercontent.com/imxushuai/ForPicGo/master/006ifTg0gy1fxtuok2rzhj30ar03awei.jpg)
+  ![](https://www.imxushuai.com/img/asset/006ifTg0gy1fxtuok2rzhj30ar03awei.jpg)
   
   > 多测试会发现，每次访问的返回值都不同，这是因为`Ribbon`默认采用的负载均衡算法为轮询模式。
   
@@ -414,19 +414,19 @@ public class ConsumerController {
   
   - 我们使用断点调试来稍微看一看
   
-  ![](https://raw.githubusercontent.com/imxushuai/ForPicGo/master/006ifTg0gy1fxtuvekuqfj30z30crmzj.jpg)
+  ![](https://www.imxushuai.com/img/asset/006ifTg0gy1fxtuvekuqfj30z30crmzj.jpg)
 
   > 请求被拦截处理，继续进入`execute`方法
   
-  ![](https://raw.githubusercontent.com/imxushuai/ForPicGo/master/006ifTg0gy1fxtuz4dpssj30w807u0u5.jpg)
+  ![](https://www.imxushuai.com/img/asset/006ifTg0gy1fxtuz4dpssj30w807u0u5.jpg)
   
-  ![](https://raw.githubusercontent.com/imxushuai/ForPicGo/master/006ifTg0gy1fxtuz4dpssj30w807u0u5.jpg)
+  ![](https://www.imxushuai.com/img/asset/006ifTg0gy1fxtuz4dpssj30w807u0u5.jpg)
   
-  ![](https://raw.githubusercontent.com/imxushuai/ForPicGo/master/006ifTg0gy1fxtv2wrnu4j30pp045jrn.jpg)
+  ![](https://www.imxushuai.com/img/asset/006ifTg0gy1fxtv2wrnu4j30pp045jrn.jpg)
   
   > 采用默认的负载均衡器，进入`chooseServer`方法
   
-  ![](https://raw.githubusercontent.com/imxushuai/ForPicGo/master/006ifTg0gy1fxtv6fxqzgj30st077q4a.jpg)
+  ![](https://www.imxushuai.com/img/asset/006ifTg0gy1fxtv6fxqzgj30st077q4a.jpg)
   
   > 看到这里就已经差不多了解`Ribbon`负载均衡调用的原理了
   

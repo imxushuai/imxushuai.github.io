@@ -78,7 +78,7 @@ showTags: false
 
 <center><i>各个行业Java毕业设计项目等你来选....</i></center>
 
-![](https://raw.githubusercontent.com/imxushuai/ForPicGo/master/java-bishe.jpg)
+![](https://www.imxushuai.com/img/asset/java-bishe.jpg)
 
 <!-- more -->
 

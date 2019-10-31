@@ -140,15 +140,15 @@ spring:
 
 - 新增
 
-  ![](<https://raw.githubusercontent.com/imxushuai/ForPicGo/master/20190516235042.png>)
+  ![](<https://www.imxushuai.com/img/asset/20190516235042.png>)
 
 - 修改
 
-  ![](<https://raw.githubusercontent.com/imxushuai/ForPicGo/master/20190516235103.png>)
+  ![](<https://www.imxushuai.com/img/asset/20190516235103.png>)
 
 - 删除
 
-  ![](<https://raw.githubusercontent.com/imxushuai/ForPicGo/master/20190516235120.png>)
+  ![](<https://www.imxushuai.com/img/asset/20190516235120.png>)
 
 
 

@@ -8,14 +8,14 @@ categories: 其他
 description: 使用hexo搭建炫酷的个人博客
 photos:
   - >-
-    https://raw.githubusercontent.com/imxushuai/ForPicGo/master/006ifTg0gy1fxq63qyv3xj30yx0a7t99.jpg
+    https://www.imxushuai.com/img/asset/006ifTg0gy1fxq63qyv3xj30yx0a7t99.jpg
 abbrlink: 43303
 date: 2018-11-25 17:22:21
 ---
 
 <center><i>使用hexo搭建炫酷的个人博客</i></center>
 
-![](https://raw.githubusercontent.com/imxushuai/ForPicGo/master/006ifTg0gy1fxq63qyv3xj30yx0a7t99.jpg)
+![](https://www.imxushuai.com/img/asset/006ifTg0gy1fxq63qyv3xj30yx0a7t99.jpg)
 
 <!-- more -->
 

@@ -2,7 +2,7 @@
 title: Spring Cloud Eureka
 photo:
   - >-
-    https://raw.githubusercontent.com/imxushuai/ForPicGo/master/006ifTg0gy1fxspi88u31j32a40nygmk.jpg
+    https://www.imxushuai.com/img/asset/006ifTg0gy1fxspi88u31j32a40nygmk.jpg
 tags:
   - Spring Cloud
   - Spring Cloud Eureka
@@ -16,7 +16,7 @@ date: 2018-12-02 21:27:17
 
 <center><i>Spring Cloud服务注册与发现组件：Eureka</i></center>
 
-![](https://raw.githubusercontent.com/imxushuai/ForPicGo/master/006ifTg0gy1fxspi88u31j32a40nygmk.jpg)
+![](https://www.imxushuai.com/img/asset/006ifTg0gy1fxspi88u31j32a40nygmk.jpg)
 
 <!-- more -->
 
@@ -169,7 +169,7 @@ public class SpringCloudDemoApplication {
 
 4. 访问`https://localhost:8761`,查看Eureka的web ui
 
-![](https://raw.githubusercontent.com/imxushuai/ForPicGo/master/006ifTg0gy1fxsqpjdyvuj31ds0okjtc.jpg)
+![](https://www.imxushuai.com/img/asset/006ifTg0gy1fxsqpjdyvuj31ds0okjtc.jpg)
 
 
 ### 编写Eureka Client
@@ -262,48 +262,48 @@ public class EurekaClientApplication {
 
 4. 运行，查看web ui,你会发现在`instances currently registered with Eureka`会多出一个application,名称为`spring.application.name`的值
 
-![](https://raw.githubusercontent.com/imxushuai/ForPicGo/master/006ifTg0gy1fxsqon4cnfj31fr0j376f.jpg)
+![](https://www.imxushuai.com/img/asset/006ifTg0gy1fxsqon4cnfj31fr0j376f.jpg)
 
 ### Eureka HA(高可用)
 
 1. 使用idea配置两个server
   - Ctrl + shift + A 输入 Edit Configuration
   
-  ![](https://raw.githubusercontent.com/imxushuai/ForPicGo/master/006ifTg0gy1fxsqr131ikj30h90bzjs5.jpg)
+  ![](https://www.imxushuai.com/img/asset/006ifTg0gy1fxsqr131ikj30h90bzjs5.jpg)
 
   - 复制启动类
   
-  ![](https://raw.githubusercontent.com/imxushuai/ForPicGo/master/006ifTg0gy1fxsqr19g83j30dj0iyt9r.jpg)
+  ![](https://www.imxushuai.com/img/asset/006ifTg0gy1fxsqr19g83j30dj0iyt9r.jpg)
 
   - 配置VM options
   
-  ![](https://raw.githubusercontent.com/imxushuai/ForPicGo/master/006ifTg0gy1fxsqr1dpovj30an06lq33.jpg)
+  ![](https://www.imxushuai.com/img/asset/006ifTg0gy1fxsqr1dpovj30an06lq33.jpg)
 
   - 注释掉yml中的server.port并在启动前修改defaultZone为另一个Eureka Server（互相注册。即启动1时修改端口为8761，启动2时修改端口为8762，当然在实际环境当中肯定都是事先配置好的，我这里使用的是同一块代码，所以需要在启动前修改）。
   
-  ![](https://raw.githubusercontent.com/imxushuai/ForPicGo/master/006ifTg0gy1fxsqr1hqq8j30f708vt96.jpg)
+  ![](https://www.imxushuai.com/img/asset/006ifTg0gy1fxsqr1hqq8j30f708vt96.jpg)
 
 2. 分别启动两个Server 和 Client，并查看web ui
 
-![](https://raw.githubusercontent.com/imxushuai/ForPicGo/master/006ifTg0gy1fxsquy00gfj314p0kbgnr.jpg)
+![](https://www.imxushuai.com/img/asset/006ifTg0gy1fxsquy00gfj314p0kbgnr.jpg)
 
-![](https://raw.githubusercontent.com/imxushuai/ForPicGo/master/006ifTg0gy1fxsqux2b0wj315m0khjtl.jpg)
+![](https://www.imxushuai.com/img/asset/006ifTg0gy1fxsqux2b0wj315m0khjtl.jpg)
 
 > 可以看到访问两个server都可以看到服务的消费方
 
 3. 关掉其中任意一个server端
 
-![](https://raw.githubusercontent.com/imxushuai/ForPicGo/master/006ifTg0gy1fxsqwur7ecj30qs0dzdgf.jpg)
+![](https://www.imxushuai.com/img/asset/006ifTg0gy1fxsqwur7ecj30qs0dzdgf.jpg)
 
-![](https://raw.githubusercontent.com/imxushuai/ForPicGo/master/006ifTg0gy1fxsqwxpmpkj31b40j50uy.jpg)
+![](https://www.imxushuai.com/img/asset/006ifTg0gy1fxsqwxpmpkj31b40j50uy.jpg)
 
 > Eureka-Server已经挂掉，而Eureka-Server（1）依旧正常运行，且能够显示消费方。（红字部分为关闭保护模式后的提示信息，无须在意）
 
 4. 但此时工作其实还没有完全完成，我们重启client会发现，并不能连接上Eureka-Server，因为此时Eureka-Server已经关闭，所以此时我们要在client端配置上两个Eureka-Server的地址，修改client的`application.yml`文件（以逗号分隔）。
 
-![](https://raw.githubusercontent.com/imxushuai/ForPicGo/master/006ifTg0gy1fxsqytrpzxj30ky02wt8q.jpg)
+![](https://www.imxushuai.com/img/asset/006ifTg0gy1fxsqytrpzxj30ky02wt8q.jpg)
 
 5. 当我们的Server节点超过2个，需要让每两个节点互相注册（和双Server节点操作类似，只需要在defaultZone配置另外两个节点的Eureka地址即可）。
 
-![](https://raw.githubusercontent.com/imxushuai/ForPicGo/master/006ifTg0gy1fxsqznipjrj31060a5djf.jpg)
+![](https://www.imxushuai.com/img/asset/006ifTg0gy1fxsqznipjrj31060a5djf.jpg)
 

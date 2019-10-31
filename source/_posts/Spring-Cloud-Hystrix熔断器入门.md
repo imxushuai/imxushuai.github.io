@@ -2,7 +2,7 @@
 title: Spring Cloud Hystrix熔断器入门
 photo:
   - >-
-    https://raw.githubusercontent.com/imxushuai/ForPicGo/master/006ifTg0gy1fxtylsthm1j30mb08fac1.jpg
+    https://www.imxushuai.com/img/asset/006ifTg0gy1fxtylsthm1j30mb08fac1.jpg
 tags:
   - Spring Cloud
   - Spring Cloud Hystrix
@@ -17,7 +17,7 @@ date: 2018-12-03 23:04:48
 
 <center><i>微服务的安全措施Hystrix熔断器</i></center>
 
-![](https://raw.githubusercontent.com/imxushuai/ForPicGo/master/006ifTg0gy1fxtylsthm1j30mb08fac1.jpg)
+![](https://www.imxushuai.com/img/asset/006ifTg0gy1fxtylsthm1j30mb08fac1.jpg)
 
 <!-- more -->
 
@@ -32,7 +32,7 @@ date: 2018-12-03 23:04:48
 ### 雪崩效应
   > 服务雪崩效应是一种因 服务提供者 的不可用导致 服务调用者 的不可用,并将不可用 逐渐放大 的过程
 
-  ![](https://raw.githubusercontent.com/imxushuai/ForPicGo/master/006ifTg0gy1fxtyw891u2j30ak0cyaep.jpg)
+  ![](https://www.imxushuai.com/img/asset/006ifTg0gy1fxtyw891u2j30ak0cyaep.jpg)
   
   A作为服务提供者，B为A的服务消费者，C和D是B的服务消费者。A不可用引起了B的不可用，并将不可用像滚雪球一样放大到C和D时，雪崩效应就形成了。
     
@@ -40,7 +40,7 @@ date: 2018-12-03 23:04:48
 
   > 它可以实现快速失败，如果它在一段时间内侦测到许多类似的错误，会强迫其以后的多个调用快速失败，不再访问远程服务器，从而防止应用程序不断地尝试执行可能会失败的操作，使得应用程序继续执行而不用等待修正错误，或者浪费CPU时间去等到长时间的超时产生。熔断器也可以使应用程序能够诊断错误是否已经修正，如果已经修正，应用程序会再次尝试调用操作。
   
-  ![](https://raw.githubusercontent.com/imxushuai/ForPicGo/master/006ifTg0gy1fxtyzbf2snj30dv06zwgz.jpg)
+  ![](https://www.imxushuai.com/img/asset/006ifTg0gy1fxtyzbf2snj30dv06zwgz.jpg)
   
 ## Spring Cloud熔断器
 
@@ -116,11 +116,11 @@ public class ConsumerApplication {
 
 6. 运行测试
 
-  ![](https://raw.githubusercontent.com/imxushuai/ForPicGo/master/006ifTg0gy1fxtznnuth1j30as032dfv.jpg)
+  ![](https://www.imxushuai.com/img/asset/006ifTg0gy1fxtznnuth1j30as032dfv.jpg)
 
   > 会发现很快服务端就返回了`consumerFallback`方法的结果，这说明设置的`Hystrix`已经生效，而且很明显有默认的请求超时时间，该时间默认为：`1000`毫秒。
 
-  ![](https://raw.githubusercontent.com/imxushuai/ForPicGo/master/006ifTg0gy1fxtztnweehj310607uwgl.jpg)
+  ![](https://www.imxushuai.com/img/asset/006ifTg0gy1fxtztnweehj310607uwgl.jpg)
   
 7. 设置`Hystrix`超时时间
 ```yml
