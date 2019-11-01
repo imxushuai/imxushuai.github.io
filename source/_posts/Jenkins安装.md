@@ -14,7 +14,7 @@ date: 2019-05-13 18:37:44
 
 <center><i>手把手教你如何安装 Jenkins</i></center>
 
-![](https://www.imxushuai.com/img/asset/Jenkins.png)
+![](https://dev.tencent.com/u/imxushuai/p/pic/git/raw/master/Jenkins.png)
 
 <!-- more -->
 
@@ -56,7 +56,7 @@ PS：关于自动化部署，我的博客使用的是`Hexo` + `GitHub Pages` + `
 
    官方下载地址：[https://jenkins.io/zh/download/](<https://jenkins.io/zh/download/>)
 
-   ![](https://www.imxushuai.com/img/asset/20190628234509.png)
+   ![](https://dev.tencent.com/u/imxushuai/p/pic/git/raw/master/20190628234509.png)
 
    我这里的安装环境是`CentOS 7`，所以我选择的是：`Red Hat/Fedora/CentOS`（建议选择长期支持版本）
 
@@ -123,11 +123,11 @@ PS：关于自动化部署，我的博客使用的是`Hexo` + `GitHub Pages` + `
    service jenkins start
    ```
 
-   ![](https://www.imxushuai.com/img/asset/20190630200749.png)
+   ![](https://dev.tencent.com/u/imxushuai/p/pic/git/raw/master/20190630200749.png)
 
 6. 访问`http://ip:port/8080`
 
-   ![](https://www.imxushuai.com/img/asset/20190630200939.png)
+   ![](https://dev.tencent.com/u/imxushuai/p/pic/git/raw/master/20190630200939.png)
 
 ## Docker安装
 
@@ -158,7 +158,7 @@ PS：关于自动化部署，我的博客使用的是`Hexo` + `GitHub Pages` + `
 
    浏览器访问：`http://47.107.128.204:18080`
 
-   ![](https://www.imxushuai.com/img/asset/20190629002927.png)
+   ![](https://dev.tencent.com/u/imxushuai/p/pic/git/raw/master/20190629002927.png)
 
 Docker Jenkins安装完毕
 
@@ -174,7 +174,7 @@ Docker Jenkins安装完毕
      cat /var/jenkins/secrets/initialAdminPassword
      ```
 
-     ![](https://www.imxushuai.com/img/asset/20190629003259.png)
+     ![](https://dev.tencent.com/u/imxushuai/p/pic/git/raw/master/20190629003259.png)
 
    - 方式2：查看容器内的密码文件
 
@@ -186,7 +186,7 @@ Docker Jenkins安装完毕
 
 2. 将获取到的密码输入到密码框中，点击`Continue`，然后选择安装插件，选择左侧安装默认插件即可。
 
-   ![](https://www.imxushuai.com/img/asset/20190629003528.png)
+   ![](https://dev.tencent.com/u/imxushuai/p/pic/git/raw/master/20190629003528.png)
 
    紧接着我们就进入了漫长的安装过程，emmmmmm......
 

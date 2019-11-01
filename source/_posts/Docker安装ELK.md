@@ -17,7 +17,7 @@ date: 2019-05-01 16:51:31
 
 <center><i>使用 Docker 安装 E(Elasticearch) L(Logstash) K(Kibana)</i></center>
 
-![](https://www.imxushuai.com/img/asset/ELK.png)
+![](https://dev.tencent.com/u/imxushuai/p/pic/git/raw/master/ELK.png)
 
 <!-- more -->
 
@@ -34,7 +34,7 @@ date: 2019-05-01 16:51:31
    docker search elasticsearch
    ```
 
-   ![](https://www.imxushuai.com/img/asset/20190619213440.png)
+   ![](https://dev.tencent.com/u/imxushuai/p/pic/git/raw/master/20190619213440.png)
 
    > 不建议使用最新版本，我这里下载6.6.1版本，和我另一篇文章中使用的版本一致。
 
@@ -83,13 +83,13 @@ date: 2019-05-01 16:51:31
 
    成功运行如下：
 
-   ![](https://www.imxushuai.com/img/asset/20190619215833.png)
+   ![](https://dev.tencent.com/u/imxushuai/p/pic/git/raw/master/20190619215833.png)
 
 6. 页面访问elasticsearch
 
    如果得到下面类似返回，说明启动成功。
 
-   ![](https://www.imxushuai.com/img/asset/20190619221154.png)
+   ![](https://dev.tencent.com/u/imxushuai/p/pic/git/raw/master/20190619221154.png)
 
 8. 以后修改配置文件后，重启`docker`容器即可。
 
@@ -111,7 +111,7 @@ date: 2019-05-01 16:51:31
 
 9. 测试ik分词器
 
-   ![](https://www.imxushuai.com/img/asset/20190619235926.png)
+   ![](https://dev.tencent.com/u/imxushuai/p/pic/git/raw/master/20190619235926.png)
 
 # 安装Logstash
 
@@ -200,7 +200,7 @@ date: 2019-05-01 16:51:31
    docker ps
    ```
 
-   ![](https://www.imxushuai.com/img/asset/20190619232531.png)
+   ![](https://dev.tencent.com/u/imxushuai/p/pic/git/raw/master/20190619232531.png)
 
 4. 将容器中的配置文件复制到宿主机
 
@@ -250,5 +250,5 @@ date: 2019-05-01 16:51:31
 
    我事先在`elasticsearch`中新增了名为`test`的索引库，成功查询到`test`索引库。
 
-   ![](https://www.imxushuai.com/img/asset/20190619234107.png)
+   ![](https://dev.tencent.com/u/imxushuai/p/pic/git/raw/master/20190619234107.png)
 

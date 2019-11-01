@@ -2,7 +2,7 @@
 title: Spring Cloud简述
 photo:
   - >-
-    https://www.imxushuai.com/img/asset/006ifTg0gy1fxspi88u31j32a40nygmk.jpg
+    https://dev.tencent.com/u/imxushuai/p/pic/git/raw/master/006ifTg0gy1fxspi88u31j32a40nygmk.jpg
 tags: Spring Cloud
 categories: Spring Cloud
 description: 让我们一起走进微服务的世界！
@@ -12,7 +12,7 @@ date: 2018-12-02 21:04:41
 
 <center><i>让我们一起走进微服务的世界！</i></center>
 
-![](https://www.imxushuai.com/img/asset/006ifTg0gy1fxspi88u31j32a40nygmk.jpg)
+![](https://dev.tencent.com/u/imxushuai/p/pic/git/raw/master/006ifTg0gy1fxspi88u31j32a40nygmk.jpg)
 
 <!-- more -->
 
@@ -53,7 +53,7 @@ netflix
 ### 集中式架构
 当网站流量很小时，只需一个应用，将所有功能都部署在一起，以减少部署节点和成本。此时，用于简化增删改查工作量的数据访问框架(ORM)是影响项目开发的关键。
 
-![](https://www.imxushuai.com/img/asset/006ifTg0gy1fxspqzahzij309o0f2t8v.jpg)
+![](https://dev.tencent.com/u/imxushuai/p/pic/git/raw/master/006ifTg0gy1fxspqzahzij309o0f2t8v.jpg)
 
 存在的问题：
 
@@ -65,7 +65,7 @@ netflix
 ### 垂直拆分
 当访问量逐渐增大，单一应用无法满足需求，此时为了应对更高的并发和业务需求，我们根据业务功能对系统进行拆分：
 
-![](https://www.imxushuai.com/img/asset/006ifTg0gy1fxspqyce20j30em0ewgls.jpg)
+![](https://dev.tencent.com/u/imxushuai/p/pic/git/raw/master/006ifTg0gy1fxspqyce20j30em0ewgls.jpg)
 
 优点：
 - 系统拆分实现了流量分担，解决了并发问题
@@ -79,7 +79,7 @@ netflix
 
 当垂直应用越来越多，应用之间交互不可避免，将核心业务抽取出来，作为独立的服务，逐渐形成稳定的服务中心，使前端应用能更快速的响应多变的市场需求。此时，用于提高业务复用及整合的分布式调用是关键。
 
-![](https://www.imxushuai.com/img/asset/006ifTg0gy1fxspqygahvj30eo0dwt96.jpg)
+![](https://dev.tencent.com/u/imxushuai/p/pic/git/raw/master/006ifTg0gy1fxspqygahvj30eo0dwt96.jpg)
 
 优点：
 
@@ -92,7 +92,7 @@ netflix
 
 当服务越来越多，容量的评估，小服务资源的浪费等问题逐渐显现，此时需增加一个调度中心基于访问压力实时管理集群容量，提高集群利用率。此时，用于提高机器利用率的资源调度和治理中心(SOA)是关键。（阿里系的dubbo就是经典的SOA架构）
 
-![](https://www.imxushuai.com/img/asset/006ifTg0gy1fxspqyqi44j30km0bp7b7.jpg)
+![](https://dev.tencent.com/u/imxushuai/p/pic/git/raw/master/006ifTg0gy1fxspqyqi44j30km0bp7b7.jpg)
 
 以前出现了什么问题？
 
@@ -115,7 +115,7 @@ netflix
 
 前面说的SOA，英文翻译过来是面向服务。微服务，似乎也是服务，都是对系统进行拆分。因此两者非常容易混淆，但其实缺有一些差别：
 
-![](https://www.imxushuai.com/img/asset/006ifTg0gy1fxspqz4o57j30m90c10zx.jpg)
+![](https://dev.tencent.com/u/imxushuai/p/pic/git/raw/master/006ifTg0gy1fxspqz4o57j30m90c10zx.jpg)
 
 微服务的特点：
 

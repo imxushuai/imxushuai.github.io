@@ -140,15 +140,15 @@ spring:
 
 - 新增
 
-  ![](<https://www.imxushuai.com/img/asset/20190516235042.png>)
+  ![](<https://dev.tencent.com/u/imxushuai/p/pic/git/raw/master/20190516235042.png>)
 
 - 修改
 
-  ![](<https://www.imxushuai.com/img/asset/20190516235103.png>)
+  ![](<https://dev.tencent.com/u/imxushuai/p/pic/git/raw/master/20190516235103.png>)
 
 - 删除
 
-  ![](<https://www.imxushuai.com/img/asset/20190516235120.png>)
+  ![](<https://dev.tencent.com/u/imxushuai/p/pic/git/raw/master/20190516235120.png>)
 
 
 

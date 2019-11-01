@@ -2,7 +2,7 @@
 title: Spring Cloud Zuul网关
 photo:
   - >-
-    https://www.imxushuai.com/img/asset/006ifTg0gy1fxspi88u31j32a40nygmk.jpg
+    https://dev.tencent.com/u/imxushuai/p/pic/git/raw/master/006ifTg0gy1fxspi88u31j32a40nygmk.jpg
 tags:
   - Spring Cloud
   - Spring Cloud Zuul
@@ -17,7 +17,7 @@ date: 2018-12-05 22:31:06
 
 <center><i>微服务的门卫大爷Zuul</i></center>
 
-![](https://www.imxushuai.com/img/asset/006ifTg0gy1fxspi88u31j32a40nygmk.jpg)
+![](https://dev.tencent.com/u/imxushuai/p/pic/git/raw/master/006ifTg0gy1fxspi88u31j32a40nygmk.jpg)
 
 <!-- more -->
 
@@ -55,7 +55,7 @@ date: 2018-12-05 22:31:06
 
 ### Zuul 在Spring Cloud的位置
 
-![](https://www.imxushuai.com/img/asset/006ifTg0gy1fxw98jh08gj30l40df3zq.jpg)
+![](https://dev.tencent.com/u/imxushuai/p/pic/git/raw/master/006ifTg0gy1fxw98jh08gj30l40df3zq.jpg)
 
 
 
@@ -124,7 +124,7 @@ date: 2018-12-05 22:31:06
 
 5. 启动测试
 
-   ![](https://www.imxushuai.com/img/asset/006ifTg0gy1fxw9y2zhyoj30eq03w0st.jpg)
+   ![](https://dev.tencent.com/u/imxushuai/p/pic/git/raw/master/006ifTg0gy1fxw9y2zhyoj30eq03w0st.jpg)
 
    > 成功访问
 
@@ -167,7 +167,7 @@ date: 2018-12-05 22:31:06
 
 3. 在启动类上加入`@EnableDiscoveryClient`注解
 
-   ![](https://www.imxushuai.com/img/asset/006ifTg0gy1fxwa8f8qdpj30gx050q33.jpg)
+   ![](https://dev.tencent.com/u/imxushuai/p/pic/git/raw/master/006ifTg0gy1fxwa8f8qdpj30gx050q33.jpg)
 
 
 
