@@ -12,7 +12,7 @@ date: 2019-05-08 21:37:33
 
 <center><i>使用 Docker-Maven-Plugin 完成 Jar 包镜像的构建并上传至云端</i></center>
 
-![](https://dev.tencent.com/u/imxushuai/p/pic/git/raw/master/docker.jpg)
+![](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/docker.jpg)
 
 <!-- more -->
 

@@ -1,7 +1,7 @@
 ---
 title: Elasticsearch的介绍和安装
 photo:
-  - 'https://dev.tencent.com/u/imxushuai/p/pic/git/raw/master/elasticsearch-logo.png'
+  - 'https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/elasticsearch-logo.png'
 tags:
   - elasticsearch安装
   - elastic search
@@ -17,7 +17,7 @@ date: 2019-03-29 15:13:52
 
 <center><i>全文检索引擎之Elasticsearch的简介及安装</i></center>
 
-![](https://dev.tencent.com/u/imxushuai/p/pic/git/raw/master/elasticsearch-logo.png)
+![](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/elasticsearch-logo.png)
 
 <!-- more -->
 
@@ -103,7 +103,7 @@ date: 2019-03-29 15:13:52
 
 2. 访问测试
 
-   ![](https://dev.tencent.com/u/imxushuai/p/pic/git/raw/master/20190227001100.png)
+   ![](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/20190227001100.png)
 
 ### 启动错误处理
 
@@ -190,7 +190,7 @@ date: 2019-03-29 15:13:52
 
       - 查看运行结果，访问 `192.168.136.101:5601`
 
-        ![](https://dev.tencent.com/u/imxushuai/p/pic/git/raw/master/20190227214740.png)
+        ![](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/20190227214740.png)
 
       > 默认端口为：5601，可以通过 `server.port`配置项修改
 

@@ -13,7 +13,7 @@ date: 2018-05-20 20:12:49
 
 <center><i>在CentOS下安装Redis以及Redis配置详解</i></center>
 
-![](https://dev.tencent.com/u/imxushuai/p/pic/git/raw/master/redis.jpg)
+![](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/redis.jpg)
 
 <!-- more -->
 
@@ -37,7 +37,7 @@ yum install gcc-c++ -y
 
 离线安装就相对要复杂一点，需要安装一些`gcc`的一些依赖。下图是`gcc`环境需要的依赖。
 
-![](https://dev.tencent.com/u/imxushuai/p/pic/git/raw/master/20180521192623602.png)
+![](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/20180521192623602.png)
 
 我这里已经全部下载好了，点击下面的百度网盘即可。
 
@@ -47,7 +47,7 @@ yum install gcc-c++ -y
 
 将下载好的这些`rpm`包上传到你的要安装的服务器，将这些`rpm`包放在同一个目录下。我这里全部放在了`/soft/新建文件夹`中。
 
-![](https://dev.tencent.com/u/imxushuai/p/pic/git/raw/master/20180521193026633.png)
+![](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/20180521193026633.png)
 
 **安装**
 
@@ -57,7 +57,7 @@ rpm -Uvh *.rpm --nodeps --force
 
 安装过程走完了过后，前往 /usr/bin 目录查看是否有 gcc和g++两个文件夹，如果有，说明安装成功。
 
-![](https://dev.tencent.com/u/imxushuai/p/pic/git/raw/master/20180521193332441.png)
+![](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/20180521193332441.png)
 
 ## 安装Redis
 
@@ -95,7 +95,7 @@ make && make install PREFIX=/usr/local/redis
 /usr/local/redis/bin/redis-server
 ```
 
-![](https://dev.tencent.com/u/imxushuai/p/pic/git/raw/master/20190520182612.png)
+![](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/20190520182612.png)
 
 ## 扩展：配置以及开机启动
 

@@ -12,7 +12,7 @@ date: 2019-04-20 16:46:36
 
 <center><i>MongoDB简介以及安装</i></center>
 
-![](https://dev.tencent.com/u/imxushuai/p/pic/git/raw/master/Mongodb.png)
+![](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/Mongodb.png)
 
 <!-- more -->
 
@@ -70,7 +70,7 @@ MongoDB 的逻辑结构是一种层次结构。主要构成分别为：
 
 看下图更直观：
 
-![](https://dev.tencent.com/u/imxushuai/p/pic/git/raw/master/Figure-1-Mapping-Table-to-Collection-1.png)
+![](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/Figure-1-Mapping-Table-to-Collection-1.png)
 
 # MongoDB安装
 
@@ -82,11 +82,11 @@ MongoDB 的逻辑结构是一种层次结构。主要构成分别为：
 
 1. 选择`MongoDB`版本和操作系统版本，我这里是安装到`CentOS 7`上。
 
-   ![](https://dev.tencent.com/u/imxushuai/p/pic/git/raw/master/20190616212311.png)
+   ![](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/20190616212311.png)
 
 2. 下载完毕后将下载的`.tgz`的包上传到服务器。
 
-   ![](https://dev.tencent.com/u/imxushuai/p/pic/git/raw/master/1560692109626.png)
+   ![](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/1560692109626.png)
 
 3. 解压压缩包
 
@@ -119,7 +119,7 @@ MongoDB 的逻辑结构是一种层次结构。主要构成分别为：
    netstat -neplt
    ```
 
-   ![](https://dev.tencent.com/u/imxushuai/p/pic/git/raw/master/1560692613635.png)
+   ![](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/1560692613635.png)
 
 7. 绑定通配IP访问
 
@@ -142,7 +142,7 @@ MongoDB 的逻辑结构是一种层次结构。主要构成分别为：
    netstat -neplt
    ```
 
-   ![](https://dev.tencent.com/u/imxushuai/p/pic/git/raw/master/20190616220302.png)
+   ![](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/20190616220302.png)
 
    搞定！！！
 
@@ -203,7 +203,7 @@ MongoDB 的逻辑结构是一种层次结构。主要构成分别为：
    netstat -neplt
    ```
 
-   ![](https://dev.tencent.com/u/imxushuai/p/pic/git/raw/master/20190616231210.png)
+   ![](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/20190616231210.png)
 
 6. 配置通配IP访问
 
@@ -213,7 +213,7 @@ MongoDB 的逻辑结构是一种层次结构。主要构成分别为：
    vim /etc/mongod.conf
    ```
 
-   ![](https://dev.tencent.com/u/imxushuai/p/pic/git/raw/master/20190616231600.png)
+   ![](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/20190616231600.png)
 
 7. 重新启动
 
@@ -221,7 +221,7 @@ MongoDB 的逻辑结构是一种层次结构。主要构成分别为：
    systemctl restart mongod.service
    ```
 
-   ![](https://dev.tencent.com/u/imxushuai/p/pic/git/raw/master/20190616231736.png)
+   ![](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/20190616231736.png)
 
    搞定！！！
 
@@ -235,7 +235,7 @@ MongoDB 的逻辑结构是一种层次结构。主要构成分别为：
    docker search mongodb
    ```
 
-   ![](https://dev.tencent.com/u/imxushuai/p/pic/git/raw/master/20190616232951.png)
+   ![](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/20190616232951.png)
 
 2. 拉取`MongoDB`镜像
 

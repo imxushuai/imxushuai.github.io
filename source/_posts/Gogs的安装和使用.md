@@ -13,7 +13,7 @@ date: 2019-05-12 15:32:50
 
 <center><i>使用 Gogs 自建 Git 服务器</i></center>
 
-![](https://dev.tencent.com/u/imxushuai/p/pic/git/raw/master/Gogs.png)
+![](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/Gogs.png)
 
 <!-- more -->
 
@@ -52,7 +52,7 @@ Gogs 的目标是打造一个最简单、最快速和最轻松的方式搭建自
 
    下载地址：[gogs下载](<https://gogs.io/docs/installation/install_from_binary>)
 
-   ![](https://dev.tencent.com/u/imxushuai/p/pic/git/raw/master/20190630113004.png)
+   ![](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/20190630113004.png)
 
 2. 将下载的包上传至服务器
 
@@ -73,7 +73,7 @@ Gogs 的目标是打造一个最简单、最快速和最轻松的方式搭建自
    ```
 
    
-   ![](https://dev.tencent.com/u/imxushuai/p/pic/git/raw/master/20190630113321.png)
+   ![](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/20190630113321.png)
    
    成功运行！
    
@@ -99,7 +99,7 @@ Gogs 的目标是打造一个最简单、最快速和最轻松的方式搭建自
 
 1. 初始化配置，只需要修改部分配置
 
-   ![](https://dev.tencent.com/u/imxushuai/p/pic/git/raw/master/20190628223713.png)
+   ![](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/20190628223713.png)
 
    - 数据库类型：测试使用`SQLite3`即可，实际可以选择使用`Mysql`或`PostgreSQL`
    - 域名：使用安装`Gogs`的服务器的IP
@@ -118,10 +118,10 @@ Gogs 的目标是打造一个最简单、最快速和最轻松的方式搭建自
 
 2. 点击新建仓库
 
-   ![](https://dev.tencent.com/u/imxushuai/p/pic/git/raw/master/20190630143510.png)
+   ![](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/20190630143510.png)
 
 3. 填写仓库信息后，点击`创建仓库`。
 
-   ![](https://dev.tencent.com/u/imxushuai/p/pic/git/raw/master/20190630143705.png)
+   ![](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/20190630143705.png)
 
    创建仓库完毕，和Github区别不是太大。

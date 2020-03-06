@@ -1,7 +1,7 @@
 ---
 title: 使用SpringMVC开发Restful API
 photo:
-  - 'https://dev.tencent.com/u/imxushuai/p/pic/git/raw/master/restful.gif'
+  - 'https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/restful.gif'
 tags:
   - Spring MVC
   - Restful API
@@ -14,7 +14,7 @@ date: 2019-03-29 11:27:54
 
 <center><i>Restful API的正确打开方式~</i></center>
 
-![](https://dev.tencent.com/u/imxushuai/p/pic/git/raw/master/restful.gif)
+![](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/restful.gif)
 
 <!-- more -->
 
@@ -157,7 +157,7 @@ date: 2019-03-29 11:27:54
 
 4. 测试
 
-![](https://dev.tencent.com/u/imxushuai/p/pic/git/raw/master/17748187.jpg)
+![](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/17748187.jpg)
 
 > 测试通过
 
@@ -313,11 +313,11 @@ date: 2019-03-29 11:27:54
 
    - getUserTest()
 
-     ![](https://dev.tencent.com/u/imxushuai/p/pic/git/raw/master/1494678.jpg)
+     ![](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/1494678.jpg)
 
    - getUsernameTest()
 
-     ![](https://dev.tencent.com/u/imxushuai/p/pic/git/raw/master/47141981.jpg)
+     ![](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/47141981.jpg)
 
 ### 使用@Valid注解校验数据
 
@@ -348,7 +348,7 @@ date: 2019-03-29 11:27:54
 
    - 在实体类中加入相关注解
 
-     ![](https://dev.tencent.com/u/imxushuai/p/pic/git/raw/master/85052773.jpg)
+     ![](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/85052773.jpg)
 
    - 编写restful api
 
@@ -392,7 +392,7 @@ date: 2019-03-29 11:27:54
    
    - 运行
    
-     ![](https://dev.tencent.com/u/imxushuai/p/pic/git/raw/master/6534844.jpg)
+     ![](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/6534844.jpg)
    
      > 依然会执行创建工作，需要配合自定义异常来使用
 
@@ -400,11 +400,11 @@ date: 2019-03-29 11:27:54
 
    - 自定义异常消息
 
-     ![](https://dev.tencent.com/u/imxushuai/p/pic/git/raw/master/54703293.jpg)
+     ![](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/54703293.jpg)
 
    - 再次测试
 
-     ![](https://dev.tencent.com/u/imxushuai/p/pic/git/raw/master/71167951.jpg)
+     ![](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/71167951.jpg)
 
 
 
@@ -418,13 +418,13 @@ date: 2019-03-29 11:27:54
 
    - 浏览器访问
 
-     ![](https://dev.tencent.com/u/imxushuai/p/pic/git/raw/master/75771661.jpg)
+     ![](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/75771661.jpg)
 
    - Rest api client访问
 
      > 这里使用的是postman访问，一个比较好用的rest client客户端，当然也可以使用其他的，工具而已。
 
-     ![1546962718119](https://dev.tencent.com/u/imxushuai/p/pic/git/raw/master/1546962718119.png)
+     ![1546962718119](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/1546962718119.png)
 
    > 可以看到这里通过浏览器和rest client访问得到的结果是不一样的。这里是Spring Boot默认的实现。这部分源码很容易理解，Spring Boot通过判断请求头中是否含有`text/html`，有的话就返回默认的错误页面，否则返回json信息。
 
@@ -434,7 +434,7 @@ date: 2019-03-29 11:27:54
 
 - 在项目的resources目录中新增文件夹`static.error`
 
-  ![](https://dev.tencent.com/u/imxushuai/p/pic/git/raw/master/11460459.jpg)
+  ![](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/11460459.jpg)
 
 - 在`error`文件夹中添加`404.html`文件
 
@@ -453,7 +453,7 @@ date: 2019-03-29 11:27:54
 
 - 重启并使用浏览器访问，跳转的页面为自定义的页面，文件命名为返回的错误状态码
 
-  ![](https://dev.tencent.com/u/imxushuai/p/pic/git/raw/master/28263142.jpg)
+  ![](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/28263142.jpg)
 
 ##### 自定义异常信息
 
@@ -568,6 +568,6 @@ date: 2019-03-29 11:27:54
 
    - 测试
 
-     ![](https://dev.tencent.com/u/imxushuai/p/pic/git/raw/master/75470881.jpg)
+     ![](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/75470881.jpg)
 
    > 如果有新的异常信息，只需要在异常枚举中新增即可。

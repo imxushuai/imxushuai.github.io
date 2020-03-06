@@ -2,7 +2,7 @@
 title: Spring Cloud Zuul网关
 photo:
   - >-
-    https://dev.tencent.com/u/imxushuai/p/pic/git/raw/master/006ifTg0gy1fxspi88u31j32a40nygmk.jpg
+    https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/006ifTg0gy1fxspi88u31j32a40nygmk.jpg
 tags:
   - Spring Cloud
   - Spring Cloud Zuul
@@ -17,7 +17,7 @@ date: 2018-12-05 22:31:06
 
 <center><i>微服务的门卫大爷Zuul</i></center>
 
-![](https://dev.tencent.com/u/imxushuai/p/pic/git/raw/master/006ifTg0gy1fxspi88u31j32a40nygmk.jpg)
+![](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/006ifTg0gy1fxspi88u31j32a40nygmk.jpg)
 
 <!-- more -->
 
@@ -55,7 +55,7 @@ date: 2018-12-05 22:31:06
 
 ### Zuul 在Spring Cloud的位置
 
-![](https://dev.tencent.com/u/imxushuai/p/pic/git/raw/master/006ifTg0gy1fxw98jh08gj30l40df3zq.jpg)
+![](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/006ifTg0gy1fxw98jh08gj30l40df3zq.jpg)
 
 
 
@@ -124,7 +124,7 @@ date: 2018-12-05 22:31:06
 
 5. 启动测试
 
-   ![](https://dev.tencent.com/u/imxushuai/p/pic/git/raw/master/006ifTg0gy1fxw9y2zhyoj30eq03w0st.jpg)
+   ![](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/006ifTg0gy1fxw9y2zhyoj30eq03w0st.jpg)
 
    > 成功访问
 
@@ -167,7 +167,7 @@ date: 2018-12-05 22:31:06
 
 3. 在启动类上加入`@EnableDiscoveryClient`注解
 
-   ![](https://dev.tencent.com/u/imxushuai/p/pic/git/raw/master/006ifTg0gy1fxwa8f8qdpj30gx050q33.jpg)
+   ![](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/006ifTg0gy1fxwa8f8qdpj30gx050q33.jpg)
 
 
 
@@ -243,7 +243,7 @@ public abstract ZuulFilter implements IZuulFilter{
 
 ### 过滤器的声明周期
 
-![](https://dev.tencent.com/u/imxushuai/p/pic/git/raw/master/64872783.jpg)
+![](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/64872783.jpg)
 
 1. 请求正常返回
 
@@ -256,7 +256,7 @@ public abstract ZuulFilter implements IZuulFilter{
 
 3. Zuul 内置过滤器列表
 
-   ![](https://dev.tencent.com/u/imxushuai/p/pic/git/raw/master/950130.jpg)
+   ![](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/950130.jpg)
 
 
    内置Filter相关参数
@@ -340,7 +340,7 @@ public abstract ZuulFilter implements IZuulFilter{
 
 2. 运行测试
 
-   ![](https://dev.tencent.com/u/imxushuai/p/pic/git/raw/master/12448675.jpg)
+   ![](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/12448675.jpg)
 
 
 

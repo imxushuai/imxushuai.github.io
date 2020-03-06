@@ -8,14 +8,14 @@ categories: 其他
 description: 使用hexo搭建炫酷的个人博客
 photos:
   - >-
-    https://dev.tencent.com/u/imxushuai/p/pic/git/raw/master/006ifTg0gy1fxq63qyv3xj30yx0a7t99.jpg
+    https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/006ifTg0gy1fxq63qyv3xj30yx0a7t99.jpg
 abbrlink: 43303
 date: 2018-11-25 17:22:21
 ---
 
 <center><i>使用hexo搭建炫酷的个人博客</i></center>
 
-![](https://dev.tencent.com/u/imxushuai/p/pic/git/raw/master/006ifTg0gy1fxq63qyv3xj30yx0a7t99.jpg)
+![](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/006ifTg0gy1fxq63qyv3xj30yx0a7t99.jpg)
 
 <!-- more -->
 

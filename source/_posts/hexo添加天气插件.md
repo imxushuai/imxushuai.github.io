@@ -2,7 +2,7 @@
 title: hexo添加天气插件
 photo:
   - >-
-    https://dev.tencent.com/u/imxushuai/p/pic/git/raw/master/006ifTg0gy1fxq63qyv3xj30yx0a7t99.jpg
+    https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/006ifTg0gy1fxq63qyv3xj30yx0a7t99.jpg
 tags:
   - hexo
   - 天气插件
@@ -15,7 +15,7 @@ date: 2019-03-29 17:27:30
 
 <center><i>为自己的hexo博客添加一个实时的天气插件吧</i></center>
 
-![](https://dev.tencent.com/u/imxushuai/p/pic/git/raw/master/006ifTg0gy1fxq63qyv3xj30yx0a7t99.jpg)
+![](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/006ifTg0gy1fxq63qyv3xj30yx0a7t99.jpg)
 
 <!-- more -->
 
@@ -41,19 +41,19 @@ date: 2019-03-29 17:27:30
 
 - 点击产品，进入weather Widget天气网页插件
 
-  ![](https://dev.tencent.com/u/imxushuai/p/pic/git/raw/master/20190329171023.png)
+  ![](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/20190329171023.png)
 
 - 点击立即创建
 
-  ![](https://dev.tencent.com/u/imxushuai/p/pic/git/raw/master/20190329171359.png)
+  ![](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/20190329171359.png)
 
 - 配置插件样式
 
-  ![](https://dev.tencent.com/u/imxushuai/p/pic/git/raw/master/20190329171755.png)
+  ![](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/20190329171755.png)
 
 - 复制下方的安装代码
 
-  ![](https://dev.tencent.com/u/imxushuai/p/pic/git/raw/master/20190329171938.png)
+  ![](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/20190329171938.png)
 
 ### 使用插件代码
 
@@ -61,7 +61,7 @@ date: 2019-03-29 17:27:30
 
 > 这里我的主题为：next。所以路径是：`/themes/next/layout/_layout.swig`，将复制的插件代码放在`</body>`标签之前。
 
-![](https://dev.tencent.com/u/imxushuai/p/pic/git/raw/master/20190329172323.png)
+![](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/20190329172323.png)
 
 配置好后，重启自己的hexo即可前往自己的页面查看效果。
 

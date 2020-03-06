@@ -8,14 +8,14 @@ categories: nginx
 description: Ngxin反向代理和负载均衡
 photos:
   - >-
-    https://dev.tencent.com/u/imxushuai/p/pic/git/raw/master/006ifTg0gy1fxq195rirbj314k0kat8k.jpg
+    https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/006ifTg0gy1fxq195rirbj314k0kat8k.jpg
 abbrlink: 63282
 date: 2018-07-27 18:06:11
 ---
 
 <center><i>Ngxin反向代理和负载均衡</i></center>
 
-![](https://dev.tencent.com/u/imxushuai/p/pic/git/raw/master/006ifTg0gy1fxq195rirbj314k0kat8k.jpg)
+![](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/006ifTg0gy1fxq195rirbj314k0kat8k.jpg)
 
 <!-- more -->
 
@@ -44,12 +44,12 @@ date: 2018-07-27 18:06:11
 - 上传tomcat到服务器（解压出两份，注意修改解压出来的目录名称）
 - 安装nginx
 ```
-![](https://dev.tencent.com/u/imxushuai/p/pic/git/raw/master/006ifTg0gy1fxmsanbicij3149091wft.jpg)
+![](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/006ifTg0gy1fxmsanbicij3149091wft.jpg)
 
 2. 修改tomcat配置，防止端口冲突（文件位置：`tomcat/conf/server.xml`）,只需要修改其中一个tomcat配置即可   
-![](https://dev.tencent.com/u/imxushuai/p/pic/git/raw/master/006ifTg0gy1fxmsanr9wgj30mf02dt8t.jpg)
-![](https://dev.tencent.com/u/imxushuai/p/pic/git/raw/master/006ifTg0gy1fxmsanml21j30my02daa8.jpg)
-![](https://dev.tencent.com/u/imxushuai/p/pic/git/raw/master/006ifTg0gy1fxmsanioycj30n701zweo.jpg)
+![](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/006ifTg0gy1fxmsanr9wgj30mf02dt8t.jpg)
+![](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/006ifTg0gy1fxmsanml21j30my02daa8.jpg)
+![](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/006ifTg0gy1fxmsanioycj30n701zweo.jpg)
 
 3. 修改ngxin配置(文件位置:`nginx/conf/nginx.conf`)
 - 第一种配置方式
@@ -140,8 +140,8 @@ nginx/sbin/nginx
 ```
 
 5. 测试
-![](https://dev.tencent.com/u/imxushuai/p/pic/git/raw/master/006ifTg0gy1fxmsaog8yej30zc0b6gnx.jpg)
-![](https://dev.tencent.com/u/imxushuai/p/pic/git/raw/master/006ifTg0gy1fxmsao9ogij312409w40s.jpg)
+![](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/006ifTg0gy1fxmsaog8yej30zc0b6gnx.jpg)
+![](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/006ifTg0gy1fxmsao9ogij312409w40s.jpg)
 
 ### 配置均衡负载
 
@@ -192,5 +192,5 @@ nginx/sbin/nginx
 ```
 
 2. 测试
-![](https://dev.tencent.com/u/imxushuai/p/pic/git/raw/master/006ifTg0gy1fxmt2zfz7nj31340hhq4e.jpg)
+![](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/006ifTg0gy1fxmt2zfz7nj31340hhq4e.jpg)
 > 使用域名能访问到是因为我配置了hosts IP映射，如果没有配置，请使用IP访问

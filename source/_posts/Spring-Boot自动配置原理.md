@@ -7,14 +7,14 @@ categories: Spring Boot
 description: 为什么Spring Boot配置那么少？让我们一起走进Spring Boot自动配置
 photos:
   - >-
-    https://dev.tencent.com/u/imxushuai/p/pic/git/raw/master/006ifTg0gy1fxq697a7goj30sg08fdgl.jpg
+    https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/006ifTg0gy1fxq697a7goj30sg08fdgl.jpg
 abbrlink: 60852
 date: 2018-11-28 22:32:04
 ---
 
 <center><i>为什么Spring Boot配置那么少？让我们一起走进Spring Boot自动配置</i></center>
 
-![](https://dev.tencent.com/u/imxushuai/p/pic/git/raw/master/006ifTg0gy1fxq697a7goj30sg08fdgl.jpg)
+![](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/006ifTg0gy1fxq697a7goj30sg08fdgl.jpg)
 
 <!-- more -->
 
@@ -72,11 +72,11 @@ public @interface SpringBootApplication {
 
 ### Spring Boot Main函数入口
 > 查看源码，在执行run方法的过程中，会对Spring容器进行初始化，这个初始化会加载当前项目所有的bean对象，包括引入的jar包中的bean对象（实质是加载`spring.factories`文件中声明的所有类到spring容器）。   
-![](https://dev.tencent.com/u/imxushuai/p/pic/git/raw/master/006ifTg0gy1fxo5vv9r4bj30gq05xwet.jpg)
+![](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/006ifTg0gy1fxo5vv9r4bj30gq05xwet.jpg)
 
 
 1. Spring Boot会加载依赖中的`spring-boot-autoconfigure`，该依赖中进行了大量的默认配置，包括很多主流的开源框架（这里不一一举例，可以点开源码进行查看）
-![](https://dev.tencent.com/u/imxushuai/p/pic/git/raw/master/006ifTg0gy1fxo4k4veg9j30h905nwex.jpg)
+![](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/006ifTg0gy1fxo4k4veg9j30h905nwex.jpg)
 
 2. `spring-boot-autoconfigure`是怎么完成自动配置的？在该项目中，我们会发现有很多`AutoConfiguration` 类，所有的默认配置都是在这些类中完成的，在这些类上你会发现都有一些以`Conditional`开头的注解，这些注解就是用来控制当前类中的配置是否生效的注解 （以`RedisRepositoriesAutoConfiguration `为例）。
 ```java

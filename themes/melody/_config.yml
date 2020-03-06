@@ -130,7 +130,7 @@ cdn:
 # ---------------
 avatar: /img/avatar_b.png
 
-top_img: https://dev.tencent.com/u/imxushuai/p/pic/git/raw/master/background.jpg # false or url of img
+top_img: https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/background.jpg # false or url of img
 
 post_meta:
   date_type: created # created or updated
