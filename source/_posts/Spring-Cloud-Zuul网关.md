@@ -243,7 +243,7 @@ public abstract ZuulFilter implements IZuulFilter{
 
 ### 过滤器的声明周期
 
-![](https://images.xushuai.fun/18-12-6/64872783.jpg)
+![](https://dev.tencent.com/u/imxushuai/p/pic/git/raw/master/64872783.jpg)
 
 1. 请求正常返回
 
@@ -256,7 +256,7 @@ public abstract ZuulFilter implements IZuulFilter{
 
 3. Zuul 内置过滤器列表
 
-   ![](https://images.xushuai.fun/18-12-6/950130.jpg)
+   ![](https://dev.tencent.com/u/imxushuai/p/pic/git/raw/master/950130.jpg)
 
 
    内置Filter相关参数
@@ -340,7 +340,7 @@ public abstract ZuulFilter implements IZuulFilter{
 
 2. 运行测试
 
-   ![](https://images.xushuai.fun/18-12-6/12448675.jpg)
+   ![](https://dev.tencent.com/u/imxushuai/p/pic/git/raw/master/12448675.jpg)
 
 
 

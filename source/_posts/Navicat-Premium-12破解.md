@@ -1,7 +1,7 @@
 ---
 title: Navicat Premium 12破解
 photo:
-  - 'https://images.xushuai.fun/18-12-13/40950951.jpg'
+  - 'https://dev.tencent.com/u/imxushuai/p/pic/git/raw/master/40950951.jpg'
 tags:
   - Navicat Premium破解
   - Navicat Premium12 破解
@@ -14,7 +14,7 @@ date: 2018-12-13 22:22:17
 
 <center><i>Navicat Premium 12的正确打开方式</i></center>
 
-![](https://images.xushuai.fun/18-12-13/40950951.jpg)
+![](https://dev.tencent.com/u/imxushuai/p/pic/git/raw/master/40950951.jpg)
 
 <!-- more -->
 
@@ -77,7 +77,7 @@ date: 2018-12-13 22:22:17
 
 #### 运行注册机
 
-![](https://images.xushuai.fun/18-12-13/88190734.jpg)
+![](https://dev.tencent.com/u/imxushuai/p/pic/git/raw/master/88190734.jpg)
 
 
 
@@ -92,11 +92,11 @@ date: 2018-12-13 22:22:17
 
 1. 选中`Enterprise`，选择语言。
 
-![](https://images.xushuai.fun/18-12-13/10950641.jpg)
+![](https://dev.tencent.com/u/imxushuai/p/pic/git/raw/master/10950641.jpg)
 
 2. 输入`Your Name`以及`YourOrganization`，也可以保持默认，然后点击`Generate`按钮。
 
-   ![](https://images.xushuai.fun/18-12-1320190531141111.png)
+   ![](https://dev.tencent.com/u/imxushuai/p/pic/git/raw/master/18-12-1320190531141111.png)
 
 点击后会在`Serial Keyggen`生成注册码
 
@@ -104,11 +104,11 @@ date: 2018-12-13 22:22:17
 
 1. 运行`Navicat Premium 12`，会弹出让你选择注册或者试用，我们点击注册。将生成的注册码输入激活码的框中，这时，会显示无法激活，不要着急，我们点击手动激活。
 
-   ![](https://images.xushuai.fun/18-12-13/54287454.jpg)
+   ![](https://dev.tencent.com/u/imxushuai/p/pic/git/raw/master/54287454.jpg)
 
 2. 点击手动激活后，会弹出一个对话框，里面有请求码，复制请求码到`Request Code`中，点击`Generate`生成`Activation Code`，将生成的`Activation Code`复制粘贴到激活码框中，点击激活按钮，完成激活。
 
-   ![](https://images.xushuai.fun/18-12-13/42857903.jpg)
+   ![](https://dev.tencent.com/u/imxushuai/p/pic/git/raw/master/42857903.jpg)
    
    > 特殊情况：
    > 
@@ -116,7 +116,7 @@ date: 2018-12-13 22:22:17
 
 3. 查看激活状态。
 
-   ![](https://images.xushuai.fun/18-12-13/2956798.jpg)
+   ![](https://dev.tencent.com/u/imxushuai/p/pic/git/raw/master/2956798.jpg)
 
 
 

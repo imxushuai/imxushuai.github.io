@@ -11,7 +11,7 @@ date: 2002-01-01 00:00:07
 
 <center><i>使用RabbitMQ完成商品数据同步</i></center>
 
-![](https://images.xushuai.fun/18-12-17/46731258.jpg )
+![](https://dev.tencent.com/u/imxushuai/p/pic/git/raw/master/46731258.jpg )
 
 <!-- more -->
 

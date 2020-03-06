@@ -89,7 +89,7 @@ MQ是消息通信的模型，并不是具体实现。现在实现MQ的有两种�
 
 结构图
 
-![](https://images.xushuai.fun/5015984-367dd717d89ae5db.png)
+![](https://dev.tencent.com/u/imxushuai/p/pic/git/raw/master/5015984-367dd717d89ae5db.png)
 
 #### Message
 

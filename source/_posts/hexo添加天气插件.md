@@ -41,19 +41,19 @@ date: 2019-03-29 17:27:30
 
 - 点击产品，进入weather Widget天气网页插件
 
-  ![](https://images.xushuai.fun/20190329171023.png)
+  ![](https://dev.tencent.com/u/imxushuai/p/pic/git/raw/master/20190329171023.png)
 
 - 点击立即创建
 
-  ![](https://images.xushuai.fun/20190329171359.png)
+  ![](https://dev.tencent.com/u/imxushuai/p/pic/git/raw/master/20190329171359.png)
 
 - 配置插件样式
 
-  ![](https://images.xushuai.fun/20190329171755.png)
+  ![](https://dev.tencent.com/u/imxushuai/p/pic/git/raw/master/20190329171755.png)
 
 - 复制下方的安装代码
 
-  ![](https://images.xushuai.fun/20190329171938.png)
+  ![](https://dev.tencent.com/u/imxushuai/p/pic/git/raw/master/20190329171938.png)
 
 ### 使用插件代码
 
@@ -61,7 +61,7 @@ date: 2019-03-29 17:27:30
 
 > 这里我的主题为：next。所以路径是：`/themes/next/layout/_layout.swig`，将复制的插件代码放在`</body>`标签之前。
 
-![](https://images.xushuai.fun/20190329172323.png)
+![](https://dev.tencent.com/u/imxushuai/p/pic/git/raw/master/20190329172323.png)
 
 配置好后，重启自己的hexo即可前往自己的页面查看效果。
 
