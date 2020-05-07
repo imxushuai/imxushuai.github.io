@@ -13,8 +13,8 @@ install:
 
 before_script:
 # - npm install -g gulp
-  - npm install -g hexo-cli
-  - npm install hexo --save
+#  - npm install -g hexo-cli
+#  - npm install hexo --save
 
 
 script:
