@@ -150,9 +150,9 @@ date: 2019-05-18 22:49:35
 
   > A Power of Attorney (POA) is a legal document in which a person gives someone else the authority to make decisions on his/her financial or medical issues. The POA Registry (REGISTRY) provides
   >
-  >       1. a centralized, secure database to store legally validated digital POA document,
-  >       2. an easy search interface to check and view a person’s POA, and
-  >       3. a secure mechanism to share the POA document when needed.
+  >  1. a centralized, secure database to store legally validated digital POA document,
+  >  2. an easy search interface to check and view a person’s POA, and
+  >  3. a secure mechanism to share the POA document when needed.
   >
   > The POA Registry, like law practices and other organizations in Canada, must comply with applicable privacy legislation, including the Personal Information Protection and Electronic Documents Act (PIPEDA), in connection with any collection, use or disclosure of personal information, or access to such information.
 
