@@ -79,6 +79,11 @@ date: 2019-05-18 22:49:35
 
 - **2020.02 ~ 2020.06** 对**物联网云平台**进行微服务化改造，参与技术选型和服务划分设计，并负责部分服务拆分工作，期间由于前端人员紧缺，进行了一个月的全栈开发。
 
+- **2020.07 ~ 2020.10** 客户需求，云平台新增逻辑流程功能，该功能实现全异步的云平台到本地硬件的控制，可根据多种判断条件完成硬件的控制。如下图的流程，最终完成硬件的控制。
+  ![](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/4c510eb343b89f4a8f24f6b3158949ee659157ee/20201228134712.png)
+  
+- **2020.10** 公司人员变动，从十月份起，开始作为团队leader进行项目工作。开始正式接触团队管理、项目管理、项目的整体设计以及进度把控等工作。
+
 - 持续更新......
 
 
@@ -111,7 +116,7 @@ date: 2019-05-18 22:49:35
 
   项目亮点：物联网云涉及到设备连接，如何保证设备与云的连接与稳定性是非常重要的一点。开发采集程序学到了大量物联网软硬件连接相关的知识以及高并发、大数据量的解决方案。
 
-- 2019.05 ~ 至今 **帝王洁具CRM + ERP**
+- 2019.05 ~ 2020.06 **帝王洁具CRM + ERP**
 
   简介：本项目为帝王洁具内部项目，主要工作为新需求的开发以及系统维护；项目中有非常大量的定制逻辑，代码量相当庞大且逻辑非常复杂，特别是涉及到下单与发运这一块。
 
@@ -138,6 +143,38 @@ date: 2019-05-18 22:49:35
   角色：前期设计、全栈开发
   
   项目亮点：前期参与技术选型（spring cloud）和服务划分（基础服务 + 扩展服务：定制业务 + 周边服务：如文件上传服务）；将以前自学到的微服务化技术应用于实战当中，虽然也会有很多问题，但也算是学有所用，挺高兴的。有一个月的时间由于前端人员的缺失，做了一个月的全栈开发。
+  
+- 2020.06 ~ 2020.10 **DPOA（国外项目）**
+
+  简介：
+
+  > A Power of Attorney (POA) is a legal document in which a person gives someone else the authority to make decisions on his/her financial or medical issues. The POA Registry (REGISTRY) provides
+  >
+  >       1. a centralized, secure database to store legally validated digital POA document,
+  >       2. an easy search interface to check and view a person’s POA, and
+  >       3. a secure mechanism to share the POA document when needed.
+  >
+  > The POA Registry, like law practices and other organizations in Canada, must comply with applicable privacy legislation, including the Personal Information Protection and Electronic Documents Act (PIPEDA), in connection with any collection, use or disclosure of personal information, or access to such information.
+
+  角色：数据库设计、API设计、后端开发
+
+  项目亮点：本项目中的所有技术方案均使用微软`Azure`旗下的产品，如：用户使用的是 `Azure Directory` 作为统一用户标识并集成 `Azure Directory`的登录，同时实现了`Google`、`Facebook`等国外主流社交登录方式；文件存储使用 `Azure Blob`等。**此项目也是我第一次接触敏捷开发模式的项目**。项目主要难点在于需求的沟通和需求理解，在集成`Azure Directory`的时候也遇到很多的问题（Azure平台的文档有点一言难尽）。
+
+- 2020.10 ~ 2020.11 **地质灾害云平台**
+
+  简介：此项目本来是我们公司包给外面公司做的，结果外面公司做不下去。拿回来公司继续做，主要是修改BUG（有点小烦，国庆假期搞这个项目搞了7天）。项目是遂宁市地质灾害管理平台，前面的公司做了大部分，还有一小部分的功能缺失和众多BUG。
+
+  角色：后端java开发
+
+  项目亮点：快速接手项目代码并开始修改BUG
+
+- 2020.11~2021.05 **四川省水旱灾害防御信息平台**
+
+  简介：四川省水旱灾害防御信息平台，通过网络信息化平台对水旱灾害防控进行管理，当发生险情时及时使用户能及时做出正确的应对。
+
+  角色：项目经理、后端java开发
+
+  项目亮点：技术选型使用`Spring Cloud Alibaba`，也算是我自己在学习了`Spring Cloud Alibaba`后的第一次实战的应用。项目难点主要在于这个平台是由三方开发的，最终由三个系统汇聚成一个系统，在用户角色方面需要三方配合进行集成（以其他某一家开发的角色权限为准进行用户角色的接入）。
 
 - 还有很多项目没有一一列出，只是一些具有代表性的项目，持续更新......
 
