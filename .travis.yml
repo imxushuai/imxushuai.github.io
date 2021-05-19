@@ -26,6 +26,7 @@ script:
   - git add .
   - git commit -m "Update docs"
   - git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:master
+  - git push --quiet "https://qinyuanpei:${CO_TOKEN}@${CO_REF}" master:master --tags
 
 
 branches:
@@ -34,3 +35,4 @@ branches:
 env:
   global:
     - GH_REF: github.com/imxushuai/imxushuai.github.io.git
+    - CO_REF: git.coding.net/imxushuai-01/imxushuai.coding.me.git
