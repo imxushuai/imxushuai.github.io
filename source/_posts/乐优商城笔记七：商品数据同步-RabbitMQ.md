@@ -11,7 +11,7 @@ date: 2002-01-01 00:00:07
 
 <center><i>使用RabbitMQ完成商品数据同步</i></center>
 
-![](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/46731258.jpg )
+![](https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/46731258.jpg )
 
 <!-- more -->
 
@@ -140,15 +140,15 @@ spring:
 
 - 新增
 
-  ![](<https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/20190516235042.png>)
+  ![](<https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/20190516235042.png>)
 
 - 修改
 
-  ![](<https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/20190516235103.png>)
+  ![](<https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/20190516235103.png>)
 
 - 删除
 
-  ![](<https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/20190516235120.png>)
+  ![](<https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/20190516235120.png>)
 
 
 

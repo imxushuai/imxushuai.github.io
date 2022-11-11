@@ -1,7 +1,7 @@
 ---
 title: Thymeleaf使用详解
 photo:
-  - 'https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/springboot-thymeleaf.jpg'
+  - 'https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/springboot-thymeleaf.jpg'
 tags:
   - thymeleaf
   - 模板引擎
@@ -14,7 +14,7 @@ date: 2019-03-31 22:07:42
 
 <center><i>Thymeleaf - 现代化服务器端的Java模板引擎</i></center>
 
-![](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/springboot-thymeleaf.jpg)
+![](https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/springboot-thymeleaf.jpg)
 
 <!-- more -->
 
@@ -58,19 +58,19 @@ date: 2019-03-31 22:07:42
 
 使用spring 脚手架创建：
 
-![1526435213659](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/1526435213659.png)
+![1526435213659](https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/1526435213659.png)
 
 
 
-![1526435267302](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/1526435267302.png)
+![1526435267302](https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/1526435267302.png)
 
 勾选web和Thymeleaf的依赖：
 
-![1526435317440](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/1526435317440.png)
+![1526435317440](https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/1526435317440.png)
 
 项目结构：
 
- ![1526435434999](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/1526435434999.png)
+ ![1526435434999](https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/1526435434999.png)
 
 pom：
 
@@ -134,11 +134,11 @@ pom：
 
 不需要做任何配置，启动器已经帮我们把Thymeleaf的视图器配置完成：
 
- ![1526435647041](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/1526435647041.png)
+ ![1526435647041](https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/1526435647041.png)
 
 而且，还配置了模板文件（html）的位置，与jsp类似的前缀+ 视图名 + 后缀风格：
 
- ![1526435706301](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/1526435706301.png)
+ ![1526435706301](https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/1526435706301.png)
 
 - 默认前缀：`classpath:/templates/`
 - 默认后缀：`.html`
@@ -197,7 +197,7 @@ public class HelloController {
 
 启动项目，访问页面：
 
- ![1526436248528](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/1526436248528.png)
+ ![1526436248528](https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/1526436248528.png)
 
 
 
@@ -261,7 +261,7 @@ Thymeleaf通过`${}`来获取model中的变量，注意这不是el表达式，�
 
 效果：
 
- ![1526438010948](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/1526438010948.png)
+ ![1526438010948](https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/1526438010948.png)
 
 感觉跟el表达式几乎是一样的。不过区别在于，我们的表达式写在一个名为：`th:text`的标签属性中，这个叫做`指令`
 
@@ -275,7 +275,7 @@ Thymeleaf中所有的表达式都需要写在`指令`中，指令是HTML5中的�
 
 现在，我们不经过SpringMVC，而是直接用浏览器打开页面看看：
 
- ![1526438337869](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/1526438337869.png)
+ ![1526438337869](https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/1526438337869.png)
 
 - 静态页面中，`th`指令不被识别，但是浏览器也不会报错，把它当做一个普通属性处理。这样`span`的默认值`请登录`就会展现在页面
 - 如果是在Thymeleaf环境下，`th`指令就会被识别和解析，而`th:text`的含义就是替**换所在标签中的文本内容**，于是`user.name`的值就替代了 `span`中默认的请登录
@@ -410,7 +410,7 @@ public String show3(Model model){
 
  效果：
 
- ![1526440538848](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/1526440538848.png)
+ ![1526440538848](https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/1526440538848.png)
 
 
 
@@ -430,7 +430,7 @@ public String show3(Model model){
 
   `th:text`中的thymeleaf并不会被认为是变量，而是一个字符串
 
-   ![1526958538157](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/1526958538157.png)
+   ![1526958538157](https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/1526958538157.png)
 
   
 
@@ -443,7 +443,7 @@ public String show3(Model model){
   <p>两年后将会是 <span th:text="2018 + 2">1902</span>.</p>
   ```
 
-   ![1526958856078](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/1526958856078.png)
+   ![1526958856078](https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/1526958856078.png)
 
 - 布尔字面值
 
@@ -473,7 +473,7 @@ public String show3(Model model){
 
 与上面是完全等效的，这样就省去了字符串字面值的书写。
 
- ![1526959781368](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/1526959781368.png)
+ ![1526959781368](https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/1526959781368.png)
 
 
 
@@ -490,7 +490,7 @@ public String show3(Model model){
   <span th:text="${user.age}%2 == 0"></span>
   ```
 
-   ![1526959990356](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/1526959990356.png)
+   ![1526959990356](https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/1526959990356.png)
 
 - 比较运算
 
@@ -518,7 +518,7 @@ public String show3(Model model){
 
   其中的每一个部分都可以是Thymeleaf中的任意表达式。
 
-   ![1526960230778](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/1526960230778.png)
+   ![1526960230778](https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/1526960230778.png)
 
   - 默认值
 
@@ -532,7 +532,7 @@ public String show3(Model model){
 
   注意：`?:`之间没有空格。
 
-   ![1526960384564](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/1526960384564.png)
+   ![1526960384564](https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/1526960384564.png)
 
 
 
@@ -600,7 +600,7 @@ Thymeleaf中使用`th:if` 或者 `th:unless` ，两者的意思恰好相反。
 
 其它情况包括null都被认定为false
 
- ![1526960499522](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/1526960499522.png)
+ ![1526960499522](https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/1526960499522.png)
 
 
 
@@ -620,11 +620,11 @@ Thymeleaf中使用`th:if` 或者 `th:unless` ，两者的意思恰好相反。
 
 另外`th:case="*"`表示默认，放最后。
 
- ![1526960621714](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/1526960621714.png)
+ ![1526960621714](https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/1526960621714.png)
 
 页面：
 
- ![1526961251878](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/1526961251878.png)
+ ![1526961251878](https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/1526961251878.png)
 
 
 
@@ -653,7 +653,7 @@ Thymeleaf中使用`th:if` 或者 `th:unless` ，两者的意思恰好相反。
 
 看看页面的源码：
 
-![1526961583904](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/1526961583904.png)
+![1526961583904](https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/1526961583904.png)
 
 我们的User对象被直接处理为json格式了，非常方便。
 
@@ -661,7 +661,7 @@ Thymeleaf中使用`th:if` 或者 `th:unless` ，两者的意思恰好相反。
 
 控制台：
 
- ![1526961525185](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/1526961525185.png)
+ ![1526961525185](https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/1526961525185.png)
 
 
 

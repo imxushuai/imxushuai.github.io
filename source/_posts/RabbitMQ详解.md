@@ -1,7 +1,7 @@
 ---
 title: RabbitMQ详解
 photo:
-  - 'https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/rabbitmq.png'
+  - 'https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/rabbitmq.png'
 tags:
   - RabbitMQ
   - RabbitMQ详解
@@ -16,7 +16,7 @@ date: 2019-04-01 20:59:55
 
 <center><i>部署最广泛的开源消息中间件 - RabbitMQ</i></center>
 
-![](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/rabbitmq.png)
+![](https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/rabbitmq.png)
 
 <!-- more -->
 
@@ -89,7 +89,7 @@ MQ是消息通信的模型，并不是具体实现。现在实现MQ的有两种�
 
 结构图
 
-![](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/5015984-367dd717d89ae5db.png)
+![](https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/5015984-367dd717d89ae5db.png)
 
 #### Message
 
@@ -133,7 +133,7 @@ MQ是消息通信的模型，并不是具体实现。现在实现MQ的有两种�
 
 ### RabbitMQ Java Api使用
 
-![](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/006ifTg0gy1g2qrde11wcj30s50hlq4r.jpg)
+![](https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/006ifTg0gy1g2qrde11wcj30s50hlq4r.jpg)
 
 > 上面这是官方的教程，可以看到分为了6个模块，下面我会对其中的前5种进行编码，关于RPC可以到官网查阅文档。当然如果你阅读文档的能力足够，建议直接前往官网，可能收获会更多。
 
@@ -143,7 +143,7 @@ MQ是消息通信的模型，并不是具体实现。现在实现MQ的有两种�
 
 RabbitMQ是一个消息代理：它接受和转发消息。 你可以把它想象成一个邮局：当你把邮件放在邮箱里时，你可以确定邮差先生最终会把邮件发送给你的收件人。 在这个比喻中，RabbitMQ是邮政信箱，邮局和邮递员。
 
-![](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/006ifTg0gy1g2qt642cnfj30aw01nwec.jpg)
+![](https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/006ifTg0gy1g2qt642cnfj30aw01nwec.jpg)
 
 P（producer/ publisher）：生产者，一个发送消息的用户应用程序。
 
@@ -244,11 +244,11 @@ public class SimpleConsumer {
 
 1. 运行生产者
 
-   ![](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/006ifTg0gy1g2qtssaj6jj30e601cdfp.jpg)
+   ![](https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/006ifTg0gy1g2qtssaj6jj30e601cdfp.jpg)
 
 2. 运行消费者
 
-![](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/006ifTg0gy1g2qttv5zxej30dx01awec.jpg)
+![](https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/006ifTg0gy1g2qttv5zxej30dx01awec.jpg)
 
 > 成功拿到消息
 
@@ -265,7 +265,7 @@ public class SimpleConsumer {
 
 在之前的代码中使用的是自动ACK，现在我们修改为手动ACK，改动如下：
 
-![](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/006ifTg0gy1g2quegi5lgj30nw0dfmy5.jpg)
+![](https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/006ifTg0gy1g2quegi5lgj30nw0dfmy5.jpg)
 
 > 我在应答之前抛出了异常，这个消息就不会被删除，反复重启消费者，就会发现会一直拿到这个消息。
 
@@ -275,7 +275,7 @@ public class SimpleConsumer {
 
 工作队列，又称任务队列。主要思想就是避免执行资源密集型任务时，必须等待它执行完成。相反我们稍后完成任务，我们将任务封装为消息并将其发送到队列。 在后台运行的工作进程将获取任务并最终执行作业。当你运行许多工人时，任务将在他们之间共享，但是一个消息只能被一个消费者获取。
 
-![](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/006ifTg0gy1g2qut29j13j3098033a9z.jpg)
+![](https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/006ifTg0gy1g2qut29j13j3098033a9z.jpg)
 
 #####  生产者
 
@@ -374,23 +374,23 @@ public class WorkConsumer {
 
    - 注释 '模拟耗时' 部分代码
 
-     ![](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/006ifTg0gy1g2qw4kvp7ej30q20cd0tm.jpg)
+     ![](https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/006ifTg0gy1g2qw4kvp7ej30q20cd0tm.jpg)
 
    - 进入运行配置界面
 
-     ![](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/006ifTg0gy1g2qvvzo47aj30qg081t99.jpg)
+     ![](https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/006ifTg0gy1g2qvvzo47aj30qg081t99.jpg)
 
    - 复制WorkConsumer
 
-     ![](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/006ifTg0gy1g2qw0jbh72j30wo0j9abd.jpg)
+     ![](https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/006ifTg0gy1g2qw0jbh72j30wo0j9abd.jpg)
 
    - 运行复制出来的WorkConsumer
 
-     ![](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/006ifTg0gy1g2qw1lg79jj30c405kaa0.jpg)
+     ![](https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/006ifTg0gy1g2qw1lg79jj30c405kaa0.jpg)
 
 3. 观察运行结果，会发现有无模拟耗时执行的任务数是一致的，像是消费者轮询消费消息。
 
-   ![](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/006kPtiPgy1g2rlp00h5jj309j08pwgf.jpg)![](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/006kPtiPgy1g2rlp00td9j309p08fmz4.jpg)
+   ![](https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/006kPtiPgy1g2rlp00h5jj309j08pwgf.jpg)![](https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/006kPtiPgy1g2rlp00td9j309p08fmz4.jpg)
 
    > 原因：RabbitMQ 只管分发进入队列的消息，不会关心有多少消费者（consumer）没有作出响应。它盲目的把消息分发给多个消费者，直到队列中无新消息。
 
@@ -402,11 +402,11 @@ public class WorkConsumer {
 
 修改`WorkConsumer.java`，添加代码：
 
-![](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/006kPtiPgy1g2rmca4zjzj30lo08wjuu.jpg)
+![](https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/006kPtiPgy1g2rmca4zjzj30lo08wjuu.jpg)
 
 重启测试，会发现耗时较快的消费者，执行了更多的任务。
 
-![](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/006kPtiPgy1g2rmfzdsxwj30a809zwf9.jpg)![](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/006kPtiPgy1g2rmfzdsv7j30b50a1q5p.jpg)
+![](https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/006kPtiPgy1g2rmfzdsxwj30a809zwf9.jpg)![](https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/006kPtiPgy1g2rmfzdsv7j30b50a1q5p.jpg)
 
 #### Publish/Subscribe(发布/订阅)
 
@@ -414,7 +414,7 @@ public class WorkConsumer {
 
 在Work模式背后的假设是每个任务都交付给一个工作者。在这一部分，我们将做一些完全不同的事情 - 我们将向多个消费者传递信息，此模式称为“发布/订阅”。
 
-![](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/006kPtiPgy1g2rmvbxzjrj30c2033q2x.jpg)
+![](https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/006kPtiPgy1g2rmvbxzjrj30c2033q2x.jpg)
 
 ##### 特征
 
@@ -600,7 +600,7 @@ public class FanoutConsumer {
 
 消息的发送方在向Exchange发送消息时，也必须指定消息的routing key。
 
-![](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/direct-exchange.png)
+![](https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/direct-exchange.png)
 
 P：生产者，向Exchange发送消息，发送消息时，会指定一个routing key。
 
@@ -786,7 +786,7 @@ public class DirectConsumer2 {
 
 ​         `*`：匹配不多不少恰好1个词
 
-![](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/20150914161921517.jpg)
+![](https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/20150914161921517.jpg)
 
 - 以`usa`开头的消息会进入第一个队列
 - 以`news`结尾的会进入第二个队列
@@ -905,19 +905,19 @@ public class TopicsConsumer1 {
 
 - `usa.#`：接收到了 `usa.news` 和 `usa.weather`
 
-  ![](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/20190507231554.png)
+  ![](https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/20190507231554.png)
 
 - `#.news`：接收到了`usa.news`和`europe.news`
 
-  ![](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/20190507231610.png)
+  ![](https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/20190507231610.png)
 
 - `#.weather`：接收到了`usa.weather`和`europe.weather`
 
-  ![](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/20190507231619.png)
+  ![](https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/20190507231619.png)
 
 - `europe.#`：接收到了`europe.news`和`europe.weather`
 
-  ![](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/20190507231629.png)
+  ![](https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/20190507231629.png)
 
 #### 扩展：消息持久化
 
@@ -1312,7 +1312,7 @@ public class SpringAMQPProducer {
 
 ###### 测试
 
-![](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/20190508193104.png)
+![](https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/20190508193104.png)
 
 > 发送到队列`simpleQueue`的消息，顺利被消费。
 >

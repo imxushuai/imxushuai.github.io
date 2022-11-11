@@ -1,7 +1,7 @@
 ---
 title: FastDFS简介
 photo:
-  - 'https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/fastdfs.jpg'
+  - 'https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/fastdfs.jpg'
 tags:
   - 分布式文件系统
   - FastDFS
@@ -14,7 +14,7 @@ date: 2018-7-22 17:07:05
 
 <center><i>什么是FastDFS？</i></center>
 
-![](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/fastdfs.jpg )
+![](https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/fastdfs.jpg )
 
 <!-- more -->
 
@@ -50,7 +50,7 @@ FastDFS服务端有两个角色：
 
 结构图：
 
-![](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/16689581.jpg)
+![](https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/16689581.jpg)
 
 可以在图中看到上文提到的两个角色
 
@@ -67,7 +67,7 @@ FastDFS服务端有两个角色：
 
 ### 上传流程
 
-![](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/74880626.jpg)
+![](https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/74880626.jpg)
 
 1. Client通过Tracker server查找可用的Storage server。
 2. Tracker server向Client返回一台可用的Storage server的IP地址和端口号。
@@ -78,7 +78,7 @@ FastDFS服务端有两个角色：
 
 ### 下载流程
 
-![](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/67873037.jpg)
+![](https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/67873037.jpg)
 
 1. Client通过Tracker server查找要下载文件所在的的Storage server。
 2. Tracker server向Client返回包含指定文件的某个Storage server的IP地址和端口号。

@@ -1,7 +1,7 @@
 ---
 title: FastDFS安装
 photo:
-  - 'https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/fastdfs.jpg'
+  - 'https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/fastdfs.jpg'
 tags:
   - 分布式文件系统
   - FastDFS
@@ -16,7 +16,7 @@ date: 2018-7-22 19:01:40
 
 <center><i>CentOS 7下安装FastDFS</i></center>
 
-![](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/fastdfs.jpg )
+![](https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/fastdfs.jpg )
 
 <!-- more -->
 
@@ -122,7 +122,7 @@ sudo yum -y install pcre pcre-devel zlib zlib-devel openssl openssl-devel
 
 1）安装完成，我们应该能在`/etc/init.d/`目录，通过命令`ll /etc/init.d/ | grep fdfs`看到FastDFS提供的启动脚本：
 
-![](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/60823752.jpg)
+![](https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/60823752.jpg)
 
 其中：
 
@@ -133,7 +133,7 @@ sudo yum -y install pcre pcre-devel zlib zlib-devel openssl openssl-devel
 
 2）我们可以在 `/etc/fdfs`目录，通过命令查看到以下配置文件模板：
 
-![](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/47583551.jpg)
+![](https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/47583551.jpg)
 
 其中：
 
@@ -237,7 +237,7 @@ sudo chkconfig fdfs_storaged on
 
 最后，通过`ps -ef | grep fdfs` 查看进程：
 
-![](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/67784539.jpg)
+![](https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/67784539.jpg)
 
 
 

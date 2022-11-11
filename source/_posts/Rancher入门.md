@@ -12,7 +12,7 @@ date: 2019-05-16 22:56:45
 
 <center><i>容器管理工具 Rancher 的安装和使用</i></center>
 
-![](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/rancher.png)
+![](https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/rancher.png)
 
 <!-- more -->
 
@@ -48,7 +48,7 @@ Rancher支持灵活的插件式的用户认证。支持Active Directory，LDAP�
 
 下图展示了Rancher的主要组件和功能：
 
-![](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/rancher_overview_2.png)
+![](https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/rancher_overview_2.png)
 
 > 综上所述，反正吹爆就完事了。
 
@@ -72,7 +72,7 @@ Rancher支持灵活的插件式的用户认证。支持Active Directory，LDAP�
 
 3. 访问`http://ip:port`
 
-   ![](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/20190701152621.png)
+   ![](https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/20190701152621.png)
 
    安装完毕。
 
@@ -82,7 +82,7 @@ Rancher支持灵活的插件式的用户认证。支持Active Directory，LDAP�
 
 点击`用户应用 -> 添加应用`，输入`名称`和`描述`，最后点击`创建`即可。
 
-![](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/20190701152748.png)
+![](https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/20190701152748.png)
 
 ## 添加主机
 
@@ -92,33 +92,33 @@ Rancher支持灵活的插件式的用户认证。支持Active Directory，LDAP�
 
 1. 进入`基础架构 -> 主机 -> 添加主机`，然后按下图操作：
 
-   ![](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/20190701154928.png)
+   ![](https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/20190701154928.png)
 
    **注意：需要开放UDP的`500`和`4500`端口，需要填写IP后，再复制命令到服务器执行，命令是输入IP时同步生成的。执行了命令后可直接点击关闭，关闭添加主机页面**
 
 2. 等待服务器执行命令完成后，刷新`主机列表`，就会显示添加好的主机
 
-   ![](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/20190701160935.png)
+   ![](https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/20190701160935.png)
 
 3. 查看主机情况
 
-   ![](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/20190701180240.png)
+   ![](https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/20190701180240.png)
 
 ## 添加服务
 
 进入`应用 -> 全部`，选择第一步中创建的应用，选择`添加服务`
 
-- ![](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/20190701164101.png)
+- ![](https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/20190701164101.png)
 
 - 录入基本信息
 
-  ![](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/20190701161508.png)
+  ![](https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/20190701161508.png)
 
   选择镜像，建议到服务器粘贴复制，免得手写输错。
 
 - 其他信息，例如：挂载目录
 
-  ![](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/20190701161508.png)
+  ![](https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/20190701161508.png)
 
   我这里创建的是`Mongodb`的容器，所以不需要特别的配置，只需要录入基本信息就OK了。
 
@@ -126,7 +126,7 @@ Rancher支持灵活的插件式的用户认证。支持Active Directory，LDAP�
 
 - 远程连接一下`mongodb`容器，测试是否能连接上
 
-  ![](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/20190701180723.png)
+  ![](https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/20190701180723.png)
 
   成功连接！
 

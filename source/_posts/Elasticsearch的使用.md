@@ -1,7 +1,7 @@
 ---
 title: Elasticsearch的使用
 photo:
-  - 'https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/elasticsearch-logo.png'
+  - 'https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/elasticsearch-logo.png'
 tags:
   - elasticsearch教程
   - elasticsearch入门
@@ -18,7 +18,7 @@ date: 2019-03-29 15:26:10
 
 <center><i>elasticsearch的基本使用。包括原生api的使用以及java客户端的使用</i></center>
 
-![](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/elasticsearch-logo.png)
+![](https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/elasticsearch-logo.png)
 
 <!-- more -->
 
@@ -237,7 +237,7 @@ date: 2019-03-29 15:26:10
 
 Elasticsearch中支持的数据类型非常丰富：
 
-![](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/1531712631982.png)
+![](https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/1531712631982.png)
 
 我们说几个关键的：
 
@@ -1413,7 +1413,7 @@ POST /cars/transactions/_bulk
 
    > 若运行成功，使用`http client`查看结果
    >
-   > ![](https://imxushuai-01.coding.net/p/pic/d/pic/git/raw/master/20190311225646.png)
+   > ![](https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/20190311225646.png)
 
 ##### 删除索引
 
