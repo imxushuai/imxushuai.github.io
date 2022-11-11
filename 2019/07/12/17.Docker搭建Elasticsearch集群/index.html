@@ -1,0 +1,172 @@
+<!-- - var pageTitle = page.title || config.subtitle || ''// 修改首页的title--><!DOCTYPE html><html lang="zh-Hans"><head><meta name="generator" content="Hexo 3.9.0"><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="Docker搭建Elasticsearch集群"><meta name="keywords" content="Elasticsearch集群,Docker搭建Elasticsearch集群"><meta name="author" content="imxushuai"><meta name="copyright" content="imxushuai"><meta name="baidu-site-verification" content="B3htTw43Gg"><meta name="google-site-verification" content="o2KrBdxV2bs7OPjZSdarNWbV6uC2WAtFOGQEbGAZJOo"><title>Docker搭建Elasticsearch集群 | imxushuai</title><link rel="shortcut icon" href="/B.png"><link rel="stylesheet" href="/css/index.css?version=1.6.1"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css?version=1.6.1"><link rel="dns-prefetch" href="https://cdn.staticfile.org"><link rel="dns-prefetch" href="https://cdn.bootcss.com"><link rel="dns-prefetch" href="https://creativecommons.org"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.1.1/dist/instantsearch.min.css"><script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.1.1/dist/instantsearch.min.js" defer></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css"><script src="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js"></script><script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.10.0/js/md5.min.js"></script><script>((function(){
+  var bp = document.createElement('script');
+  var curProtocol = window.location.protocol.split(':')[0];
+  if (curProtocol === 'https') {
+  bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+}
+  else {
+  bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+}
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(bp, s);
+})());
+
+</script><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><script>(adsbygoogle = window.adsbygoogle || []).push({
+  google_ad_client: 'ca-pub-8123778246943935',
+  enable_page_level_ads: true
+});
+</script><link rel="dns-prefetch" href="https://hm.baidu.com"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?ee77185761e9c3e3a277dac848c66c44";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();</script><link rel="dns-prefetch" href="https://www.google-analytics.com"><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-140233731-1', 'auto');
+ga('send', 'pageview');</script><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: {"appId":"0AG6VKDJB8","apiKey":"1acca465cd19291fd2e30fc0bde470b9","indexName":"search","hits":{"per_page":10},"languages":{"input_placeholder":"搜索文章","hits_empty":"找不到您查询的内容:${query}","hits_stats":"找到 ${hits} 条结果，用时 ${time} 毫秒"}},
+  localSearch: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  }
+} </script></head><body><canvas class="fireworks"></canvas><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar"><div class="toggle-sidebar-info text-center"><span data-toggle="切换文章详情">切换站点概览</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#环境准备"><span class="toc-number">1.</span> <span class="toc-text">环境准备</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#集群搭建"><span class="toc-number">2.</span> <span class="toc-text">集群搭建</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#安装Docker和Docker-Compse"><span class="toc-number">2.1.</span> <span class="toc-text">安装Docker和Docker Compse</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#准备工作（必做）"><span class="toc-number">2.2.</span> <span class="toc-text">准备工作（必做）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装"><span class="toc-number">2.3.</span> <span class="toc-text">安装</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#集群信息查看"><span class="toc-number">3.</span> <span class="toc-text">集群信息查看</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#安装HEAD"><span class="toc-number">3.1.</span> <span class="toc-text">安装HEAD</span></a></li></ol></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="/img/avatar_b.png"></div><div class="author-info__name text-center">imxushuai</div><div class="author-info__description text-center">本站是imxushuai的个人博客。内容包含有学习资源分享、IT技术分享和生活周边，记录下生活的点滴，愿与君共勉。</div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">文章</span><span class="pull-right">87</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">标签</span><span class="pull-right">276</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">分类</span><span class="pull-right">37</span></a></div><hr><div class="author-info-links"><div class="author-info-links__title text-center">Links</div><a class="author-info-links__name text-center" href="https://github.com/imxushuai">GitHub</a><a class="author-info-links__name text-center" href="https://me.csdn.net/qq1031893936">CSDN</a><a class="author-info-links__name text-center" href="https://spring.io/projects">Spring</a><a class="author-info-links__name text-center" href="http://www.cx1314.cn/forum.php">IT资源</a></div></div></div><div id="content-outer"><div id="top-container" style="background-image: url(https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/background.jpg)"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">imxushuai</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus"><a class="site-page social-icon search"><i class="fa fa-search"></i><span> 站内搜索</span></a><a class="site-page" href="/">首页</a><a class="site-page" href="/categories">分类</a><a class="site-page" href="/archives">文章总览</a><a class="site-page" href="/2000/01/01/%e5%ad%a6%e4%b9%a0%e8%b5%84%e6%ba%90/">学习资源</a><a class="site-page" href="/about">关于</a></span></div><div id="post-info"><div id="post-title">Docker搭建Elasticsearch集群</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2019-07-12</time><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/全文检索/">全文检索</a><i class="fa fa-angle-right" aria-hidden="true"></i><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/全文检索/elasticsearch/">elasticsearch</a><div class="post-meta-wordcount"><span>字数总计: </span><span class="word-count">756</span><span class="post-meta__separator">|</span><span>阅读时长: 3 分钟</span></div></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><center><i>使用 Docker + Docker-Compose 搭建 Elasticsearch 集群环境</i></center>
+
+<p><img src="https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/elasticsearch-logo.png" alt></p>
+<a id="more"></a>
+<h1 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h1><ul>
+<li>Linux服务器一台（文章中使用系统的是CentOS 7）</li>
+<li>保证能够连接外网</li>
+</ul>
+<h1 id="集群搭建"><a href="#集群搭建" class="headerlink" title="集群搭建"></a>集群搭建</h1><h2 id="安装Docker和Docker-Compse"><a href="#安装Docker和Docker-Compse" class="headerlink" title="安装Docker和Docker Compse"></a>安装Docker和Docker Compse</h2><ol>
+<li><p>使用<code>yum</code>安装<code>docker</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install docker</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装企业版附加包</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install epel-release</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装python-pip（python的一个软件包管理工具）</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install python-pip</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>更新pip</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install --upgrade pip</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装docker-compose</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install docker-compose</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>验证是否安装成功</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-compose --version</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="准备工作（必做）"><a href="#准备工作（必做）" class="headerlink" title="准备工作（必做）"></a>准备工作（必做）</h2><ol>
+<li><p>创建用于挂载数据和日志文件的目录，我这里直接在root目录下进行操作了。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 创建用于 数据/日志/配置文件 的目录</span><br><span class="line">mkdir -p /root/elasticsearch/data/&#123;node0,node1,node2&#125; </span><br><span class="line">mkdir -p /root/elasticsearch/logs/&#123;node0,node1,node2&#125; </span><br><span class="line">mkdir -p /root/elasticsearch/config/&#123;node0,node1,node2&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改创建的数据和日志文件挂载目录的权限，否则运行容器的时候会因为权限报错</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 我这里图省事，直接777了</span><br><span class="line">chmod 777 /root/elasticsearch/data/* -R</span><br><span class="line">chmod 777 /root/elasticsearch/logs/* -R</span><br><span class="line">chmod 777 /root/elasticsearch/config/* -R</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改系统<code>vm.max_map_count</code>参数，否则运行会报错</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">echo vm.max_map_count=262144 &gt;&gt; /etc/sysctl.conf</span><br><span class="line">sysctl -p</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><ol>
+<li><p>下载Elasticsearch镜像</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 我这里使用的是6.6.1的版本</span><br><span class="line">docker pull elasticsearch:6.6.1</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>编写docker-compose.yml</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line">version: '3'</span><br><span class="line">services:</span><br><span class="line">  elasticsearch-node0:</span><br><span class="line">    image: elasticsearch:6.6.1</span><br><span class="line">    container_name: elasticsearch-node0</span><br><span class="line">    privileged: true</span><br><span class="line">    environment:</span><br><span class="line">      - cluster.name=elasticsearch-cluster</span><br><span class="line">      - node.name=node0</span><br><span class="line">      - node.master=true</span><br><span class="line">      - node.data=true</span><br><span class="line">      - bootstrap.memory_lock=true</span><br><span class="line">      - http.cors.enabled=true</span><br><span class="line">      - http.cors.allow-origin=*</span><br><span class="line">      - "discovery.zen.ping.unicast.hosts=elasticsearch-node0,elasticsearch-node1,elasticsearch-node2"</span><br><span class="line">      - "discovery.zen.minimum_master_nodes=2"</span><br><span class="line">    ulimits:</span><br><span class="line">      memlock:</span><br><span class="line">        soft: -1</span><br><span class="line">        hard: -1</span><br><span class="line">    volumes:</span><br><span class="line">      - ./data/node0:/usr/share/elasticsearch/data</span><br><span class="line">      - ./logs/node0:/usr/share/elasticsearch/logs</span><br><span class="line">      - ./config/node0:/usr/share/elasticsearch/config</span><br><span class="line">    ports:</span><br><span class="line">      - 9200:9200</span><br><span class="line">      - 9300:9300</span><br><span class="line">  elasticsearch-node1:</span><br><span class="line">    image: elasticsearch:6.6.1</span><br><span class="line">    container_name: elasticsearch-node1</span><br><span class="line">    privileged: true</span><br><span class="line">    environment:</span><br><span class="line">      - cluster.name=elasticsearch-cluster</span><br><span class="line">      - node.name=node1</span><br><span class="line">      - node.master=true</span><br><span class="line">      - node.data=true</span><br><span class="line">      - bootstrap.memory_lock=true</span><br><span class="line">      - http.cors.enabled=true</span><br><span class="line">      - http.cors.allow-origin=*</span><br><span class="line">      - "discovery.zen.ping.unicast.hosts=elasticsearch-node0,elasticsearch-node1,elasticsearch-node2"</span><br><span class="line">      - "discovery.zen.minimum_master_nodes=2"</span><br><span class="line">    ulimits:</span><br><span class="line">      memlock:</span><br><span class="line">        soft: -1</span><br><span class="line">        hard: -1</span><br><span class="line">    volumes:</span><br><span class="line">      - ./data/node1:/usr/share/elasticsearch/data</span><br><span class="line">      - ./logs/node1:/usr/share/elasticsearch/logs</span><br><span class="line">      - ./config/node0:/usr/share/elasticsearch/config</span><br><span class="line">    ports:</span><br><span class="line">      - 9201:9200</span><br><span class="line">      - 9301:9300</span><br><span class="line">  elasticsearch-node2:</span><br><span class="line">    image: elasticsearch:6.6.1</span><br><span class="line">    container_name: elasticsearch-node2</span><br><span class="line">    privileged: true</span><br><span class="line">    environment:</span><br><span class="line">      - cluster.name=elasticsearch-cluster</span><br><span class="line">      - node.name=node2</span><br><span class="line">      - node.master=true</span><br><span class="line">      - node.data=true</span><br><span class="line">      - bootstrap.memory_lock=true</span><br><span class="line">      - http.cors.enabled=true</span><br><span class="line">      - http.cors.allow-origin=*</span><br><span class="line">      - "discovery.zen.ping.unicast.hosts=elasticsearch-node0,elasticsearch-node1,elasticsearch-node2"</span><br><span class="line">      - "discovery.zen.minimum_master_nodes=2"</span><br><span class="line">    ulimits:</span><br><span class="line">      memlock:</span><br><span class="line">        soft: -1</span><br><span class="line">        hard: -1</span><br><span class="line">    volumes:</span><br><span class="line">      - ./data/node2:/usr/share/elasticsearch/data</span><br><span class="line">      - ./logs/node2:/usr/share/elasticsearch/logs</span><br><span class="line">      - ./config/node0:/usr/share/elasticsearch/config</span><br><span class="line">    ports:</span><br><span class="line">      - 9202:9200</span><br><span class="line">      - 9302:9300</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>启动</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 启动，启动需要一些时间</span><br><span class="line">docker-compose up -d</span><br><span class="line"><span class="meta">#</span> 重启：docker-compose restart</span><br><span class="line"><span class="meta">#</span> 删除容器: docker-compose rm</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看日志</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 若启动失败，查看日志排错</span><br><span class="line">docker-compose logs</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h1 id="集群信息查看"><a href="#集群信息查看" class="headerlink" title="集群信息查看"></a>集群信息查看</h1><p>我这里使用的<code>head</code>，一款<code>Elasticsearch</code>的web-ui工具</p>
+<h2 id="安装HEAD"><a href="#安装HEAD" class="headerlink" title="安装HEAD"></a>安装HEAD</h2><ol>
+<li><p>安装git（如果已安装可以省略）</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install git</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装nodejs（如果已安装可以省略）</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install nodejs</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>拉取HEAD项目（本质是一个前端项目）</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/mobz/elasticsearch-head.git</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>下载完毕，进入下载的目录中并安装相关依赖</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd elasticsearch-head</span><br><span class="line"><span class="meta">#</span> 安装过程可能需要一些时间</span><br><span class="line">npm install</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>运行</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run start</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>访问<code>http://{你安装所在机器的IP}:9100</code></p>
+<p><img src="https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/20190928184012.png" alt></p>
+<p>可以看到三个节点，OK！</p>
+</li>
+</ol>
+</div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">imxushuai</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://www.imxushuai.com/2019/07/12/17.Docker搭建Elasticsearch集群/">https://www.imxushuai.com/2019/07/12/17.Docker搭建Elasticsearch集群/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://www.imxushuai.com">imxushuai</a>！</span></div></div><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Elasticsearch集群/">Elasticsearch集群</a><a class="post-meta__tags" href="/tags/Docker搭建Elasticsearch集群/">Docker搭建Elasticsearch集群</a></div><div class="post-qr-code"><div class="post-qr-code-item"><img class="post-qr-code__img" src="/img/alipay.jpg"><div class="post-qr-code__desc">支付宝打赏</div></div><div class="post-qr-code-item"><img class="post-qr-code__img" src="/img/wechatpay.jpg"><div class="post-qr-code__desc">微信打赏</div></div></div><nav id="pagination"><div class="prev-post pull-left"><a href="/2019/12/10/18.CentOS-7安装部署GitLab/"><i class="fa fa-chevron-left">  </i><span>CentOS 7安装部署GitLab</span></a></div><div class="next-post pull-right"><a href="/2019/07/06/16.工作流引擎：Activiti-进阶/"><span>工作流引擎：Activiti 进阶</span><i class="fa fa-chevron-right"></i></a></div></nav><div id="gitalk-container"></div><script>var gitalk = new Gitalk({
+  clientID: '5d894987ff69ff0ceb17',
+  clientSecret: '411e2ea94ae376885bd6355986f98bf42462b8f3',
+  repo: 'gitalk',
+  owner: 'imxushuai',
+  admin: 'imxushuai',
+  id: md5(decodeURI(location.pathname)),
+  language: 'zh-CN'
+})
+gitalk.render('gitalk-container')</script></div></div><footer class="footer-bg" style="background-image: url(https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/background.jpg)"><div class="layout" id="footer"><div class="copyright">&copy;2018 - 2022 By imxushuai</div><div class="framework-info"><span>驱动 - </span><a href="http://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 - </span><a href="https://github.com/Molunerfinn/hexo-theme-melody"><span>Melody</span></a></div><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_site_uv"><i class="fa fa-user"></i><span id="busuanzi_value_site_uv"></span><span></span></span><span class="footer-separator">|</span><span id="busuanzi_container_site_pv"><i class="fa fa-eye"></i><span id="busuanzi_value_site_pv"></span><span></span></span></div><script>(function (T, h, i, n, k, P, a, g, e) {
+    g = function () {
+        P = h.createElement(i);
+        a = h.getElementsByTagName(i)[0];
+        P.src = k;
+        P.charset = "utf-8";
+        P.async = 1;
+        a.parentNode.insertBefore(P, a)
+    };
+    T["ThinkPageWeatherWidgetObject"] = n;
+    T[n] || (T[n] = function () {
+        (T[n].q = T[n].q || []).push(arguments)
+    });
+    T[n].l = +new Date();
+    if (T.attachEvent) {
+        T.attachEvent("onload", g)
+    } else {
+        T.addEventListener("load", g, false)
+    }
+}(window, document, "script", "tpwidget", "//widget.seniverse.com/widget/chameleon.js"))</script><script>var showFlag = true;
+var os = function() {var ua = navigator.userAgent,isWindowsPhone = /(?:Windows Phone)/.test(ua),isSymbian = /(?:SymbianOS)/.test(ua) || isWindowsPhone, isAndroid = /(?:Android)/.test(ua), isFireFox = /(?:Firefox)/.test(ua), isChrome = /(?:Chrome|CriOS)/.test(ua), isTablet = /(?:iPad|PlayBook)/.test(ua) || (isAndroid && !/(?:Mobile)/.test(ua)) || (isFireFox && /(?:Tablet)/.test(ua)), isPhone = /(?:iPhone)/.test(ua) && !isTablet, isPc = !isPhone && !isAndroid && !isSymbian;return {isTablet: isTablet, isPhone: isPhone, isAndroid : isAndroid, isPc : isPc};}();
+if (os.isAndroid || os.isPhone) {
+    showFlag = false;
+}
+tpwidget("init", {
+    "flavor": "bubble",
+    "location": "WM6N2PM3WY2K",
+    "geolocation": "enabled",
+    "position": "bottom-right",
+    "margin": "17px 70px",
+    "language": "auto",
+    "unit": "c",
+    "theme": "chameleon",
+    "uid": "UEB839A1CD",
+    "hash": "28ca33b0751401a8e994a76ed0e253cd"
+})
+if (showFlag) {
+    tpwidget("show");
+}
+window.addEventListener("resize", function(){
+    console.log(document.documentElement.clientWidth)
+    if (document.documentElement.clientWidth < 1065) {
+        console.log("false")
+    } else {
+        console.log("true")
+    }
+})</script></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.6.1"></script><script src="/js/fancybox.js?version=1.6.1"></script><script src="/js/sidebar.js?version=1.6.1"></script><script src="/js/copy.js?version=1.6.1"></script><script src="/js/fireworks.js?version=1.6.1"></script><script src="/js/transition.js?version=1.6.1"></script><script src="/js/scroll.js?version=1.6.1"></script><script src="/js/head.js?version=1.6.1"></script><script src="/js/search/algolia.js"></script><script>if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+  $('#nav').addClass('is-mobile')
+  $('footer').addClass('is-mobile')
+}</script><div class="search-dialog" id="algolia-search"><div class="search-dialog__title" id="algolia-search-title">Algolia</div><div id="algolia-input-panel"><div id="algolia-search-input"></div></div><hr><div id="algolia-search-results"><div id="algolia-hits"></div><div id="algolia-pagination"></div><div id="algolia-stats"></div></div><span class="search-close-button"><i class="fa fa-times"></i></span></div><div class="search-mask"></div></body></html>

@@ -1,0 +1,188 @@
+<!-- - var pageTitle = page.title || config.subtitle || ''// 修改首页的title--><!DOCTYPE html><html lang="zh-Hans"><head><meta name="generator" content="Hexo 3.9.0"><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="十次方后端笔记十：容器管理与监控"><meta name="keywords" content="十次方容器管理,十次方容器监控,Rancher,InfluxDB,Grafana"><meta name="author" content="imxushuai"><meta name="copyright" content="imxushuai"><meta name="baidu-site-verification" content="B3htTw43Gg"><meta name="google-site-verification" content="o2KrBdxV2bs7OPjZSdarNWbV6uC2WAtFOGQEbGAZJOo"><title>十次方后端笔记十：容器管理与监控 | imxushuai</title><link rel="shortcut icon" href="/B.png"><link rel="stylesheet" href="/css/index.css?version=1.6.1"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css?version=1.6.1"><link rel="dns-prefetch" href="https://cdn.staticfile.org"><link rel="dns-prefetch" href="https://cdn.bootcss.com"><link rel="dns-prefetch" href="https://creativecommons.org"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.1.1/dist/instantsearch.min.css"><script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.1.1/dist/instantsearch.min.js" defer></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css"><script src="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js"></script><script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.10.0/js/md5.min.js"></script><script>((function(){
+  var bp = document.createElement('script');
+  var curProtocol = window.location.protocol.split(':')[0];
+  if (curProtocol === 'https') {
+  bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+}
+  else {
+  bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+}
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(bp, s);
+})());
+
+</script><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><script>(adsbygoogle = window.adsbygoogle || []).push({
+  google_ad_client: 'ca-pub-8123778246943935',
+  enable_page_level_ads: true
+});
+</script><link rel="dns-prefetch" href="https://hm.baidu.com"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?ee77185761e9c3e3a277dac848c66c44";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();</script><link rel="dns-prefetch" href="https://www.google-analytics.com"><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-140233731-1', 'auto');
+ga('send', 'pageview');</script><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: {"appId":"0AG6VKDJB8","apiKey":"1acca465cd19291fd2e30fc0bde470b9","indexName":"search","hits":{"per_page":10},"languages":{"input_placeholder":"搜索文章","hits_empty":"找不到您查询的内容:${query}","hits_stats":"找到 ${hits} 条结果，用时 ${time} 毫秒"}},
+  localSearch: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  }
+} </script></head><body><canvas class="fireworks"></canvas><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar"><div class="toggle-sidebar-info text-center"><span data-toggle="切换文章详情">切换站点概览</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Rancher"><span class="toc-number">1.</span> <span class="toc-text">Rancher</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#安装和初始化（省略）"><span class="toc-number">1.1.</span> <span class="toc-text">安装和初始化（省略）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#扩容和缩容"><span class="toc-number">1.2.</span> <span class="toc-text">扩容和缩容</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#扩容"><span class="toc-number">1.2.1.</span> <span class="toc-text">扩容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#缩容"><span class="toc-number">1.2.2.</span> <span class="toc-text">缩容</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#InfluxDB"><span class="toc-number">2.</span> <span class="toc-text">InfluxDB</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是InfluxDB"><span class="toc-number">2.1.</span> <span class="toc-text">什么是InfluxDB</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#InfluxDB安装"><span class="toc-number">2.2.</span> <span class="toc-text">InfluxDB安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#InfluxDB常用操作"><span class="toc-number">2.3.</span> <span class="toc-text">InfluxDB常用操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#创建数据库"><span class="toc-number">2.3.1.</span> <span class="toc-text">创建数据库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查看所有数据库"><span class="toc-number">2.3.2.</span> <span class="toc-text">查看所有数据库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#删除数据库"><span class="toc-number">2.3.3.</span> <span class="toc-text">删除数据库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#用户操作"><span class="toc-number">2.3.4.</span> <span class="toc-text">用户操作</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#cAdvisor"><span class="toc-number">3.</span> <span class="toc-text">cAdvisor</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是cAdvisor"><span class="toc-number">3.1.</span> <span class="toc-text">什么是cAdvisor</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#cAdvisor安装"><span class="toc-number">3.2.</span> <span class="toc-text">cAdvisor安装</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Grafana"><span class="toc-number">4.</span> <span class="toc-text">Grafana</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是Grafana"><span class="toc-number">4.1.</span> <span class="toc-text">什么是Grafana</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Grafana安装"><span class="toc-number">4.2.</span> <span class="toc-text">Grafana安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Grafana操作"><span class="toc-number">4.3.</span> <span class="toc-text">Grafana操作</span></a></li></ol></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="/img/avatar_b.png"></div><div class="author-info__name text-center">imxushuai</div><div class="author-info__description text-center">本站是imxushuai的个人博客。内容包含有学习资源分享、IT技术分享和生活周边，记录下生活的点滴，愿与君共勉。</div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">文章</span><span class="pull-right">87</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">标签</span><span class="pull-right">276</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">分类</span><span class="pull-right">37</span></a></div><hr><div class="author-info-links"><div class="author-info-links__title text-center">Links</div><a class="author-info-links__name text-center" href="https://github.com/imxushuai">GitHub</a><a class="author-info-links__name text-center" href="https://me.csdn.net/qq1031893936">CSDN</a><a class="author-info-links__name text-center" href="https://spring.io/projects">Spring</a><a class="author-info-links__name text-center" href="http://www.cx1314.cn/forum.php">IT资源</a></div></div></div><div id="content-outer"><div id="top-container" style="background-image: url(https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/background.jpg)"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">imxushuai</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus"><a class="site-page social-icon search"><i class="fa fa-search"></i><span> 站内搜索</span></a><a class="site-page" href="/">首页</a><a class="site-page" href="/categories">分类</a><a class="site-page" href="/archives">文章总览</a><a class="site-page" href="/2000/01/01/%e5%ad%a6%e4%b9%a0%e8%b5%84%e6%ba%90/">学习资源</a><a class="site-page" href="/about">关于</a></span></div><div id="post-info"><div id="post-title">十次方后端笔记十：容器管理与监控</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2002-01-02</time><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/十次方项目/">十次方项目</a><div class="post-meta-wordcount"><span>字数总计: </span><span class="word-count">786</span><span class="post-meta__separator">|</span><span>阅读时长: 2 分钟</span></div></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><center><i>使用 Rancher + influxDB + Grafana 实现 Docker 容器监控与管理</i></center>
+
+<p><img src="https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/tensquare.jpg" alt></p>
+<a id="more"></a>
+<h1 id="Rancher"><a href="#Rancher" class="headerlink" title="Rancher"></a>Rancher</h1><h2 id="安装和初始化（省略）"><a href="#安装和初始化（省略）" class="headerlink" title="安装和初始化（省略）"></a>安装和初始化（省略）</h2><p>参考文章：<a href="https://www.imxushuai.com/2019/05/16/Rancher%E5%85%A5%E9%97%A8/">Rancher入门</a></p>
+<h2 id="扩容和缩容"><a href="#扩容和缩容" class="headerlink" title="扩容和缩容"></a>扩容和缩容</h2><h3 id="扩容"><a href="#扩容" class="headerlink" title="扩容"></a>扩容</h3><ol>
+<li><p>添加服务，不需要添加端口映射</p>
+</li>
+<li><p>点击<code>API -&gt; Webhooks -&gt; 添加接收器</code></p>
+</li>
+<li><p>输入名称，扩容，选择刚刚创建的服务，输入数量。</p>
+<p><img src="https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/20190702104239.png" alt></p>
+</li>
+<li><p>复制触发地址，使用<code>POST</code>请求访问该地址。（每执行一次，增加步长值相等数量的容器，直到容器数量达到最大数量）</p>
+<p><img src="https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/20190702103927.png" alt></p>
+</li>
+<li><p>查看是否扩容成功</p>
+<p><img src="https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/20190702104413.png" alt></p>
+</li>
+</ol>
+<h3 id="缩容"><a href="#缩容" class="headerlink" title="缩容"></a>缩容</h3><p>操作和扩容类似，需要注意的是步长，每次访问链接时，会增加/减少的容器数量为步长。</p>
+<h1 id="InfluxDB"><a href="#InfluxDB" class="headerlink" title="InfluxDB"></a>InfluxDB</h1><h2 id="什么是InfluxDB"><a href="#什么是InfluxDB" class="headerlink" title="什么是InfluxDB"></a>什么是InfluxDB</h2><p><code>InfluxDB</code>是一款时间序列数据库，本质是数据库，只是存储数据的结构不同。</p>
+<p>目前时间序列数据库大多用在物联网行业，我司也有使用，不过是另一款，叫做<code>OPENTSDB</code>，阿里云的时间序列数据库，就是构建在<code>OPENTSDB</code>之上的。</p>
+<h2 id="InfluxDB安装"><a href="#InfluxDB安装" class="headerlink" title="InfluxDB安装"></a>InfluxDB安装</h2><ol>
+<li><p>拉取镜像</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull influxdb</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>运行容器</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -di --name=influxdb -p 8086:8086 -v /var/influxdb:/var/liv/influxdb influxdb</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>测试是否可用</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 进入容器</span><br><span class="line">docker exec -it influxdb bin/bash</span><br><span class="line"><span class="meta">#</span> 查看influx版本</span><br><span class="line">/usr/bin/influx -version # 输出结果：InfluxDB shell version: 1.7.7</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注意：influxdb早期的版本是有web ui的，但是版本比较的老，新的版本已经将web ui移除了。</p>
+</blockquote>
+</li>
+</ol>
+<h2 id="InfluxDB常用操作"><a href="#InfluxDB常用操作" class="headerlink" title="InfluxDB常用操作"></a>InfluxDB常用操作</h2><p>操作<code>InfluxDB</code>首先需要进入容器：<code>docker exec -it influxdb bin/bash</code></p>
+<p>进入<code>InfluxDB</code>命令行：<code>/usr/bin/influx</code></p>
+<h3 id="创建数据库"><a href="#创建数据库" class="headerlink" title="创建数据库"></a>创建数据库</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create database cadvisor</span><br></pre></td></tr></table></figure>
+<h3 id="查看所有数据库"><a href="#查看所有数据库" class="headerlink" title="查看所有数据库"></a>查看所有数据库</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show database</span><br></pre></td></tr></table></figure>
+<h3 id="删除数据库"><a href="#删除数据库" class="headerlink" title="删除数据库"></a>删除数据库</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">drop database cadvisor</span><br></pre></td></tr></table></figure>
+<h3 id="用户操作"><a href="#用户操作" class="headerlink" title="用户操作"></a>用户操作</h3><ul>
+<li><p>创建用户</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 选择数据库</span><br><span class="line">use cadvisor</span><br><span class="line"><span class="meta">#</span> 创建用户</span><br><span class="line">create user "cadvisor" with password 'cadvisor' with all privileges</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>用户授权</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">grant all privileges on cadvisor to cadvisor</span><br><span class="line"><span class="meta">#</span> 写入权限</span><br><span class="line">grant write on cadvisor to cadvisor</span><br><span class="line"><span class="meta">#</span> 读权限</span><br><span class="line">grant read on cadvisor to cadvisor</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h1 id="cAdvisor"><a href="#cAdvisor" class="headerlink" title="cAdvisor"></a>cAdvisor</h1><h2 id="什么是cAdvisor"><a href="#什么是cAdvisor" class="headerlink" title="什么是cAdvisor"></a>什么是cAdvisor</h2><p>Google开源的用于监控基础设施应用的工具，它是一个强大的监控工具，不需要任 何配置就可以通过运行在Docker主机上的容器来监控Docker容器，而且可以监控Docker主机。</p>
+<h2 id="cAdvisor安装"><a href="#cAdvisor安装" class="headerlink" title="cAdvisor安装"></a>cAdvisor安装</h2><ol>
+<li><p>拉取镜像</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull cadvisor</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>制作并运行容器</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --volume=/:/rootfs:ro --volume=/var/run:/var/run:rw --volume=/sys:/sys:ro --volume=/var/lib/docker/:/var/lib/docker:ro --hostname=cadvisor --publish=8080:8080 --detach=true --name=cadvisor google/cadvisor -storage_driver=influxdb -storage_driver_host=192.168.136.104:8086 -storage_driver_db=cadvisor -storage_driver_user=cadvisor -storage_driver_password=cadvisor</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看web ui</p>
+<p><img src="https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/20190702113412.png" alt></p>
+</li>
+</ol>
+<h1 id="Grafana"><a href="#Grafana" class="headerlink" title="Grafana"></a>Grafana</h1><h2 id="什么是Grafana"><a href="#什么是Grafana" class="headerlink" title="什么是Grafana"></a>什么是Grafana</h2><p>Grafana是一个可视化面板（Dashboard），有着非常漂亮的图表和布局展示，功 能齐全的度量仪表盘和图形编辑器。支持Graphite、zabbix、InfluxDB、Prometheus和OpenTSDB作为数据源。 </p>
+<p>Grafana主要特性：</p>
+<ul>
+<li>灵活丰富的图形化选项</li>
+<li>可以混合多种风格</li>
+<li>支持白天和夜间模式</li>
+<li>多个数据源。 </li>
+</ul>
+<h2 id="Grafana安装"><a href="#Grafana安装" class="headerlink" title="Grafana安装"></a>Grafana安装</h2><ol>
+<li><p>拉取镜像</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull grafana/grafana</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>运行容器</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -di --name=garafana -p 3001:3000 -e INFLUXDB_HOST=192.168.136.104:8086 -e INFLUXDB_NAME=cadvisor -e INFLUXDB_PASS=cadvisor  grafana/grafana</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>访问：<code>http://192.168.136.104:3001</code></p>
+<p><img src="https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/20190702130500.png" alt></p>
+<p>账号密码都是<code>admin</code>。</p>
+</li>
+</ol>
+<h2 id="Grafana操作"><a href="#Grafana操作" class="headerlink" title="Grafana操作"></a>Grafana操作</h2><ol>
+<li><p>添加数据源（省略）</p>
+</li>
+<li><p>添加仪表盘（省略）</p>
+</li>
+<li><p>预警</p>
+<p>通过监控内存，当内存达到阈值时，调用<code>Rancher</code>的扩容API。</p>
+</li>
+</ol>
+</div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">imxushuai</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://www.imxushuai.com/2002/01/02/10.十次方后端笔记十：容器管理与监控/">https://www.imxushuai.com/2002/01/02/10.十次方后端笔记十：容器管理与监控/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://www.imxushuai.com">imxushuai</a>！</span></div></div><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/十次方容器管理/">十次方容器管理</a><a class="post-meta__tags" href="/tags/十次方容器监控/">十次方容器监控</a><a class="post-meta__tags" href="/tags/Rancher/">Rancher</a><a class="post-meta__tags" href="/tags/InfluxDB/">InfluxDB</a><a class="post-meta__tags" href="/tags/Grafana/">Grafana</a></div><div class="post-qr-code"><div class="post-qr-code-item"><img class="post-qr-code__img" src="/img/alipay.jpg"><div class="post-qr-code__desc">支付宝打赏</div></div><div class="post-qr-code-item"><img class="post-qr-code__img" src="/img/wechatpay.jpg"><div class="post-qr-code__desc">微信打赏</div></div></div><nav id="pagination"><div class="prev-post pull-left"><a href="/2002/01/02/11.十次方人工智能笔记一：网络爬虫/"><i class="fa fa-chevron-left">  </i><span>十次方人工智能笔记一：网络爬虫</span></a></div><div class="next-post pull-right"><a href="/2002/01/02/9.十次方后端笔记九：-容器化部署与持续集成/"><span>十次方后端笔记九：容器化部署与持续集成</span><i class="fa fa-chevron-right"></i></a></div></nav><div id="gitalk-container"></div><script>var gitalk = new Gitalk({
+  clientID: '5d894987ff69ff0ceb17',
+  clientSecret: '411e2ea94ae376885bd6355986f98bf42462b8f3',
+  repo: 'gitalk',
+  owner: 'imxushuai',
+  admin: 'imxushuai',
+  id: md5(decodeURI(location.pathname)),
+  language: 'zh-CN'
+})
+gitalk.render('gitalk-container')</script></div></div><footer class="footer-bg" style="background-image: url(https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/background.jpg)"><div class="layout" id="footer"><div class="copyright">&copy;2018 - 2022 By imxushuai</div><div class="framework-info"><span>驱动 - </span><a href="http://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 - </span><a href="https://github.com/Molunerfinn/hexo-theme-melody"><span>Melody</span></a></div><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_site_uv"><i class="fa fa-user"></i><span id="busuanzi_value_site_uv"></span><span></span></span><span class="footer-separator">|</span><span id="busuanzi_container_site_pv"><i class="fa fa-eye"></i><span id="busuanzi_value_site_pv"></span><span></span></span></div><script>(function (T, h, i, n, k, P, a, g, e) {
+    g = function () {
+        P = h.createElement(i);
+        a = h.getElementsByTagName(i)[0];
+        P.src = k;
+        P.charset = "utf-8";
+        P.async = 1;
+        a.parentNode.insertBefore(P, a)
+    };
+    T["ThinkPageWeatherWidgetObject"] = n;
+    T[n] || (T[n] = function () {
+        (T[n].q = T[n].q || []).push(arguments)
+    });
+    T[n].l = +new Date();
+    if (T.attachEvent) {
+        T.attachEvent("onload", g)
+    } else {
+        T.addEventListener("load", g, false)
+    }
+}(window, document, "script", "tpwidget", "//widget.seniverse.com/widget/chameleon.js"))</script><script>var showFlag = true;
+var os = function() {var ua = navigator.userAgent,isWindowsPhone = /(?:Windows Phone)/.test(ua),isSymbian = /(?:SymbianOS)/.test(ua) || isWindowsPhone, isAndroid = /(?:Android)/.test(ua), isFireFox = /(?:Firefox)/.test(ua), isChrome = /(?:Chrome|CriOS)/.test(ua), isTablet = /(?:iPad|PlayBook)/.test(ua) || (isAndroid && !/(?:Mobile)/.test(ua)) || (isFireFox && /(?:Tablet)/.test(ua)), isPhone = /(?:iPhone)/.test(ua) && !isTablet, isPc = !isPhone && !isAndroid && !isSymbian;return {isTablet: isTablet, isPhone: isPhone, isAndroid : isAndroid, isPc : isPc};}();
+if (os.isAndroid || os.isPhone) {
+    showFlag = false;
+}
+tpwidget("init", {
+    "flavor": "bubble",
+    "location": "WM6N2PM3WY2K",
+    "geolocation": "enabled",
+    "position": "bottom-right",
+    "margin": "17px 70px",
+    "language": "auto",
+    "unit": "c",
+    "theme": "chameleon",
+    "uid": "UEB839A1CD",
+    "hash": "28ca33b0751401a8e994a76ed0e253cd"
+})
+if (showFlag) {
+    tpwidget("show");
+}
+window.addEventListener("resize", function(){
+    console.log(document.documentElement.clientWidth)
+    if (document.documentElement.clientWidth < 1065) {
+        console.log("false")
+    } else {
+        console.log("true")
+    }
+})</script></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.6.1"></script><script src="/js/fancybox.js?version=1.6.1"></script><script src="/js/sidebar.js?version=1.6.1"></script><script src="/js/copy.js?version=1.6.1"></script><script src="/js/fireworks.js?version=1.6.1"></script><script src="/js/transition.js?version=1.6.1"></script><script src="/js/scroll.js?version=1.6.1"></script><script src="/js/head.js?version=1.6.1"></script><script src="/js/search/algolia.js"></script><script>if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+  $('#nav').addClass('is-mobile')
+  $('footer').addClass('is-mobile')
+}</script><div class="search-dialog" id="algolia-search"><div class="search-dialog__title" id="algolia-search-title">Algolia</div><div id="algolia-input-panel"><div id="algolia-search-input"></div></div><hr><div id="algolia-search-results"><div id="algolia-hits"></div><div id="algolia-pagination"></div><div id="algolia-stats"></div></div><span class="search-close-button"><i class="fa fa-times"></i></span></div><div class="search-mask"></div></body></html>

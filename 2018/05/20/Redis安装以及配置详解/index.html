@@ -1,0 +1,328 @@
+<!-- - var pageTitle = page.title || config.subtitle || ''// 修改首页的title--><!DOCTYPE html><html lang="zh-Hans"><head><meta name="generator" content="Hexo 3.9.0"><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="Redis安装以及配置详解"><meta name="keywords" content="Redis,Redis安装,Redis配置详解,gcc-c++"><meta name="author" content="imxushuai"><meta name="copyright" content="imxushuai"><meta name="baidu-site-verification" content="B3htTw43Gg"><meta name="google-site-verification" content="o2KrBdxV2bs7OPjZSdarNWbV6uC2WAtFOGQEbGAZJOo"><title>Redis安装以及配置详解 | imxushuai</title><link rel="shortcut icon" href="/B.png"><link rel="stylesheet" href="/css/index.css?version=1.6.1"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css?version=1.6.1"><link rel="dns-prefetch" href="https://cdn.staticfile.org"><link rel="dns-prefetch" href="https://cdn.bootcss.com"><link rel="dns-prefetch" href="https://creativecommons.org"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.1.1/dist/instantsearch.min.css"><script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.1.1/dist/instantsearch.min.js" defer></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css"><script src="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js"></script><script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.10.0/js/md5.min.js"></script><script>((function(){
+  var bp = document.createElement('script');
+  var curProtocol = window.location.protocol.split(':')[0];
+  if (curProtocol === 'https') {
+  bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+}
+  else {
+  bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+}
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(bp, s);
+})());
+
+</script><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><script>(adsbygoogle = window.adsbygoogle || []).push({
+  google_ad_client: 'ca-pub-8123778246943935',
+  enable_page_level_ads: true
+});
+</script><link rel="dns-prefetch" href="https://hm.baidu.com"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?ee77185761e9c3e3a277dac848c66c44";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();</script><link rel="dns-prefetch" href="https://www.google-analytics.com"><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-140233731-1', 'auto');
+ga('send', 'pageview');</script><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: {"appId":"0AG6VKDJB8","apiKey":"1acca465cd19291fd2e30fc0bde470b9","indexName":"search","hits":{"per_page":10},"languages":{"input_placeholder":"搜索文章","hits_empty":"找不到您查询的内容:${query}","hits_stats":"找到 ${hits} 条结果，用时 ${time} 毫秒"}},
+  localSearch: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  }
+} </script></head><body><canvas class="fireworks"></canvas><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar"><div class="toggle-sidebar-info text-center"><span data-toggle="切换文章详情">切换站点概览</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#安装Redis依赖"><span class="toc-number">1.</span> <span class="toc-text">安装Redis依赖</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装gcc-c"><span class="toc-number">1.1.</span> <span class="toc-text">安装gcc-c++</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#在线安装"><span class="toc-number">1.1.1.</span> <span class="toc-text">在线安装</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#离线安装"><span class="toc-number">1.1.2.</span> <span class="toc-text">离线安装</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装Redis"><span class="toc-number">2.</span> <span class="toc-text">安装Redis</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#解压Redis安装包"><span class="toc-number">2.1.</span> <span class="toc-text">解压Redis安装包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#编译-amp-amp-安装"><span class="toc-number">2.2.</span> <span class="toc-text">编译&amp;&amp;安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#启动测试"><span class="toc-number">2.3.</span> <span class="toc-text">启动测试</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#扩展：配置以及开机启动"><span class="toc-number">3.</span> <span class="toc-text">扩展：配置以及开机启动</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#配置"><span class="toc-number">3.1.</span> <span class="toc-text">配置</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#配置项详解"><span class="toc-number">3.1.1.</span> <span class="toc-text">配置项详解</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#获取与更新配置"><span class="toc-number">3.1.2.</span> <span class="toc-text">获取与更新配置</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#命令行获取配置"><span class="toc-number">3.1.2.1.</span> <span class="toc-text">命令行获取配置</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#命令行更新配置"><span class="toc-number">3.1.2.2.</span> <span class="toc-text">命令行更新配置</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#配置文件方式"><span class="toc-number">3.1.2.3.</span> <span class="toc-text">配置文件方式</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#开机启动"><span class="toc-number">3.2.</span> <span class="toc-text">开机启动</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#新建脚本文件"><span class="toc-number">3.2.1.</span> <span class="toc-text">新建脚本文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#文件内容"><span class="toc-number">3.2.2.</span> <span class="toc-text">文件内容</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#修改脚本文件权限"><span class="toc-number">3.2.3.</span> <span class="toc-text">修改脚本文件权限</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#设置开机启动"><span class="toc-number">3.2.4.</span> <span class="toc-text">设置开机启动</span></a></li></ol></li></ol></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="/img/avatar_b.png"></div><div class="author-info__name text-center">imxushuai</div><div class="author-info__description text-center">本站是imxushuai的个人博客。内容包含有学习资源分享、IT技术分享和生活周边，记录下生活的点滴，愿与君共勉。</div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">文章</span><span class="pull-right">87</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">标签</span><span class="pull-right">276</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">分类</span><span class="pull-right">37</span></a></div><hr><div class="author-info-links"><div class="author-info-links__title text-center">Links</div><a class="author-info-links__name text-center" href="https://github.com/imxushuai">GitHub</a><a class="author-info-links__name text-center" href="https://me.csdn.net/qq1031893936">CSDN</a><a class="author-info-links__name text-center" href="https://spring.io/projects">Spring</a><a class="author-info-links__name text-center" href="http://www.cx1314.cn/forum.php">IT资源</a></div></div></div><div id="content-outer"><div id="top-container" style="background-image: url(https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/background.jpg)"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">imxushuai</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus"><a class="site-page social-icon search"><i class="fa fa-search"></i><span> 站内搜索</span></a><a class="site-page" href="/">首页</a><a class="site-page" href="/categories">分类</a><a class="site-page" href="/archives">文章总览</a><a class="site-page" href="/2000/01/01/%e5%ad%a6%e4%b9%a0%e8%b5%84%e6%ba%90/">学习资源</a><a class="site-page" href="/about">关于</a></span></div><div id="post-info"><div id="post-title">Redis安装以及配置详解</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2018-05-20</time><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/Redis/">Redis</a><div class="post-meta-wordcount"><span>字数总计: </span><span class="word-count">2.5k</span><span class="post-meta__separator">|</span><span>阅读时长: 8 分钟</span></div></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><center><i>在CentOS下安装Redis以及Redis配置详解</i></center>
+
+<p><img src="https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/redis.jpg" alt></p>
+<a id="more"></a>
+<h2 id="安装Redis依赖"><a href="#安装Redis依赖" class="headerlink" title="安装Redis依赖"></a>安装Redis依赖</h2><p><code>redis</code>是<code>C语言</code>开发的，安装<code>redis</code>需要先将官网上下载的源码进行编译，编译依赖<code>gcc</code>环境。</p>
+<h3 id="安装gcc-c"><a href="#安装gcc-c" class="headerlink" title="安装gcc-c++"></a>安装gcc-c++</h3><p>有两种安装方式，一种是在线安装，一种是离线安装。</p>
+<h4 id="在线安装"><a href="#在线安装" class="headerlink" title="在线安装"></a>在线安装</h4><p>在线安装比较简单，使用<code>CentOS</code>自带的<code>yum</code>安装即可。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install gcc-c++ -y</span><br></pre></td></tr></table></figure>
+<h4 id="离线安装"><a href="#离线安装" class="headerlink" title="离线安装"></a>离线安装</h4><p>离线安装就相对要复杂一点，需要安装一些<code>gcc</code>的一些依赖。下图是<code>gcc</code>环境需要的依赖。</p>
+<p><img src="https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/20180521192623602.png" alt></p>
+<p>我这里已经全部下载好了，点击下面的百度网盘即可。</p>
+<blockquote>
+<p>链接：<a href="https://pan.baidu.com/s/1QDwYE1WC_vngJsqNSkZ5bQ" target="_blank" rel="noopener">https://pan.baidu.com/s/1QDwYE1WC_vngJsqNSkZ5bQ</a></p>
+<p>提取码：ny2d</p>
+</blockquote>
+<p>将下载好的这些<code>rpm</code>包上传到你的要安装的服务器，将这些<code>rpm</code>包放在同一个目录下。我这里全部放在了<code>/soft/新建文件夹</code>中。</p>
+<p><img src="https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/20180521193026633.png" alt></p>
+<p><strong>安装</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -Uvh *.rpm --nodeps --force</span><br></pre></td></tr></table></figure>
+<p>安装过程走完了过后，前往 /usr/bin 目录查看是否有 gcc和g++两个文件夹，如果有，说明安装成功。</p>
+<p><img src="https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/20180521193332441.png" alt></p>
+<h2 id="安装Redis"><a href="#安装Redis" class="headerlink" title="安装Redis"></a>安装Redis</h2><p><strong>提前将<code>Redis</code>的安装包上传至服务器。</strong></p>
+<p>下载方式：</p>
+<p><a href="https://redis.io/download" target="_blank" rel="noopener">官网下载</a></p>
+<p>👇百度网盘下载👇</p>
+<p>链接：<a href="https://pan.baidu.com/s/1iSuc8MyOBsOJ3Mcy1nARWQ" target="_blank" rel="noopener">https://pan.baidu.com/s/1iSuc8MyOBsOJ3Mcy1nARWQ</a><br>提取码：25z1</p>
+<h3 id="解压Redis安装包"><a href="#解压Redis安装包" class="headerlink" title="解压Redis安装包"></a>解压Redis安装包</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf redis-4.0.9.tar.gz</span><br></pre></td></tr></table></figure>
+<h3 id="编译-amp-amp-安装"><a href="#编译-amp-amp-安装" class="headerlink" title="编译&amp;&amp;安装"></a>编译&amp;&amp;安装</h3><p>进入解压后的Redis目录中。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 进入redis目录</span></span><br><span class="line">cd redis-4.0.9</span><br><span class="line"><span class="meta">#</span><span class="bash"> 编译&amp;&amp;安装  PREFIX指定安装目录</span></span><br><span class="line">make &amp;&amp; make install PREFIX=/usr/local/redis</span><br></pre></td></tr></table></figure>
+<h3 id="启动测试"><a href="#启动测试" class="headerlink" title="启动测试"></a>启动测试</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/redis/bin/redis-server</span><br></pre></td></tr></table></figure>
+<p><img src="https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/20190520182612.png" alt></p>
+<h2 id="扩展：配置以及开机启动"><a href="#扩展：配置以及开机启动" class="headerlink" title="扩展：配置以及开机启动"></a>扩展：配置以及开机启动</h2><p>上面安装完毕后，其实已经可以直接使用。下面介绍下一些配置和开机启动。</p>
+<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><h4 id="配置项详解"><a href="#配置项详解" class="headerlink" title="配置项详解"></a>配置项详解</h4><table>
+<thead>
+<tr>
+<th>配置项</th>
+<th>默认取值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>daemonize</td>
+<td>no</td>
+<td>Redis 默认不是以守护进程的方式运行，可以通过该配置项修改，使用 yes 启用守护进程（Windows 不支持守护线程的配置为 no ）</td>
+</tr>
+<tr>
+<td>pidfile</td>
+<td>/var/run/redis.pid</td>
+<td>当 Redis 以守护进程方式运行时，Redis 默认会把 pid 写入 /var/run/redis.pid 文件，可以通过 pidfile 指定</td>
+</tr>
+<tr>
+<td>port</td>
+<td>6379</td>
+<td>指定 Redis 监听端口，默认端口为 6379，作者在自己的一篇博文中解释了为什么选用 6379 作为默认端口，因为 6379 在手机按键上 MERZ 对应的号码，而 MERZ 取自意大利歌女 Alessia Merz 的名字</td>
+</tr>
+<tr>
+<td>bind</td>
+<td>127.0.0.1</td>
+<td>绑定的主机地址</td>
+</tr>
+<tr>
+<td>timeout</td>
+<td>300</td>
+<td>当客户端闲置多长时间后关闭连接，如果指定为 0，表示关闭该功能</td>
+</tr>
+<tr>
+<td>loglevel</td>
+<td>notice</td>
+<td>指定日志记录级别，Redis 总共支持四个级别：debug、verbose、notice、warning，默认为 notice</td>
+</tr>
+<tr>
+<td>logfile</td>
+<td>stdout</td>
+<td>日志记录方式，默认为标准输出，如果配置 Redis 为守护进程方式运行，而这里又配置为日志记录方式为标准输出，则日志将会发送给 /dev/null</td>
+</tr>
+<tr>
+<td>databases</td>
+<td>16</td>
+<td>设置数据库的数量，默认数据库为0，可以使用SELECT 命令在连接上指定数据库id</td>
+</tr>
+<tr>
+<td>save <seconds> <changes></changes></seconds></td>
+<td>默认配置文件中提供了三个条件：save 900 1/save 300 10/save 60 10000</td>
+<td>指定在多长时间内，有多少次更新操作，就将数据同步到数据文件，可以多个条件配合</td>
+</tr>
+<tr>
+<td>rdbcompression</td>
+<td>yes</td>
+<td>指定存储至本地数据库时是否压缩数据，默认为 yes，Redis 采用 LZF 压缩，如果为了节省 CPU 时间，可以关闭该选项，但会导致数据库文件变的巨大</td>
+</tr>
+<tr>
+<td>dbfilename</td>
+<td>dump.rdb</td>
+<td>指定本地数据库文件名，默认值为 dump.rdb</td>
+</tr>
+<tr>
+<td>dir</td>
+<td>./</td>
+<td>指定本地数据库存放目录</td>
+</tr>
+<tr>
+<td>slaveof <masterip> <masterport></masterport></masterip></td>
+<td>无</td>
+<td>设置当本机为 slav 服务时，设置 master 服务的 IP 地址及端口，在 Redis 启动时，它会自动从 master 进行数据同步</td>
+</tr>
+<tr>
+<td>masterauth <master-password></master-password></td>
+<td>无</td>
+<td>当 master 服务设置了密码保护时，slav 服务连接 master 的密码</td>
+</tr>
+<tr>
+<td>requirepass</td>
+<td>无</td>
+<td>设置 Redis 连接密码，如果配置了连接密码，客户端在连接 Redis 时需要通过 AUTH <password> 命令提供密码，默认关闭</password></td>
+</tr>
+<tr>
+<td>maxclients</td>
+<td>无限</td>
+<td>设置同一时间最大客户端连接数，默认无限制，Redis 可以同时打开的客户端连接数为 Redis 进程可以打开的最大文件描述符数，如果设置 maxclients 0，表示不作限制。当客户端连接数到达限制时，Redis 会关闭新的连接并向客户端返回 max number of clients reached 错误信息</td>
+</tr>
+<tr>
+<td>maxmemory <bytes></bytes></td>
+<td></td>
+<td>指定 Redis 最大内存限制，Redis 在启动时会把数据加载到内存中，达到最大内存后，Redis 会先尝试清除已到期或即将到期的 Key，当此方法处理后，仍然到达最大内存设置，将无法再进行写入操作，但仍然可以进行读取操作。Redis 新的 vm 机制，会把 Key 存放内存，Value 会存放在 swap 区</td>
+</tr>
+<tr>
+<td>appendonly</td>
+<td>no</td>
+<td>指定是否在每次更新操作后进行日志记录，Redis 在默认情况下是异步的把数据写入磁盘，如果不开启，可能会在断电时导致一段时间内的数据丢失。因为 redis 本身同步数据文件是按上面 save 条件来同步的，所以有的数据会在一段时间内只存在于内存中。默认为 no</td>
+</tr>
+<tr>
+<td>appendfilename</td>
+<td>appendonly.aof</td>
+<td>指定更新日志文件名，默认为 appendonly.aof</td>
+</tr>
+<tr>
+<td>appendfsync</td>
+<td>everysec</td>
+<td>指定更新日志条件，共有 3 个可选值：no、always、everysec</td>
+</tr>
+<tr>
+<td>vm-enabled</td>
+<td>no</td>
+<td>指定是否启用虚拟内存机制，默认值为 no，简单的介绍一下，VM 机制将数据分页存放，由 Redis 将访问量较少的页即冷数据 swap 到磁盘上，访问多的页面由磁盘自动换出到内存中（在后面的文章我会仔细分析 Redis 的 VM 机制）</td>
+</tr>
+<tr>
+<td>vm-swap-file</td>
+<td>/tmp/redis.swap</td>
+<td>虚拟内存文件路径，默认值为 /tmp/redis.swap，不可多个 Redis 实例共享</td>
+</tr>
+<tr>
+<td>vm-max-memory</td>
+<td>0</td>
+<td>将所有大于 vm-max-memory 的数据存入虚拟内存，无论 vm-max-memory 设置多小，所有索引数据都是内存存储的(Redis 的索引数据 就是 keys)，也就是说，当 vm-max-memory 设置为 0 的时候，其实是所有 value 都存在于磁盘。默认值为 0</td>
+</tr>
+<tr>
+<td>vm-page-size</td>
+<td>32</td>
+<td>Redis swap 文件分成了很多的 page，一个对象可以保存在多个 page 上面，但一个 page 上不能被多个对象共享，vm-page-size 是要根据存储的 数据大小来设定的，作者建议如果存储很多小对象，page 大小最好设置为 32 或者 64bytes；如果存储很大大对象，则可以使用更大的 page，如果不确定，就使用默认值</td>
+</tr>
+<tr>
+<td>vm-pages</td>
+<td>134217728</td>
+<td>设置 swap 文件中的 page 数量，由于页表（一种表示页面空闲或使用的 bitmap）是在放在内存中的，，在磁盘上每 8 个 pages 将消耗 1byte 的内存。</td>
+</tr>
+<tr>
+<td>vm-max-threads</td>
+<td>4</td>
+<td>设置访问swap文件的线程数,最好不要超过机器的核数,如果设置为0,那么所有对swap文件的操作都是串行的，可能会造成比较长时间的延迟。默认值为4</td>
+</tr>
+<tr>
+<td>glueoutputbuf</td>
+<td>yes</td>
+<td>设置在向客户端应答时，是否把较小的包合并为一个包发送，默认为开启</td>
+</tr>
+<tr>
+<td>activerehashing</td>
+<td>yes</td>
+<td>指定是否激活重置哈希，默认为开启</td>
+</tr>
+<tr>
+<td>include</td>
+<td>/path/to/local.conf</td>
+<td>指定包含其它的配置文件，可以在同一主机上多个Redis实例之间使用同一份配置文件，而同时各个实例又拥有自己的特定配置文件</td>
+</tr>
+<tr>
+<td>hash-max-zipmap-entries</td>
+<td>64</td>
+<td>指定在超过一定的数量或者最大的元素超过某一临界值时，采用一种特殊的哈希算法</td>
+</tr>
+<tr>
+<td>hash-max-zipmap-value</td>
+<td>512</td>
+<td>指定在超过一定的数量或者最大的元素超过某一临界值时，采用一种特殊的哈希算法</td>
+</tr>
+</tbody>
+</table>
+<h4 id="获取与更新配置"><a href="#获取与更新配置" class="headerlink" title="获取与更新配置"></a>获取与更新配置</h4><h5 id="命令行获取配置"><a href="#命令行获取配置" class="headerlink" title="命令行获取配置"></a>命令行获取配置</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 获取单个配置项</span></span><br><span class="line">CONFIG GET $&#123;CONFIG_SETTING_NAME&#125;</span><br><span class="line"><span class="meta">#</span><span class="bash"> 获取全部配置,使用通配符 *</span></span><br><span class="line">CONFIG GET *</span><br></pre></td></tr></table></figure>
+<p>使用具体配置项名称，取代<code>CONFIG_SETTING_NAME</code>。</p>
+<h5 id="命令行更新配置"><a href="#命令行更新配置" class="headerlink" title="命令行更新配置"></a>命令行更新配置</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CONFIG SET $&#123;CONFIG_SETTING_NAME&#125; $&#123;NEW_CONFIG_VALUE&#125;</span><br></pre></td></tr></table></figure>
+<p>第一个参数为具体配置项，第二个参数该配置项的值。</p>
+<h5 id="配置文件方式"><a href="#配置文件方式" class="headerlink" title="配置文件方式"></a>配置文件方式</h5><ol>
+<li><p>复制安装包下的<code>redis.conf</code>文件到<code>/usr/local/redis/bin</code>目录下</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp /root/redis-4.0.9/redis.conf /usr/local/redis/bin</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>通过编辑<code>/usr/local/redis/bin/redis.conf</code>来修改配置，在启动时，指定使用该配置文件启动即可。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/redis/bin/redis-server /usr/local/redis/bin/redis.conf</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="开机启动"><a href="#开机启动" class="headerlink" title="开机启动"></a>开机启动</h3><h4 id="新建脚本文件"><a href="#新建脚本文件" class="headerlink" title="新建脚本文件"></a>新建脚本文件</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/init.d/redis</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>如果没有安装<code>vim</code>，也可以使用<code>vi</code></p>
+</blockquote>
+<h4 id="文件内容"><a href="#文件内容" class="headerlink" title="文件内容"></a>文件内容</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/sh</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> chkconfig:   2345 90 10</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> description:  Redis is a persistent key-value database</span></span><br><span class="line">PATH=/usr/local/bin:/sbin:/usr/bin:/bin</span><br><span class="line"></span><br><span class="line">REDISPORT=6379</span><br><span class="line">EXEC=/usr/local/redis/bin/redis-server</span><br><span class="line">REDIS_CLI=/usr/local/redis/bin/redis-cli</span><br><span class="line"></span><br><span class="line">PIDFILE=/var/run/redis.pid</span><br><span class="line"></span><br><span class="line">CONF="/usr/local/redis/bin/redis.conf"</span><br><span class="line"></span><br><span class="line">case "$1" in  </span><br><span class="line">    start)  </span><br><span class="line">        if [ -f $PIDFILE ]  </span><br><span class="line">        then  </span><br><span class="line">                echo "$PIDFILE exists, process is already running or crashed"  </span><br><span class="line">        else  </span><br><span class="line">                echo "Starting Redis server..."  </span><br><span class="line">                $EXEC $CONF  </span><br><span class="line">        fi  </span><br><span class="line">        if [ "$?"="0" ]   </span><br><span class="line">        then  </span><br><span class="line">              echo "Redis is running..."  </span><br><span class="line">        fi  </span><br><span class="line">        ;;  </span><br><span class="line">    stop)  </span><br><span class="line">        if [ ! -f $PIDFILE ]  </span><br><span class="line">        then  </span><br><span class="line">                echo "$PIDFILE does not exist, process is not running"  </span><br><span class="line">        else  </span><br><span class="line">                PID=$(cat $PIDFILE)  </span><br><span class="line">                echo "Stopping ..."  </span><br><span class="line">                $REDIS_CLI -p $REDISPORT SHUTDOWN  </span><br><span class="line">                while [ -x $&#123;PIDFILE&#125; ]  </span><br><span class="line">               do  </span><br><span class="line">                    echo "Waiting for Redis to shutdown ..."  </span><br><span class="line">                    sleep 1  </span><br><span class="line">                done  </span><br><span class="line">                echo "Redis stopped"  </span><br><span class="line">        fi  </span><br><span class="line">        ;;  </span><br><span class="line">   restart|force-reload)  </span><br><span class="line">        $&#123;0&#125; stop  </span><br><span class="line">        $&#123;0&#125; start  </span><br><span class="line">        ;;  </span><br><span class="line">  *)  </span><br><span class="line">    echo "Usage: /etc/init.d/redis &#123;start|stop|restart|force-reload&#125;" &gt;&amp;2  </span><br><span class="line">        exit 1  </span><br><span class="line">esac</span><br></pre></td></tr></table></figure>
+<p><strong>脚本部分内容解释:</strong></p>
+<ul>
+<li><p><code>EXEC=/usr/local/redis/bin/redis-server</code>：执行脚本的地址</p>
+</li>
+<li><p><code>REDIS_CLI=/usr/local/redis/bin/redis-cli</code>：客户端执行脚本的地址</p>
+</li>
+<li><p><code>PIDFILE=/var/run/redis.pid</code>：进程id文件地址</p>
+</li>
+<li><p><code>CONF=&quot;/usr/local/redis/bin/redis.conf&quot;</code>：配置文件地址</p>
+</li>
+</ul>
+<blockquote>
+<p>需要根据你的安装位置自行调整脚本中的参数。</p>
+</blockquote>
+<h4 id="修改脚本文件权限"><a href="#修改脚本文件权限" class="headerlink" title="修改脚本文件权限"></a>修改脚本文件权限</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod 755 /etc/init.d/redis</span><br></pre></td></tr></table></figure>
+<h4 id="设置开机启动"><a href="#设置开机启动" class="headerlink" title="设置开机启动"></a>设置开机启动</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chkconfig --add /etc/init.d/redis</span><br><span class="line">chkconfig redis on</span><br></pre></td></tr></table></figure>
+</div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">imxushuai</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://www.imxushuai.com/2018/05/20/Redis安装以及配置详解/">https://www.imxushuai.com/2018/05/20/Redis安装以及配置详解/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://www.imxushuai.com">imxushuai</a>！</span></div></div><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Redis/">Redis</a><a class="post-meta__tags" href="/tags/Redis安装/">Redis安装</a><a class="post-meta__tags" href="/tags/Redis配置详解/">Redis配置详解</a><a class="post-meta__tags" href="/tags/gcc-c/">gcc-c++</a></div><div class="post-qr-code"><div class="post-qr-code-item"><img class="post-qr-code__img" src="/img/alipay.jpg"><div class="post-qr-code__desc">支付宝打赏</div></div><div class="post-qr-code-item"><img class="post-qr-code__img" src="/img/wechatpay.jpg"><div class="post-qr-code__desc">微信打赏</div></div></div><nav id="pagination"><div class="prev-post pull-left"><a href="/2018/07/22/FastDFS简介/"><i class="fa fa-chevron-left">  </i><span>FastDFS简介</span></a></div><div class="next-post pull-right"><a href="/2018/05/13/Ngxin安装/"><span>Ngxin安装</span><i class="fa fa-chevron-right"></i></a></div></nav><div id="gitalk-container"></div><script>var gitalk = new Gitalk({
+  clientID: '5d894987ff69ff0ceb17',
+  clientSecret: '411e2ea94ae376885bd6355986f98bf42462b8f3',
+  repo: 'gitalk',
+  owner: 'imxushuai',
+  admin: 'imxushuai',
+  id: md5(decodeURI(location.pathname)),
+  language: 'zh-CN'
+})
+gitalk.render('gitalk-container')</script></div></div><footer class="footer-bg" style="background-image: url(https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/background.jpg)"><div class="layout" id="footer"><div class="copyright">&copy;2018 - 2022 By imxushuai</div><div class="framework-info"><span>驱动 - </span><a href="http://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 - </span><a href="https://github.com/Molunerfinn/hexo-theme-melody"><span>Melody</span></a></div><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_site_uv"><i class="fa fa-user"></i><span id="busuanzi_value_site_uv"></span><span></span></span><span class="footer-separator">|</span><span id="busuanzi_container_site_pv"><i class="fa fa-eye"></i><span id="busuanzi_value_site_pv"></span><span></span></span></div><script>(function (T, h, i, n, k, P, a, g, e) {
+    g = function () {
+        P = h.createElement(i);
+        a = h.getElementsByTagName(i)[0];
+        P.src = k;
+        P.charset = "utf-8";
+        P.async = 1;
+        a.parentNode.insertBefore(P, a)
+    };
+    T["ThinkPageWeatherWidgetObject"] = n;
+    T[n] || (T[n] = function () {
+        (T[n].q = T[n].q || []).push(arguments)
+    });
+    T[n].l = +new Date();
+    if (T.attachEvent) {
+        T.attachEvent("onload", g)
+    } else {
+        T.addEventListener("load", g, false)
+    }
+}(window, document, "script", "tpwidget", "//widget.seniverse.com/widget/chameleon.js"))</script><script>var showFlag = true;
+var os = function() {var ua = navigator.userAgent,isWindowsPhone = /(?:Windows Phone)/.test(ua),isSymbian = /(?:SymbianOS)/.test(ua) || isWindowsPhone, isAndroid = /(?:Android)/.test(ua), isFireFox = /(?:Firefox)/.test(ua), isChrome = /(?:Chrome|CriOS)/.test(ua), isTablet = /(?:iPad|PlayBook)/.test(ua) || (isAndroid && !/(?:Mobile)/.test(ua)) || (isFireFox && /(?:Tablet)/.test(ua)), isPhone = /(?:iPhone)/.test(ua) && !isTablet, isPc = !isPhone && !isAndroid && !isSymbian;return {isTablet: isTablet, isPhone: isPhone, isAndroid : isAndroid, isPc : isPc};}();
+if (os.isAndroid || os.isPhone) {
+    showFlag = false;
+}
+tpwidget("init", {
+    "flavor": "bubble",
+    "location": "WM6N2PM3WY2K",
+    "geolocation": "enabled",
+    "position": "bottom-right",
+    "margin": "17px 70px",
+    "language": "auto",
+    "unit": "c",
+    "theme": "chameleon",
+    "uid": "UEB839A1CD",
+    "hash": "28ca33b0751401a8e994a76ed0e253cd"
+})
+if (showFlag) {
+    tpwidget("show");
+}
+window.addEventListener("resize", function(){
+    console.log(document.documentElement.clientWidth)
+    if (document.documentElement.clientWidth < 1065) {
+        console.log("false")
+    } else {
+        console.log("true")
+    }
+})</script></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.6.1"></script><script src="/js/fancybox.js?version=1.6.1"></script><script src="/js/sidebar.js?version=1.6.1"></script><script src="/js/copy.js?version=1.6.1"></script><script src="/js/fireworks.js?version=1.6.1"></script><script src="/js/transition.js?version=1.6.1"></script><script src="/js/scroll.js?version=1.6.1"></script><script src="/js/head.js?version=1.6.1"></script><script src="/js/search/algolia.js"></script><script>if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+  $('#nav').addClass('is-mobile')
+  $('footer').addClass('is-mobile')
+}</script><div class="search-dialog" id="algolia-search"><div class="search-dialog__title" id="algolia-search-title">Algolia</div><div id="algolia-input-panel"><div id="algolia-search-input"></div></div><hr><div id="algolia-search-results"><div id="algolia-hits"></div><div id="algolia-pagination"></div><div id="algolia-stats"></div></div><span class="search-close-button"><i class="fa fa-times"></i></span></div><div class="search-mask"></div></body></html>

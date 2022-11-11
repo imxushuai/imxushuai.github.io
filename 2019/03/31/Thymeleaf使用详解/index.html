@@ -1,0 +1,457 @@
+<!-- - var pageTitle = page.title || config.subtitle || ''// 修改首页的title--><!DOCTYPE html><html lang="zh-Hans"><head><meta name="generator" content="Hexo 3.9.0"><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="Thymeleaf - 现代化服务器端的Java模板引擎"><meta name="keywords" content="thymeleaf,模板引擎"><meta name="author" content="imxushuai"><meta name="copyright" content="imxushuai"><meta name="baidu-site-verification" content="B3htTw43Gg"><meta name="google-site-verification" content="o2KrBdxV2bs7OPjZSdarNWbV6uC2WAtFOGQEbGAZJOo"><title>Thymeleaf使用详解 | imxushuai</title><link rel="shortcut icon" href="/B.png"><link rel="stylesheet" href="/css/index.css?version=1.6.1"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css?version=1.6.1"><link rel="dns-prefetch" href="https://cdn.staticfile.org"><link rel="dns-prefetch" href="https://cdn.bootcss.com"><link rel="dns-prefetch" href="https://creativecommons.org"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.1.1/dist/instantsearch.min.css"><script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.1.1/dist/instantsearch.min.js" defer></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css"><script src="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js"></script><script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.10.0/js/md5.min.js"></script><script>((function(){
+  var bp = document.createElement('script');
+  var curProtocol = window.location.protocol.split(':')[0];
+  if (curProtocol === 'https') {
+  bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+}
+  else {
+  bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+}
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(bp, s);
+})());
+
+</script><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><script>(adsbygoogle = window.adsbygoogle || []).push({
+  google_ad_client: 'ca-pub-8123778246943935',
+  enable_page_level_ads: true
+});
+</script><link rel="dns-prefetch" href="https://hm.baidu.com"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?ee77185761e9c3e3a277dac848c66c44";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();</script><link rel="dns-prefetch" href="https://www.google-analytics.com"><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-140233731-1', 'auto');
+ga('send', 'pageview');</script><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: {"appId":"0AG6VKDJB8","apiKey":"1acca465cd19291fd2e30fc0bde470b9","indexName":"search","hits":{"per_page":10},"languages":{"input_placeholder":"搜索文章","hits_empty":"找不到您查询的内容:${query}","hits_stats":"找到 ${hits} 条结果，用时 ${time} 毫秒"}},
+  localSearch: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  }
+} </script></head><body><canvas class="fireworks"></canvas><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar"><div class="toggle-sidebar-info text-center"><span data-toggle="切换文章详情">切换站点概览</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Thymeleaf简介"><span class="toc-number">1.</span> <span class="toc-text">Thymeleaf简介</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#特点"><span class="toc-number">2.</span> <span class="toc-text">特点</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#环境准备"><span class="toc-number">3.</span> <span class="toc-text">环境准备</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#创建工程"><span class="toc-number">3.1.</span> <span class="toc-text">创建工程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#默认配置"><span class="toc-number">3.2.</span> <span class="toc-text">默认配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#快速开始"><span class="toc-number">3.3.</span> <span class="toc-text">快速开始</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#语法"><span class="toc-number">4.</span> <span class="toc-text">语法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#变量"><span class="toc-number">4.1.</span> <span class="toc-text">变量</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#变量案例"><span class="toc-number">4.1.1.</span> <span class="toc-text">变量案例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#动静结合"><span class="toc-number">4.1.2.</span> <span class="toc-text">动静结合</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ognl表达式的语法糖"><span class="toc-number">4.1.3.</span> <span class="toc-text">ognl表达式的语法糖</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#自定义变量"><span class="toc-number">4.2.</span> <span class="toc-text">自定义变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#方法"><span class="toc-number">4.3.</span> <span class="toc-text">方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#字面值"><span class="toc-number">4.4.</span> <span class="toc-text">字面值</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#拼接"><span class="toc-number">4.5.</span> <span class="toc-text">拼接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#运算"><span class="toc-number">4.6.</span> <span class="toc-text">运算</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#循环"><span class="toc-number">4.7.</span> <span class="toc-text">循环</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#逻辑判断"><span class="toc-number">4.8.</span> <span class="toc-text">逻辑判断</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分支控制switch"><span class="toc-number">4.9.</span> <span class="toc-text">分支控制switch</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JS模板"><span class="toc-number">4.10.</span> <span class="toc-text">JS模板</span></a></li></ol></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="/img/avatar_b.png"></div><div class="author-info__name text-center">imxushuai</div><div class="author-info__description text-center">本站是imxushuai的个人博客。内容包含有学习资源分享、IT技术分享和生活周边，记录下生活的点滴，愿与君共勉。</div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">文章</span><span class="pull-right">87</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">标签</span><span class="pull-right">276</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">分类</span><span class="pull-right">37</span></a></div><hr><div class="author-info-links"><div class="author-info-links__title text-center">Links</div><a class="author-info-links__name text-center" href="https://github.com/imxushuai">GitHub</a><a class="author-info-links__name text-center" href="https://me.csdn.net/qq1031893936">CSDN</a><a class="author-info-links__name text-center" href="https://spring.io/projects">Spring</a><a class="author-info-links__name text-center" href="http://www.cx1314.cn/forum.php">IT资源</a></div></div></div><div id="content-outer"><div id="top-container" style="background-image: url(https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/background.jpg)"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">imxushuai</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus"><a class="site-page social-icon search"><i class="fa fa-search"></i><span> 站内搜索</span></a><a class="site-page" href="/">首页</a><a class="site-page" href="/categories">分类</a><a class="site-page" href="/archives">文章总览</a><a class="site-page" href="/2000/01/01/%e5%ad%a6%e4%b9%a0%e8%b5%84%e6%ba%90/">学习资源</a><a class="site-page" href="/about">关于</a></span></div><div id="post-info"><div id="post-title">Thymeleaf使用详解</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2019-03-31</time><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/thymeleaf/">thymeleaf</a><div class="post-meta-wordcount"><span>字数总计: </span><span class="word-count">4.2k</span><span class="post-meta__separator">|</span><span>阅读时长: 16 分钟</span></div></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><center><i>Thymeleaf - 现代化服务器端的Java模板引擎</i></center>
+
+<p><img src="https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/springboot-thymeleaf.jpg" alt></p>
+<a id="more"></a>
+<h1 id="Thymeleaf简介"><a href="#Thymeleaf简介" class="headerlink" title="Thymeleaf简介"></a>Thymeleaf简介</h1><p>官方网站：<a href="https://www.thymeleaf.org/index.html" target="_blank" rel="noopener">https://www.thymeleaf.org/index.html</a></p>
+<blockquote>
+<p><strong>Thymeleaf</strong>是用来开发Web和独立环境项目的现代服务器端Java模板引擎。</p>
+<p>Thymeleaf的主要目标是为您的开发工作流程带来优雅的<em>自然模板</em> - HTML。可以在直接浏览器中正确显示，并且可以作为静态原型，从而在开发团队中实现更强大的协作。</p>
+<p>借助Spring Framework的模块，可以根据自己的喜好进行自由选择，可插拔功能组件，Thymeleaf是现代HTML5 JVM Web开发的理想选择 - 尽管它可以做的更多。</p>
+</blockquote>
+<blockquote>
+<p>Spring官方支持的服务的渲染模板中，并不包含jsp。而是Thymeleaf和Freemarker等，而Thymeleaf与SpringMVC的视图技术，及SpringBoot的自动化配置集成非常完美，几乎没有任何成本，你只用关注Thymeleaf的语法即可。</p>
+</blockquote>
+<h1 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h1><ul>
+<li><p>动静结合</p>
+<blockquote>
+<p>Thymeleaf 在有网络和无网络的环境下皆可运行，即它可以让美工在浏览器查看页面的静态效果，也可以让程序员在服务器查看带数据的动态页面效果。这是由于它支持 html 原型，然后在 html 标签里增加额外的属性来达到模板+数据的展示方式。浏览器解释 html 时会忽略未定义的标签属性，所以 thymeleaf 的模板可以静态地运行；当有数据返回到页面时，Thymeleaf 标签会动态地替换掉静态内容，使页面动态显示。</p>
+</blockquote>
+</li>
+<li><p>开箱即用</p>
+<blockquote>
+<p>它提供标准和spring标准两种方言，可以直接套用模板实现JSTL、 OGNL表达式效果，避免每天套模板、该jstl、改标签的困扰。同时开发人员也可以扩展和创建自定义的方言。</p>
+</blockquote>
+</li>
+<li><p>多方言支持</p>
+<blockquote>
+<p>Thymeleaf 提供spring标准方言和一个与 SpringMVC 完美集成的可选模块，可以快速的实现表单绑定、属性编辑器、国际化等功能。</p>
+</blockquote>
+</li>
+<li><p>SpringBoot完美整合</p>
+<blockquote>
+<p>SpringBoot提供了Thymeleaf的默认配置，并且为Thymeleaf设置了视图解析器，我们可以像以前操作jsp一样来操作Thymeleaf。代码几乎没有任何区别，就是在模板语法上有区别。</p>
+</blockquote>
+</li>
+</ul>
+<h1 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h1><blockquote>
+<p>我们来创建一个demo工程，为学习Thymeleaf做准备：</p>
+</blockquote>
+<h2 id="创建工程"><a href="#创建工程" class="headerlink" title="创建工程"></a>创建工程</h2><p>使用spring 脚手架创建：</p>
+<p><img src="https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/1526435213659.png" alt="1526435213659"></p>
+<p><img src="https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/1526435267302.png" alt="1526435267302"></p>
+<p>勾选web和Thymeleaf的依赖：</p>
+<p><img src="https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/1526435317440.png" alt="1526435317440"></p>
+<p>项目结构：</p>
+<p> <img src="https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/1526435434999.png" alt="1526435434999"></p>
+<p>pom：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">project</span> <span class="attr">xmlns</span>=<span class="string">"http://maven.apache.org/POM/4.0.0"</span> <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span></span></span><br><span class="line"><span class="tag">	<span class="attr">xsi:schemaLocation</span>=<span class="string">"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">modelVersion</span>&gt;</span>4.0.0<span class="tag">&lt;/<span class="name">modelVersion</span>&gt;</span></span><br><span class="line"></span><br><span class="line">	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.leyou.demo<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>thymeleaf-demo<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">version</span>&gt;</span>0.0.1-SNAPSHOT<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">packaging</span>&gt;</span>jar<span class="tag">&lt;/<span class="name">packaging</span>&gt;</span></span><br><span class="line"></span><br><span class="line">	<span class="tag">&lt;<span class="name">name</span>&gt;</span>thymeleaf-demo<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">description</span>&gt;</span>Demo project for Spring Boot<span class="tag">&lt;/<span class="name">description</span>&gt;</span></span><br><span class="line"></span><br><span class="line">	<span class="tag">&lt;<span class="name">parent</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-parent<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">version</span>&gt;</span>2.0.2.RELEASE<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">relativePath</span>/&gt;</span> <span class="comment">&lt;!-- lookup parent from repository --&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">parent</span>&gt;</span></span><br><span class="line"></span><br><span class="line">	<span class="tag">&lt;<span class="name">properties</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">project.build.sourceEncoding</span>&gt;</span>UTF-8<span class="tag">&lt;/<span class="name">project.build.sourceEncoding</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">project.reporting.outputEncoding</span>&gt;</span>UTF-8<span class="tag">&lt;/<span class="name">project.reporting.outputEncoding</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">java.version</span>&gt;</span>1.8<span class="tag">&lt;/<span class="name">java.version</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br><span class="line"></span><br><span class="line">	<span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-thymeleaf<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-web<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">		<span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-test<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">scope</span>&gt;</span>test<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br><span class="line"></span><br><span class="line">	<span class="tag">&lt;<span class="name">build</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">build</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">project</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="默认配置"><a href="#默认配置" class="headerlink" title="默认配置"></a>默认配置</h2><p>不需要做任何配置，启动器已经帮我们把Thymeleaf的视图器配置完成：</p>
+<p> <img src="https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/1526435647041.png" alt="1526435647041"></p>
+<p>而且，还配置了模板文件（html）的位置，与jsp类似的前缀+ 视图名 + 后缀风格：</p>
+<p> <img src="https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/1526435706301.png" alt="1526435706301"></p>
+<ul>
+<li>默认前缀：<code>classpath:/templates/</code></li>
+<li>默认后缀：<code>.html</code></li>
+</ul>
+<p>所以如果我们返回视图：<code>users</code>，会指向到 <code>classpath:/templates/users.html</code></p>
+<p>Thymeleaf默认会开启页面缓存，提高页面并发能力。但会导致我们修改页面不会立即被展现，因此我们关闭缓存：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 关闭Thymeleaf的缓存</span><br><span class="line">spring.thymeleaf.cache=false</span><br></pre></td></tr></table></figure>
+<p>另外，修改完毕页面，需要使用快捷键：<code>Ctrl + Shift + F9</code>来刷新工程。</p>
+<h2 id="快速开始"><a href="#快速开始" class="headerlink" title="快速开始"></a>快速开始</h2><p>我们准备一个controller，控制视图跳转：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@GetMapping</span>(<span class="string">"show1"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">show1</span><span class="params">(Model model)</span></span>&#123;</span><br><span class="line">        model.addAttribute(<span class="string">"msg"</span>, <span class="string">"Hello, Thymeleaf!"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"hello"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>新建一个html模板：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span> <span class="attr">xmlns:th</span>=<span class="string">"http://www.thymeleaf.org"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>hello<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span> <span class="attr">th:text</span>=<span class="string">"$&#123;msg&#125;"</span>&gt;</span>大家好<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><strong>注意</strong>，把html 的名称空间，改成：<code>xmlns:th=&quot;http://www.thymeleaf.org&quot;</code> 会有语法提示</p>
+<p>启动项目，访问页面：</p>
+<p> <img src="https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/1526436248528.png" alt="1526436248528"></p>
+<h1 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h1><p>Thymeleaf的主要作用是把model中的数据渲染到html中，因此其语法主要是如何解析model中的数据。从以下方面来学习：</p>
+<ul>
+<li>变量</li>
+<li>方法</li>
+<li>条件判断</li>
+<li>循环</li>
+<li>运算<ul>
+<li>逻辑运算</li>
+<li>布尔运算</li>
+<li>比较运算</li>
+<li>条件运算</li>
+</ul>
+</li>
+<li>其它</li>
+</ul>
+<h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><h3 id="变量案例"><a href="#变量案例" class="headerlink" title="变量案例"></a>变量案例</h3><p>我们先新建一个实体类：User</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</span><br><span class="line">    String name;</span><br><span class="line">    <span class="keyword">int</span> age;</span><br><span class="line">    User friend;<span class="comment">// 对象类型属性</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后在模型中添加数据</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@GetMapping</span>(<span class="string">"show2"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">show2</span><span class="params">(Model model)</span></span>&#123;</span><br><span class="line">    User user = <span class="keyword">new</span> User();</span><br><span class="line">    user.setAge(<span class="number">21</span>);</span><br><span class="line">    user.setName(<span class="string">"Jack Chen"</span>);</span><br><span class="line">    user.setFriend(<span class="keyword">new</span> User(<span class="string">"李小龙"</span>, <span class="number">30</span>));</span><br><span class="line"></span><br><span class="line">    model.addAttribute(<span class="string">"user"</span>, user);</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"show2"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>语法说明：</p>
+</blockquote>
+<p>Thymeleaf通过<code>${}</code>来获取model中的变量，注意这不是el表达式，而是ognl表达式，但是语法非常像。</p>
+<blockquote>
+<p>示例：</p>
+</blockquote>
+<p>我们在页面获取user数据：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span></span><br><span class="line">    欢迎您：<span class="tag">&lt;<span class="name">span</span> <span class="attr">th:text</span>=<span class="string">"$&#123;user.name&#125;"</span>&gt;</span>请登录<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>效果：</p>
+<p> <img src="https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/1526438010948.png" alt="1526438010948"></p>
+<p>感觉跟el表达式几乎是一样的。不过区别在于，我们的表达式写在一个名为：<code>th:text</code>的标签属性中，这个叫做<code>指令</code></p>
+<h3 id="动静结合"><a href="#动静结合" class="headerlink" title="动静结合"></a>动静结合</h3><p>Thymeleaf 崇尚<code>自然模板</code>，意思就是模板是纯正的html代码，脱离模板引擎，在纯静态环境也可以直接运行。现在如果我们直接在html中编写 <code>${}</code>这样的表达式，显然在静态环境下就会出错，这不符合Thymeleaf的理念。</p>
+<p>Thymeleaf中所有的表达式都需要写在<code>指令</code>中，指令是HTML5中的自定义属性，在Thymeleaf中所有指令都是以<code>th:</code>开头。因为表达式<code>${user.name}</code>是写在自定义属性中，因此在静态环境下，表达式的内容会被当做是普通字符串，浏览器会自动忽略这些指令，这样就不会报错了！</p>
+<p>现在，我们不经过SpringMVC，而是直接用浏览器打开页面看看：</p>
+<p> <img src="https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/1526438337869.png" alt="1526438337869"></p>
+<ul>
+<li>静态页面中，<code>th</code>指令不被识别，但是浏览器也不会报错，把它当做一个普通属性处理。这样<code>span</code>的默认值<code>请登录</code>就会展现在页面</li>
+<li>如果是在Thymeleaf环境下，<code>th</code>指令就会被识别和解析，而<code>th:text</code>的含义就是替<strong>换所在标签中的文本内容</strong>，于是<code>user.name</code>的值就替代了 <code>span</code>中默认的请登录</li>
+</ul>
+<p>指令的设计，正是Thymeleaf的高明之处，也是它优于其它模板引擎的原因。动静结合的设计，使得无论是前端开发人员还是后端开发人员可以完美契合。</p>
+<blockquote>
+<p>向下兼容</p>
+</blockquote>
+<p>但是要注意，如果浏览器不支持Html5怎么办？</p>
+<p>如果不支持这种<code>th:</code>的命名空间写法，那么可以把<code>th:text</code>换成 <code>data-th-text</code>，Thymeleaf也可以兼容。</p>
+<blockquote>
+<p>escape</p>
+</blockquote>
+<p>另外，<code>th:text</code>指令出于安全考虑，会把表达式读取到的值进行处理，防止html的注入。</p>
+<p>例如，<code>&lt;p&gt;你好&lt;/p&gt;</code>将会被格式化输出为<code>$lt;p$gt;你好$lt;/p$lt;</code>。</p>
+<p>如果想要不进行格式化输出，而是要输出原始内容，则使用<code>th:utext</code>来代替.</p>
+<h3 id="ognl表达式的语法糖"><a href="#ognl表达式的语法糖" class="headerlink" title="ognl表达式的语法糖"></a>ognl表达式的语法糖</h3><p>刚才获取变量值，我们使用的是经典的<code>对象.属性名</code>方式。但有些情况下，我们的属性名可能本身也是变量，怎么办？</p>
+<p>ognl提供了类似js的语法方式：</p>
+<p>例如：<code>${user.name}</code> 可以写作<code>${user[&#39;name&#39;]}</code></p>
+<h2 id="自定义变量"><a href="#自定义变量" class="headerlink" title="自定义变量"></a>自定义变量</h2><blockquote>
+<p>场景</p>
+</blockquote>
+<p>看下面的案例：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h2</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>Name: <span class="tag">&lt;<span class="name">span</span> <span class="attr">th:text</span>=<span class="string">"$&#123;user.name&#125;"</span>&gt;</span>Jack<span class="tag">&lt;/<span class="name">span</span>&gt;</span>.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>Age: <span class="tag">&lt;<span class="name">span</span> <span class="attr">th:text</span>=<span class="string">"$&#123;user.age&#125;"</span>&gt;</span>21<span class="tag">&lt;/<span class="name">span</span>&gt;</span>.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>friend: <span class="tag">&lt;<span class="name">span</span> <span class="attr">th:text</span>=<span class="string">"$&#123;user.friend.name&#125;"</span>&gt;</span>Rose<span class="tag">&lt;/<span class="name">span</span>&gt;</span>.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>我们获取用户的所有信息，分别展示。</p>
+<p>当数据量比较多的时候，频繁的写<code>user.</code>就会非常麻烦。</p>
+<p>因此，Thymeleaf提供了自定义变量来解决：</p>
+<blockquote>
+<p>示例：</p>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h2</span> <span class="attr">th:object</span>=<span class="string">"$&#123;user&#125;"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>Name: <span class="tag">&lt;<span class="name">span</span> <span class="attr">th:text</span>=<span class="string">"*&#123;name&#125;"</span>&gt;</span>Jack<span class="tag">&lt;/<span class="name">span</span>&gt;</span>.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>Age: <span class="tag">&lt;<span class="name">span</span> <span class="attr">th:text</span>=<span class="string">"*&#123;age&#125;"</span>&gt;</span>21<span class="tag">&lt;/<span class="name">span</span>&gt;</span>.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>friend: <span class="tag">&lt;<span class="name">span</span> <span class="attr">th:text</span>=<span class="string">"*&#123;friend.name&#125;"</span>&gt;</span>Rose<span class="tag">&lt;/<span class="name">span</span>&gt;</span>.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>首先在 <code>h2</code>上 用 <code>th:object=&quot;${user}&quot;</code>获取user的值，并且保存</li>
+<li>然后，在<code>h2</code>内部的任意元素上，可以通过 <code>*{属性名}</code>的方式，来获取user中的属性，这样就省去了大量的<code>user.</code>前缀了</li>
+</ul>
+<h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><blockquote>
+<p>ognl表达式中的方法调用</p>
+</blockquote>
+<p>ognl表达式本身就支持方法调用，例如：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h2</span> <span class="attr">th:object</span>=<span class="string">"$&#123;user&#125;"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>FirstName: <span class="tag">&lt;<span class="name">span</span> <span class="attr">th:text</span>=<span class="string">"*&#123;name.split(' ')[0]&#125;"</span>&gt;</span>Jack<span class="tag">&lt;/<span class="name">span</span>&gt;</span>.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>LastName: <span class="tag">&lt;<span class="name">span</span> <span class="attr">th:text</span>=<span class="string">"*&#123;name.split(' ')[1]&#125;"</span>&gt;</span>Li<span class="tag">&lt;/<span class="name">span</span>&gt;</span>.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>这里我们调用了name（是一个字符串）的split方法。</li>
+</ul>
+<blockquote>
+<p>Thymeleaf内置对象</p>
+</blockquote>
+<p>Thymeleaf中提供了一些内置对象，并且在这些对象中提供了一些方法，方便我们来调用。获取这些对象，需要使用<code>#对象名</code>来引用。</p>
+<ul>
+<li>一些环境相关对象</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">对象</th>
+<th style="text-align:left">作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">#ctx</td>
+<td style="text-align:left">获取Thymeleaf自己的Context对象</td>
+</tr>
+<tr>
+<td style="text-align:center">#requset</td>
+<td style="text-align:left">如果是web程序，可以获取HttpServletRequest对象</td>
+</tr>
+<tr>
+<td style="text-align:center">#response</td>
+<td style="text-align:left">如果是web程序，可以获取HttpServletReponse对象</td>
+</tr>
+<tr>
+<td style="text-align:center">#session</td>
+<td style="text-align:left">如果是web程序，可以获取HttpSession对象</td>
+</tr>
+<tr>
+<td style="text-align:center">#servletContext</td>
+<td style="text-align:left">如果是web程序，可以获取HttpServletContext对象</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Thymeleaf提供的全局对象：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">对象</th>
+<th style="text-align:left">作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">#dates</td>
+<td style="text-align:left">处理java.util.date的工具对象</td>
+</tr>
+<tr>
+<td style="text-align:center">#calendars</td>
+<td style="text-align:left">处理java.util.calendar的工具对象</td>
+</tr>
+<tr>
+<td style="text-align:center">#numbers</td>
+<td style="text-align:left">用来对数字格式化的方法</td>
+</tr>
+<tr>
+<td style="text-align:center">#strings</td>
+<td style="text-align:left">用来处理字符串的方法</td>
+</tr>
+<tr>
+<td style="text-align:center">#bools</td>
+<td style="text-align:left">用来判断布尔值的方法</td>
+</tr>
+<tr>
+<td style="text-align:center">#arrays</td>
+<td style="text-align:left">用来护理数组的方法</td>
+</tr>
+<tr>
+<td style="text-align:center">#lists</td>
+<td style="text-align:left">用来处理List集合的方法</td>
+</tr>
+<tr>
+<td style="text-align:center">#sets</td>
+<td style="text-align:left">用来处理set集合的方法</td>
+</tr>
+<tr>
+<td style="text-align:center">#maps</td>
+<td style="text-align:left">用来处理map集合的方法</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>举例</li>
+</ul>
+<p>我们在环境变量中添加日期类型对象</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@GetMapping</span>(<span class="string">"show3"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">show3</span><span class="params">(Model model)</span></span>&#123;</span><br><span class="line">    model.addAttribute(<span class="string">"today"</span>, <span class="keyword">new</span> Date());</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"show3"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在页面中处理</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span></span><br><span class="line">  今天是: <span class="tag">&lt;<span class="name">span</span> <span class="attr">th:text</span>=<span class="string">"$&#123;#dates.format(today,'yyyy-MM-dd')&#125;"</span>&gt;</span>2018-04-25<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p> 效果：</p>
+<p> <img src="https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/1526440538848.png" alt="1526440538848"></p>
+<h2 id="字面值"><a href="#字面值" class="headerlink" title="字面值"></a>字面值</h2><p>有的时候，我们需要在指令中填写基本类型如：字符串、数值、布尔等，并不希望被Thymeleaf解析为变量，这个时候称为字面值。</p>
+<ul>
+<li><p>字符串字面值</p>
+<p>使用一对<code>&#39;</code>引用的内容就是字符串字面值了：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span></span><br><span class="line">  你正在观看 <span class="tag">&lt;<span class="name">span</span> <span class="attr">th:text</span>=<span class="string">"'thymeleaf'"</span>&gt;</span>template<span class="tag">&lt;/<span class="name">span</span>&gt;</span> 的字符串常量值.</span><br><span class="line"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><code>th:text</code>中的thymeleaf并不会被认为是变量，而是一个字符串</p>
+<p> <img src="https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/1526958538157.png" alt="1526958538157"></p>
+</li>
+</ul>
+<ul>
+<li><p>数字字面值</p>
+<p>数字不需要任何特殊语法， 写的什么就是什么，而且可以直接进行算术运算</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>今年是 <span class="tag">&lt;<span class="name">span</span> <span class="attr">th:text</span>=<span class="string">"2018"</span>&gt;</span>1900<span class="tag">&lt;/<span class="name">span</span>&gt;</span>.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>两年后将会是 <span class="tag">&lt;<span class="name">span</span> <span class="attr">th:text</span>=<span class="string">"2018 + 2"</span>&gt;</span>1902<span class="tag">&lt;/<span class="name">span</span>&gt;</span>.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p> <img src="https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/1526958856078.png" alt="1526958856078"></p>
+</li>
+<li><p>布尔字面值</p>
+<p>布尔类型的字面值是true或false：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">th:if</span>=<span class="string">"true"</span>&gt;</span></span><br><span class="line">    你填的是true</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>这里引用了一个<code>th:if</code>指令，跟vue中的<code>v-if</code>类似</p>
+</li>
+</ul>
+<h2 id="拼接"><a href="#拼接" class="headerlink" title="拼接"></a>拼接</h2><p>我们经常会用到普通字符串与表达式拼接的情况：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">th:text</span>=<span class="string">"'欢迎您:' + $&#123;user.name&#125; + '!'"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>字符串字面值需要用<code>&#39;&#39;</code>，拼接起来非常麻烦，Thymeleaf对此进行了简化，使用一对<code>|</code>即可：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">th:text</span>=<span class="string">"|欢迎您:$&#123;user.name&#125;|"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>与上面是完全等效的，这样就省去了字符串字面值的书写。</p>
+<p> <img src="https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/1526959781368.png" alt="1526959781368"></p>
+<h2 id="运算"><a href="#运算" class="headerlink" title="运算"></a>运算</h2><p>需要注意：<code>${}</code>内部的是通过OGNL表达式引擎解析的，外部的才是通过Thymeleaf的引擎解析，因此运算符尽量放在<code>${}</code>外进行。</p>
+<ul>
+<li><p>算术运算</p>
+<p>支持的算术运算符：<code>+ - * / %</code></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">th:text</span>=<span class="string">"$&#123;user.age&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">th:text</span>=<span class="string">"$&#123;user.age&#125;%2 == 0"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p> <img src="https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/1526959990356.png" alt="1526959990356"></p>
+</li>
+<li><p>比较运算</p>
+<p>支持的比较运算：<code>&gt;</code>, <code>&lt;</code>, <code>&gt;=</code> and <code>&lt;=</code>  ，但是<code>&gt;</code>, <code>&lt;</code>不能直接使用，因为xml会解析为标签，要使用别名。</p>
+<p>注意 <code>==</code> and <code>!=</code>不仅可以比较数值，类似于equals的功能。</p>
+<p>可以使用的别名：<code>gt (&gt;), lt (&lt;), ge (&gt;=), le (&lt;=), not (!). Also eq (==), neq/ne (!=).</code></p>
+</li>
+<li><p>条件运算</p>
+<ul>
+<li>三元运算</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">th:text</span>=<span class="string">"$&#123;user.sex&#125; ? '男':'女'"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>三元运算符的三个部分：conditon ? then : else</p>
+<p>​    condition：条件</p>
+<p>​    then：条件成立的结果</p>
+<p>​    else：不成立的结果</p>
+<p>其中的每一个部分都可以是Thymeleaf中的任意表达式。</p>
+<p> <img src="https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/1526960230778.png" alt="1526960230778"></p>
+<ul>
+<li><p>默认值</p>
+<p>有的时候，我们取一个值可能为空，这个时候需要做非空判断，可以使用 <code>表达式 ?: 默认值</code>简写：</p>
+</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">th:text</span>=<span class="string">"$&#123;user.name&#125; ?: '二狗'"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>当前面的表达式值为null时，就会使用后面的默认值。</p>
+<p>注意：<code>?:</code>之间没有空格。</p>
+<p> <img src="https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/1526960384564.png" alt="1526960384564"></p>
+</li>
+</ul>
+<h2 id="循环"><a href="#循环" class="headerlink" title="循环"></a>循环</h2><p>循环也是非常频繁使用的需求，我们使用<code>th:each</code>指令来完成：</p>
+<p>假如有用户的集合：users在Context中。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">tr</span> <span class="attr">th:each</span>=<span class="string">"user : $&#123;users&#125;"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">td</span> <span class="attr">th:text</span>=<span class="string">"$&#123;user.name&#125;"</span>&gt;</span>Onions<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">td</span> <span class="attr">th:text</span>=<span class="string">"$&#123;user.age&#125;"</span>&gt;</span>2.41<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>${users} 是要遍历的集合，可以是以下类型：<ul>
+<li>Iterable，实现了Iterable接口的类</li>
+<li>Enumeration，枚举</li>
+<li>Interator，迭代器</li>
+<li>Map，遍历得到的是Map.Entry</li>
+<li>Array，数组及其它一切符合数组结果的对象</li>
+</ul>
+</li>
+</ul>
+<p>在迭代的同时，我们也可以获取迭代的状态对象：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">tr</span> <span class="attr">th:each</span>=<span class="string">"user,stat : $&#123;users&#125;"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">td</span> <span class="attr">th:text</span>=<span class="string">"$&#123;user.name&#125;"</span>&gt;</span>Onions<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">td</span> <span class="attr">th:text</span>=<span class="string">"$&#123;user.age&#125;"</span>&gt;</span>2.41<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>stat对象包含以下属性：</p>
+<ul>
+<li>index，从0开始的角标</li>
+<li>count，元素的个数，从1开始</li>
+<li>size，总元素个数</li>
+<li>current，当前遍历到的元素</li>
+<li>even/odd，返回是否为奇偶，boolean值</li>
+<li>first/last，返回是否为第一或最后，boolean值</li>
+</ul>
+<h2 id="逻辑判断"><a href="#逻辑判断" class="headerlink" title="逻辑判断"></a>逻辑判断</h2><p>有了<code>if和else</code>，我们能实现一切功能^_^。</p>
+<p>Thymeleaf中使用<code>th:if</code> 或者 <code>th:unless</code> ，两者的意思恰好相反。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">th:if</span>=<span class="string">"$&#123;user.age&#125; &lt; 24"</span>&gt;</span>小鲜肉<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>如果表达式的值为true，则标签会渲染到页面，否则不进行渲染。</p>
+<p>以下情况被认定为true：</p>
+<ul>
+<li>表达式值为true</li>
+<li>表达式值为非0数值</li>
+<li>表达式值为非0字符</li>
+<li>表达式值为字符串，但不是<code>&quot;false&quot;</code>,<code>&quot;no&quot;</code>,<code>&quot;off&quot;</code></li>
+<li>表达式不是布尔、字符串、数字、字符中的任何一种</li>
+</ul>
+<p>其它情况包括null都被认定为false</p>
+<p> <img src="https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/1526960499522.png" alt="1526960499522"></p>
+<h2 id="分支控制switch"><a href="#分支控制switch" class="headerlink" title="分支控制switch"></a>分支控制switch</h2><p>这里要使用两个指令：<code>th:switch</code> 和 <code>th:case</code></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">th:switch</span>=<span class="string">"$&#123;user.role&#125;"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span> <span class="attr">th:case</span>=<span class="string">"'admin'"</span>&gt;</span>用户是管理员<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span> <span class="attr">th:case</span>=<span class="string">"'manager'"</span>&gt;</span>用户是经理<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span> <span class="attr">th:case</span>=<span class="string">"*"</span>&gt;</span>用户是别的玩意<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>需要注意的是，一旦有一个th:case成立，其它的则不再判断。与java中的switch是一样的。</p>
+<p>另外<code>th:case=&quot;*&quot;</code>表示默认，放最后。</p>
+<p> <img src="https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/1526960621714.png" alt="1526960621714"></p>
+<p>页面：</p>
+<p> <img src="https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/1526961251878.png" alt="1526961251878"></p>
+<h2 id="JS模板"><a href="#JS模板" class="headerlink" title="JS模板"></a>JS模板</h2><p>模板引擎不仅可以渲染html，也可以对JS中的进行预处理。而且为了在纯静态环境下可以运行，其Thymeleaf代码可以被注释起来：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">th:inline</span>=<span class="string">"javascript"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">    <span class="keyword">const</span> user = <span class="comment">/*[[$&#123;user&#125;]]*/</span> &#123;&#125;;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">const</span> age = <span class="comment">/*[[$&#123;user.age&#125;]]*/</span> <span class="number">20</span>;</span></span><br><span class="line"><span class="javascript">    <span class="built_in">console</span>.log(user);</span></span><br><span class="line"><span class="javascript">    <span class="built_in">console</span>.log(age)</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>在script标签中通过<code>th:inline=&quot;javascript&quot;</code>来声明这是要特殊处理的js脚本</p>
+</li>
+<li><p>语法结构：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> user = <span class="comment">/*[[Thymeleaf表达式]]*/</span> <span class="string">"静态环境下的默认值"</span>;</span><br></pre></td></tr></table></figure>
+<p>因为Thymeleaf被注释起来，因此即便是静态环境下， js代码也不会报错，而是采用表达式后面跟着的默认值。</p>
+</li>
+</ul>
+<p>看看页面的源码：</p>
+<p><img src="https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/1526961583904.png" alt="1526961583904"></p>
+<p>我们的User对象被直接处理为json格式了，非常方便。</p>
+<p>控制台：</p>
+<p> <img src="https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/1526961525185.png" alt="1526961525185"></p>
+</div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">imxushuai</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://www.imxushuai.com/2019/03/31/Thymeleaf使用详解/">https://www.imxushuai.com/2019/03/31/Thymeleaf使用详解/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://www.imxushuai.com">imxushuai</a>！</span></div></div><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/thymeleaf/">thymeleaf</a><a class="post-meta__tags" href="/tags/模板引擎/">模板引擎</a></div><div class="post-qr-code"><div class="post-qr-code-item"><img class="post-qr-code__img" src="/img/alipay.jpg"><div class="post-qr-code__desc">支付宝打赏</div></div><div class="post-qr-code-item"><img class="post-qr-code__img" src="/img/wechatpay.jpg"><div class="post-qr-code__desc">微信打赏</div></div></div><nav id="pagination"><div class="prev-post pull-left"><a href="/2019/04/01/RabbitMQ详解/"><i class="fa fa-chevron-left">  </i><span>RabbitMQ详解</span></a></div><div class="next-post pull-right"><a href="/2019/03/29/hexo添加天气插件/"><span>hexo添加天气插件</span><i class="fa fa-chevron-right"></i></a></div></nav><div id="gitalk-container"></div><script>var gitalk = new Gitalk({
+  clientID: '5d894987ff69ff0ceb17',
+  clientSecret: '411e2ea94ae376885bd6355986f98bf42462b8f3',
+  repo: 'gitalk',
+  owner: 'imxushuai',
+  admin: 'imxushuai',
+  id: md5(decodeURI(location.pathname)),
+  language: 'zh-CN'
+})
+gitalk.render('gitalk-container')</script></div></div><footer class="footer-bg" style="background-image: url(https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/background.jpg)"><div class="layout" id="footer"><div class="copyright">&copy;2018 - 2022 By imxushuai</div><div class="framework-info"><span>驱动 - </span><a href="http://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 - </span><a href="https://github.com/Molunerfinn/hexo-theme-melody"><span>Melody</span></a></div><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_site_uv"><i class="fa fa-user"></i><span id="busuanzi_value_site_uv"></span><span></span></span><span class="footer-separator">|</span><span id="busuanzi_container_site_pv"><i class="fa fa-eye"></i><span id="busuanzi_value_site_pv"></span><span></span></span></div><script>(function (T, h, i, n, k, P, a, g, e) {
+    g = function () {
+        P = h.createElement(i);
+        a = h.getElementsByTagName(i)[0];
+        P.src = k;
+        P.charset = "utf-8";
+        P.async = 1;
+        a.parentNode.insertBefore(P, a)
+    };
+    T["ThinkPageWeatherWidgetObject"] = n;
+    T[n] || (T[n] = function () {
+        (T[n].q = T[n].q || []).push(arguments)
+    });
+    T[n].l = +new Date();
+    if (T.attachEvent) {
+        T.attachEvent("onload", g)
+    } else {
+        T.addEventListener("load", g, false)
+    }
+}(window, document, "script", "tpwidget", "//widget.seniverse.com/widget/chameleon.js"))</script><script>var showFlag = true;
+var os = function() {var ua = navigator.userAgent,isWindowsPhone = /(?:Windows Phone)/.test(ua),isSymbian = /(?:SymbianOS)/.test(ua) || isWindowsPhone, isAndroid = /(?:Android)/.test(ua), isFireFox = /(?:Firefox)/.test(ua), isChrome = /(?:Chrome|CriOS)/.test(ua), isTablet = /(?:iPad|PlayBook)/.test(ua) || (isAndroid && !/(?:Mobile)/.test(ua)) || (isFireFox && /(?:Tablet)/.test(ua)), isPhone = /(?:iPhone)/.test(ua) && !isTablet, isPc = !isPhone && !isAndroid && !isSymbian;return {isTablet: isTablet, isPhone: isPhone, isAndroid : isAndroid, isPc : isPc};}();
+if (os.isAndroid || os.isPhone) {
+    showFlag = false;
+}
+tpwidget("init", {
+    "flavor": "bubble",
+    "location": "WM6N2PM3WY2K",
+    "geolocation": "enabled",
+    "position": "bottom-right",
+    "margin": "17px 70px",
+    "language": "auto",
+    "unit": "c",
+    "theme": "chameleon",
+    "uid": "UEB839A1CD",
+    "hash": "28ca33b0751401a8e994a76ed0e253cd"
+})
+if (showFlag) {
+    tpwidget("show");
+}
+window.addEventListener("resize", function(){
+    console.log(document.documentElement.clientWidth)
+    if (document.documentElement.clientWidth < 1065) {
+        console.log("false")
+    } else {
+        console.log("true")
+    }
+})</script></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.6.1"></script><script src="/js/fancybox.js?version=1.6.1"></script><script src="/js/sidebar.js?version=1.6.1"></script><script src="/js/copy.js?version=1.6.1"></script><script src="/js/fireworks.js?version=1.6.1"></script><script src="/js/transition.js?version=1.6.1"></script><script src="/js/scroll.js?version=1.6.1"></script><script src="/js/head.js?version=1.6.1"></script><script src="/js/search/algolia.js"></script><script>if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+  $('#nav').addClass('is-mobile')
+  $('footer').addClass('is-mobile')
+}</script><div class="search-dialog" id="algolia-search"><div class="search-dialog__title" id="algolia-search-title">Algolia</div><div id="algolia-input-panel"><div id="algolia-search-input"></div></div><hr><div id="algolia-search-results"><div id="algolia-hits"></div><div id="algolia-pagination"></div><div id="algolia-stats"></div></div><span class="search-close-button"><i class="fa fa-times"></i></span></div><div class="search-mask"></div></body></html>

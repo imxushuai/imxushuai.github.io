@@ -1,0 +1,244 @@
+<!-- - var pageTitle = page.title || config.subtitle || ''// 修改首页的title--><!DOCTYPE html><html lang="zh-Hans"><head><meta name="generator" content="Hexo 3.9.0"><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="全文检索引擎之Elasticsearch的简介及安装"><meta name="keywords" content="elasticsearch安装,elastic search,elasticsearch教程,全文检索"><meta name="author" content="imxushuai"><meta name="copyright" content="imxushuai"><meta name="baidu-site-verification" content="B3htTw43Gg"><meta name="google-site-verification" content="o2KrBdxV2bs7OPjZSdarNWbV6uC2WAtFOGQEbGAZJOo"><title>Elasticsearch的介绍和安装 | imxushuai</title><link rel="shortcut icon" href="/B.png"><link rel="stylesheet" href="/css/index.css?version=1.6.1"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css?version=1.6.1"><link rel="dns-prefetch" href="https://cdn.staticfile.org"><link rel="dns-prefetch" href="https://cdn.bootcss.com"><link rel="dns-prefetch" href="https://creativecommons.org"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.1.1/dist/instantsearch.min.css"><script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.1.1/dist/instantsearch.min.js" defer></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css"><script src="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js"></script><script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.10.0/js/md5.min.js"></script><script>((function(){
+  var bp = document.createElement('script');
+  var curProtocol = window.location.protocol.split(':')[0];
+  if (curProtocol === 'https') {
+  bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+}
+  else {
+  bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+}
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(bp, s);
+})());
+
+</script><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><script>(adsbygoogle = window.adsbygoogle || []).push({
+  google_ad_client: 'ca-pub-8123778246943935',
+  enable_page_level_ads: true
+});
+</script><link rel="dns-prefetch" href="https://hm.baidu.com"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?ee77185761e9c3e3a277dac848c66c44";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();</script><link rel="dns-prefetch" href="https://www.google-analytics.com"><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-140233731-1', 'auto');
+ga('send', 'pageview');</script><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: {"appId":"0AG6VKDJB8","apiKey":"1acca465cd19291fd2e30fc0bde470b9","indexName":"search","hits":{"per_page":10},"languages":{"input_placeholder":"搜索文章","hits_empty":"找不到您查询的内容:${query}","hits_stats":"找到 ${hits} 条结果，用时 ${time} 毫秒"}},
+  localSearch: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  }
+} </script></head><body><canvas class="fireworks"></canvas><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar"><div class="toggle-sidebar-info text-center"><span data-toggle="切换文章详情">切换站点概览</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Elasticsearch介绍"><span class="toc-number">1.</span> <span class="toc-text">Elasticsearch介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Elasticsearch安装"><span class="toc-number">2.</span> <span class="toc-text">Elasticsearch安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#准备工作"><span class="toc-number">2.1.</span> <span class="toc-text">准备工作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装"><span class="toc-number">2.2.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置"><span class="toc-number">2.3.</span> <span class="toc-text">配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#启动测试"><span class="toc-number">2.4.</span> <span class="toc-text">启动测试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#启动错误处理"><span class="toc-number">2.5.</span> <span class="toc-text">启动错误处理</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装Kibana作为可视化平台"><span class="toc-number">3.</span> <span class="toc-text">安装Kibana作为可视化平台</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Kibana介绍"><span class="toc-number">3.1.</span> <span class="toc-text">Kibana介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#准备工作-1"><span class="toc-number">3.2.</span> <span class="toc-text">准备工作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装-配置-运行"><span class="toc-number">3.3.</span> <span class="toc-text">安装/配置/运行</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#扩展：安装IK分词器"><span class="toc-number">4.</span> <span class="toc-text">扩展：安装IK分词器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装-1"><span class="toc-number">4.1.</span> <span class="toc-text">安装</span></a></li></ol></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="/img/avatar_b.png"></div><div class="author-info__name text-center">imxushuai</div><div class="author-info__description text-center">本站是imxushuai的个人博客。内容包含有学习资源分享、IT技术分享和生活周边，记录下生活的点滴，愿与君共勉。</div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">文章</span><span class="pull-right">87</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">标签</span><span class="pull-right">276</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">分类</span><span class="pull-right">37</span></a></div><hr><div class="author-info-links"><div class="author-info-links__title text-center">Links</div><a class="author-info-links__name text-center" href="https://github.com/imxushuai">GitHub</a><a class="author-info-links__name text-center" href="https://me.csdn.net/qq1031893936">CSDN</a><a class="author-info-links__name text-center" href="https://spring.io/projects">Spring</a><a class="author-info-links__name text-center" href="http://www.cx1314.cn/forum.php">IT资源</a></div></div></div><div id="content-outer"><div id="top-container" style="background-image: url(https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/background.jpg)"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">imxushuai</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus"><a class="site-page social-icon search"><i class="fa fa-search"></i><span> 站内搜索</span></a><a class="site-page" href="/">首页</a><a class="site-page" href="/categories">分类</a><a class="site-page" href="/archives">文章总览</a><a class="site-page" href="/2000/01/01/%e5%ad%a6%e4%b9%a0%e8%b5%84%e6%ba%90/">学习资源</a><a class="site-page" href="/about">关于</a></span></div><div id="post-info"><div id="post-title">Elasticsearch的介绍和安装</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2019-03-29</time><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/全文检索/">全文检索</a><i class="fa fa-angle-right" aria-hidden="true"></i><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/全文检索/elasticsearch/">elasticsearch</a><div class="post-meta-wordcount"><span>字数总计: </span><span class="word-count">1.6k</span><span class="post-meta__separator">|</span><span>阅读时长: 5 分钟</span></div></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><center><i>全文检索引擎之Elasticsearch的简介及安装</i></center>
+
+<p><img src="https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/elasticsearch-logo.png" alt></p>
+<a id="more"></a>
+<h2 id="Elasticsearch介绍"><a href="#Elasticsearch介绍" class="headerlink" title="Elasticsearch介绍"></a>Elasticsearch介绍</h2><blockquote>
+<p><strong>Elasticsearch</strong>是一个基于<a href="https://zh.wikipedia.org/wiki/Lucene" target="_blank" rel="noopener">Lucene</a>库的<a href="https://zh.wikipedia.org/wiki/%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E" target="_blank" rel="noopener">搜索引擎</a>。它提供了一个分布式、支持多租户的<a href="https://zh.wikipedia.org/wiki/%E5%85%A8%E6%96%87%E6%AA%A2%E7%B4%A2" target="_blank" rel="noopener">全文搜索</a>引擎，具有<a href="https://zh.wikipedia.org/wiki/HTTP" target="_blank" rel="noopener">HTTP</a> Web接口和无模式<a href="https://zh.wikipedia.org/wiki/JSON" target="_blank" rel="noopener">JSON</a>文档。Elasticsearch是用<a href="https://zh.wikipedia.org/wiki/Java" target="_blank" rel="noopener">Java</a>开发的，并在<a href="https://zh.wikipedia.org/wiki/Apache%E8%AE%B8%E5%8F%AF%E8%AF%81" target="_blank" rel="noopener">Apache许可证</a>下作为开源软件发布。官方客户端在<a href="https://zh.wikipedia.org/wiki/Java" target="_blank" rel="noopener">Java</a>、<a href="https://zh.wikipedia.org/wiki/.NET%E6%A1%86%E6%9E%B6" target="_blank" rel="noopener">.NET</a>（<a href="https://zh.wikipedia.org/wiki/C%E2%99%AF" target="_blank" rel="noopener">C#</a>）、<a href="https://zh.wikipedia.org/wiki/PHP" target="_blank" rel="noopener">PHP</a>、<a href="https://zh.wikipedia.org/wiki/Python" target="_blank" rel="noopener">Python</a>、<a href="https://zh.wikipedia.org/wiki/Groovy" target="_blank" rel="noopener">Apache Groovy</a>、<a href="https://zh.wikipedia.org/wiki/Ruby" target="_blank" rel="noopener">Ruby</a>和许多其他语言中都是可用的。<a href="https://zh.wikipedia.org/wiki/Elasticsearch#cite_note-offizsite-5" target="_blank" rel="noopener">[5]</a>根据DB-Engines的排名显示，Elasticsearch是最受欢迎的企业搜索引擎，其次是<a href="https://zh.wikipedia.org/wiki/Apache_Solr" target="_blank" rel="noopener">Apache Solr</a>，也是基于Lucene。<a href="https://zh.wikipedia.org/wiki/Elasticsearch#cite_note-6" target="_blank" rel="noopener">[6]</a></p>
+<p>Elasticsearch是与名为Logstash的数据收集和日志解析引擎以及名为Kibana的分析和可视化平台一起开发的。这三个产品被设计成一个集成解决方案，称为“Elastic Stack”（以前称为“ELK stack”）。</p>
+<p>Elasticsearch可以用于搜索各种文档。它提供可扩展的搜索，具有接近实时的搜索，并支持多租户。<a href="https://zh.wikipedia.org/wiki/Elasticsearch#cite_note-offizsite-5" target="_blank" rel="noopener">[5]</a>”Elasticsearch是分布式的，这意味着索引可以被分成分片，每个分片可以有0个或多个副本。每个节点托管一个或多个分片，并充当协调器将操作委托给正确的分片。再平衡和路由是自动完成的。“<a href="https://zh.wikipedia.org/wiki/Elasticsearch#cite_note-offizsite-5" target="_blank" rel="noopener">[5]</a>相关数据通常存储在同一个索引中，该索引由一个或多个主分片和零个或多个复制分片组成。一旦创建了索引，就不能更改主分片的数量。<a href="https://zh.wikipedia.org/wiki/Elasticsearch#cite_note-7" target="_blank" rel="noopener">[7]</a></p>
+<p>Elasticsearch使用Lucene，并试图通过JSON和Java API提供其所有特性。它支持facetting和percolating<a href="https://zh.wikipedia.org/wiki/Elasticsearch#cite_note-8" target="_blank" rel="noopener">[8]</a>，如果新文档与注册查询匹配，这对于通知非常有用。</p>
+<p>另一个特性称为“网关”，处理索引的长期持久性；例如，在服务器崩溃的情况下，可以从网关恢复索引。<a href="https://zh.wikipedia.org/wiki/Elasticsearch#cite_note-gateway-9" target="_blank" rel="noopener">[9]</a>Elasticsearch支持实时GET请求，适合作为<a href="https://zh.wikipedia.org/wiki/NoSQL" target="_blank" rel="noopener">NoSQL</a>数据存储<a href="https://zh.wikipedia.org/wiki/Elasticsearch#cite_note-jetslidedatabase-10" target="_blank" rel="noopener">[10]</a>，但缺少分布式事务。<a href="https://zh.wikipedia.org/wiki/Elasticsearch#cite_note-transactions-11" target="_blank" rel="noopener">[11]</a></p>
+</blockquote>
+<p>👆 摘自：<a href="https://zh.wikipedia.org/wiki/Wikipedia:%E9%A6%96%E9%A1%B5" target="_blank" rel="noopener">维基百科</a> 👆</p>
+<p><a href="https://www.elastic.co/cn/products/elasticsearch" target="_blank" rel="noopener">Elasticsearch官网</a></p>
+<h2 id="Elasticsearch安装"><a href="#Elasticsearch安装" class="headerlink" title="Elasticsearch安装"></a>Elasticsearch安装</h2><h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><blockquote>
+<p>我使用的Centos7的虚拟机进行安装</p>
+</blockquote>
+<ul>
+<li>安装好jdk8的虚拟机一台（注意配置 <code>JAVA_HOME</code>）</li>
+<li>下载<code>Elasticsearch</code>压缩包（我这里使用的版本是 6.6.1）</li>
+</ul>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><ol>
+<li>Elasticsearch的安装非常的简单，仅仅只需要解压下载好的压缩包即可</li>
+</ol>
+<blockquote>
+<p>注意:</p>
+<p>​    请勿使用root用户安装，Elasticsearch考虑到安全问题，使用root用户运行会报错。所以，在解压之前需要单独创建一个用户，然后登陆创建的用户解压即可。</p>
+</blockquote>
+<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><blockquote>
+<p>Elasticsearch的安装非常简单，但是要运行，还需要一点小小的配置，配置文件位于安装目录中的<code>config</code>目录中。</p>
+</blockquote>
+<ul>
+<li>Elastci的配置文件分为三个：<ul>
+<li><code>elasticsearch.yml</code> 用于配置Elasticsearch</li>
+<li><code>jvm.options</code>用于配置Elasticsearch JVM设置</li>
+<li><code>log4j2.properties 用于配置Elasticsearch日志记录</code></li>
+</ul>
+</li>
+</ul>
+<p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/important-settings.html" target="_blank" rel="noopener">Elsticsearch重要配置参考</a></p>
+<ol>
+<li><p>配置<code>jvm.options</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># Xms 最小堆大小，默认1g</span><br><span class="line"># Xmx 最大堆大小，默认1g</span><br><span class="line">-Xms256m</span><br><span class="line">-Xmx256m</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>这些设置的值取决于服务器上可用的RAM量，可以参考官方的文档进行配置，地址为上面给出的配置参考链接。</p>
+</blockquote>
+</li>
+<li><p>配置<code>elasticsearch.yml</code></p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 配置path.log和path.data，存放数据文件和日志文件的目录</span></span><br><span class="line"><span class="comment"># 目录具体位置以你的安装目录为准</span></span><br><span class="line"><span class="string">path.data:</span> <span class="string">/home/xushuai/elasticsearch-6.6.1/data</span></span><br><span class="line"><span class="string">path.logs:</span> <span class="string">/home/xushuai/elasticsearch-6.6.1/logs</span></span><br><span class="line"><span class="comment"># 配置集群名称，集群唯一标识，作用类似于ID</span></span><br><span class="line"><span class="comment"># 若不配置，默认为：elasticsearch</span></span><br><span class="line"><span class="string">cluster.name:</span> <span class="string">my-elasticsearch</span></span><br><span class="line"><span class="comment"># 配置节点名称，在集群中唯一表示当前节点</span></span><br><span class="line"><span class="string">node.name:</span> <span class="string">node-1</span></span><br><span class="line"><span class="comment"># 通配IP访问</span></span><br><span class="line"><span class="string">network.host:</span> <span class="number">0.0</span><span class="number">.0</span><span class="number">.0</span></span><br><span class="line"><span class="comment">## ......还有一些集群配置，可以查看官方文档</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="启动测试"><a href="#启动测试" class="headerlink" title="启动测试"></a>启动测试</h3><ol>
+<li><p>执行安装目录的中的<code>bin/elasticsearch</code>运行elasticsearch</p>
+<ul>
+<li><code>bin/elasticsearch -d</code>为后台运行</li>
+</ul>
+</li>
+<li><p>访问测试</p>
+<p><img src="https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/20190227001100.png" alt></p>
+</li>
+</ol>
+<h3 id="启动错误处理"><a href="#启动错误处理" class="headerlink" title="启动错误处理"></a>启动错误处理</h3><blockquote>
+<p>启动失败后，注意查看日志</p>
+</blockquote>
+<ol>
+<li><p>max number of threads [3795] for user [xushuai] is too low, increase to at least [4096]</p>
+<ul>
+<li><p>修改 <code>/etc/security/limits.d/</code>下的<code>xx-nproc.conf</code>文件，具体文件名以你的服务器为准。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">*          soft    nproc     4096</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ol>
+<ol start="2">
+<li><p>max file descriptors [4096] for elasticsearch process is too low, increase to at least [65536]</p>
+<ul>
+<li><p>修改<code>/etc/security/limits.conf</code>文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 添加配置</span><br><span class="line">*               soft    nproc           65536</span><br><span class="line">*               hard    nproc           65536</span><br><span class="line">*               soft    nofile          65536</span><br><span class="line">*               hard    nofile          65536</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ol>
+<ol start="3">
+<li><p>max virtual memory areas vm.max_map_count [65530] is too low, increase to at least [262144]</p>
+<ul>
+<li><p>修改<code>/etc/sysctl.conf</code>文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vm.max_map_count=262144</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>保存后，执行命令 <code>sysctl -p</code></p>
+</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p>配置修改完毕后，仍无法启动成功，请重启虚拟机。</p>
+<p>正常启动后，如无法从web访问到，请注意查看防火墙是否关闭。</p>
+</blockquote>
+<h2 id="安装Kibana作为可视化平台"><a href="#安装Kibana作为可视化平台" class="headerlink" title="安装Kibana作为可视化平台"></a>安装Kibana作为可视化平台</h2><p><a href="https://www.elastic.co/cn/products/kibana" target="_blank" rel="noopener">Kibana官网</a></p>
+<h3 id="Kibana介绍"><a href="#Kibana介绍" class="headerlink" title="Kibana介绍"></a>Kibana介绍</h3><blockquote>
+<p>Kibana是Elasticsearch的开源数据可视化插件。它在Elasticsearch集群上索引的内容之上提供可视化功能。用户可以在大量数据之上创建条形图，折线图和散点图，或饼图和贴图。 Elasticsearch，Logstash和Kibana的组合，称为“弹性堆栈”，可作为产品或服务提供。</p>
+</blockquote>
+<h3 id="准备工作-1"><a href="#准备工作-1" class="headerlink" title="准备工作"></a>准备工作</h3><ul>
+<li>安装<code>Elasticsearch</code>并配置运行</li>
+<li>下载<code>Kibana</code>的压缩包</li>
+</ul>
+<h3 id="安装-配置-运行"><a href="#安装-配置-运行" class="headerlink" title="安装/配置/运行"></a>安装/配置/运行</h3><ol>
+<li><p>解压下载好的压缩包</p>
+</li>
+<li><p>配置（配置文件位于安装目录（解压后的目录）的<code>config</code>目录中，文件名：<code>kibana.yml</code>）</p>
+<ul>
+<li><p>配置通配IP访问，修改<code>server.host</code>配置项</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">server.host:</span> <span class="number">0.0</span><span class="number">.0</span><span class="number">.0</span> <span class="comment"># 默认值为 localhost</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置<code>elasticsearch.url</code></p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 若和elasticsearch安装在一台虚拟机可以不用配置。默认为localhost</span></span><br><span class="line"><span class="string">elasticsearch.url:</span> <span class="number">192.168</span><span class="number">.136</span><span class="number">.101</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>运行</p>
+   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 进入安装目录</span><br><span class="line">bin/kibana</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>查看运行结果，访问 <code>192.168.136.101:5601</code></p>
+<p><img src="https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/20190227214740.png" alt></p>
+<blockquote>
+<p>默认端口为：5601，可以通过 <code>server.port</code>配置项修改</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p>到此<code>Elasticsearch</code>基本算是安装完毕</p>
+</blockquote>
+<h2 id="扩展：安装IK分词器"><a href="#扩展：安装IK分词器" class="headerlink" title="扩展：安装IK分词器"></a>扩展：安装IK分词器</h2><p><a href="https://github.com/medcl/elasticsearch-analysis-ik" target="_blank" rel="noopener">Github：elasticsearch-analysis-ik</a></p>
+<p>IK Analysis插件将Lucene IK分析器（<a href="http://code.google.com/p/ik-analyzer/" target="_blank" rel="noopener">http://code.google.com/p/ik-analyzer/</a>）集成到elasticsearch中，支持自定义词典。</p>
+<h3 id="安装-1"><a href="#安装-1" class="headerlink" title="安装"></a>安装</h3><ul>
+<li><p>方式1：下载IK分词器的压缩包，下载地址：<a href="https://github.com/medcl/elasticsearch-analysis-ik/releases" target="_blank" rel="noopener">https://github.com/medcl/elasticsearch-analysis-ik/releases</a></p>
+<blockquote>
+<p>在 <code>elasticsearch</code>的安装目录中的<code>plugins</code>中创建<code>ik</code>目录</p>
+<p>将下载的压缩包解压到创建的<code>ik</code>目录中</p>
+</blockquote>
+</li>
+<li><p>方式2：使用<code>elasticsearch-plugin</code>安装</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./bin/elasticsearch-plugin install https://github.com/medcl/elasticsearch-analysis-ik/releases/download/v6.6.1/elasticsearch-analysis-ik-6.6.1.zip</span><br></pre></td></tr></table></figure>
+<p><strong>注意：版本号必须和你安装的版本一致，若此方法不行，请使用第一种方式。</strong></p>
+</li>
+</ul>
+<p>安装完毕，重启<code>elasticsearch</code>即可</p>
+</div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">imxushuai</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://www.imxushuai.com/2019/03/29/Elasticsearch的介绍和安装/">https://www.imxushuai.com/2019/03/29/Elasticsearch的介绍和安装/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://www.imxushuai.com">imxushuai</a>！</span></div></div><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/elasticsearch安装/">elasticsearch安装</a><a class="post-meta__tags" href="/tags/elastic-search/">elastic search</a><a class="post-meta__tags" href="/tags/elasticsearch教程/">elasticsearch教程</a><a class="post-meta__tags" href="/tags/全文检索/">全文检索</a></div><div class="post-qr-code"><div class="post-qr-code-item"><img class="post-qr-code__img" src="/img/alipay.jpg"><div class="post-qr-code__desc">支付宝打赏</div></div><div class="post-qr-code-item"><img class="post-qr-code__img" src="/img/wechatpay.jpg"><div class="post-qr-code__desc">微信打赏</div></div></div><nav id="pagination"><div class="prev-post pull-left"><a href="/2019/03/29/Elasticsearch的使用/"><i class="fa fa-chevron-left">  </i><span>Elasticsearch的使用</span></a></div><div class="next-post pull-right"><a href="/2019/03/29/使用SpringMVC开发Restful-API/"><span>使用SpringMVC开发Restful API</span><i class="fa fa-chevron-right"></i></a></div></nav><div id="gitalk-container"></div><script>var gitalk = new Gitalk({
+  clientID: '5d894987ff69ff0ceb17',
+  clientSecret: '411e2ea94ae376885bd6355986f98bf42462b8f3',
+  repo: 'gitalk',
+  owner: 'imxushuai',
+  admin: 'imxushuai',
+  id: md5(decodeURI(location.pathname)),
+  language: 'zh-CN'
+})
+gitalk.render('gitalk-container')</script></div></div><footer class="footer-bg" style="background-image: url(https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/background.jpg)"><div class="layout" id="footer"><div class="copyright">&copy;2018 - 2022 By imxushuai</div><div class="framework-info"><span>驱动 - </span><a href="http://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 - </span><a href="https://github.com/Molunerfinn/hexo-theme-melody"><span>Melody</span></a></div><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_site_uv"><i class="fa fa-user"></i><span id="busuanzi_value_site_uv"></span><span></span></span><span class="footer-separator">|</span><span id="busuanzi_container_site_pv"><i class="fa fa-eye"></i><span id="busuanzi_value_site_pv"></span><span></span></span></div><script>(function (T, h, i, n, k, P, a, g, e) {
+    g = function () {
+        P = h.createElement(i);
+        a = h.getElementsByTagName(i)[0];
+        P.src = k;
+        P.charset = "utf-8";
+        P.async = 1;
+        a.parentNode.insertBefore(P, a)
+    };
+    T["ThinkPageWeatherWidgetObject"] = n;
+    T[n] || (T[n] = function () {
+        (T[n].q = T[n].q || []).push(arguments)
+    });
+    T[n].l = +new Date();
+    if (T.attachEvent) {
+        T.attachEvent("onload", g)
+    } else {
+        T.addEventListener("load", g, false)
+    }
+}(window, document, "script", "tpwidget", "//widget.seniverse.com/widget/chameleon.js"))</script><script>var showFlag = true;
+var os = function() {var ua = navigator.userAgent,isWindowsPhone = /(?:Windows Phone)/.test(ua),isSymbian = /(?:SymbianOS)/.test(ua) || isWindowsPhone, isAndroid = /(?:Android)/.test(ua), isFireFox = /(?:Firefox)/.test(ua), isChrome = /(?:Chrome|CriOS)/.test(ua), isTablet = /(?:iPad|PlayBook)/.test(ua) || (isAndroid && !/(?:Mobile)/.test(ua)) || (isFireFox && /(?:Tablet)/.test(ua)), isPhone = /(?:iPhone)/.test(ua) && !isTablet, isPc = !isPhone && !isAndroid && !isSymbian;return {isTablet: isTablet, isPhone: isPhone, isAndroid : isAndroid, isPc : isPc};}();
+if (os.isAndroid || os.isPhone) {
+    showFlag = false;
+}
+tpwidget("init", {
+    "flavor": "bubble",
+    "location": "WM6N2PM3WY2K",
+    "geolocation": "enabled",
+    "position": "bottom-right",
+    "margin": "17px 70px",
+    "language": "auto",
+    "unit": "c",
+    "theme": "chameleon",
+    "uid": "UEB839A1CD",
+    "hash": "28ca33b0751401a8e994a76ed0e253cd"
+})
+if (showFlag) {
+    tpwidget("show");
+}
+window.addEventListener("resize", function(){
+    console.log(document.documentElement.clientWidth)
+    if (document.documentElement.clientWidth < 1065) {
+        console.log("false")
+    } else {
+        console.log("true")
+    }
+})</script></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.6.1"></script><script src="/js/fancybox.js?version=1.6.1"></script><script src="/js/sidebar.js?version=1.6.1"></script><script src="/js/copy.js?version=1.6.1"></script><script src="/js/fireworks.js?version=1.6.1"></script><script src="/js/transition.js?version=1.6.1"></script><script src="/js/scroll.js?version=1.6.1"></script><script src="/js/head.js?version=1.6.1"></script><script src="/js/search/algolia.js"></script><script>if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+  $('#nav').addClass('is-mobile')
+  $('footer').addClass('is-mobile')
+}</script><div class="search-dialog" id="algolia-search"><div class="search-dialog__title" id="algolia-search-title">Algolia</div><div id="algolia-input-panel"><div id="algolia-search-input"></div></div><hr><div id="algolia-search-results"><div id="algolia-hits"></div><div id="algolia-pagination"></div><div id="algolia-stats"></div></div><span class="search-close-button"><i class="fa fa-times"></i></span></div><div class="search-mask"></div></body></html>

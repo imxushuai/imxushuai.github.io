@@ -1,0 +1,260 @@
+<!-- - var pageTitle = page.title || config.subtitle || ''// 修改首页的title--><!DOCTYPE html><html lang="zh-Hans"><head><meta name="generator" content="Hexo 3.9.0"><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="MongoDB介绍和安装"><meta name="keywords" content="MongoDB,MongoDB教程,MongoDB安装"><meta name="author" content="imxushuai"><meta name="copyright" content="imxushuai"><meta name="baidu-site-verification" content="B3htTw43Gg"><meta name="google-site-verification" content="o2KrBdxV2bs7OPjZSdarNWbV6uC2WAtFOGQEbGAZJOo"><title>MongoDB介绍和安装 | imxushuai</title><link rel="shortcut icon" href="/B.png"><link rel="stylesheet" href="/css/index.css?version=1.6.1"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css?version=1.6.1"><link rel="dns-prefetch" href="https://cdn.staticfile.org"><link rel="dns-prefetch" href="https://cdn.bootcss.com"><link rel="dns-prefetch" href="https://creativecommons.org"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.1.1/dist/instantsearch.min.css"><script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.1.1/dist/instantsearch.min.js" defer></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css"><script src="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js"></script><script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.10.0/js/md5.min.js"></script><script>((function(){
+  var bp = document.createElement('script');
+  var curProtocol = window.location.protocol.split(':')[0];
+  if (curProtocol === 'https') {
+  bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+}
+  else {
+  bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+}
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(bp, s);
+})());
+
+</script><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><script>(adsbygoogle = window.adsbygoogle || []).push({
+  google_ad_client: 'ca-pub-8123778246943935',
+  enable_page_level_ads: true
+});
+</script><link rel="dns-prefetch" href="https://hm.baidu.com"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?ee77185761e9c3e3a277dac848c66c44";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();</script><link rel="dns-prefetch" href="https://www.google-analytics.com"><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-140233731-1', 'auto');
+ga('send', 'pageview');</script><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: {"appId":"0AG6VKDJB8","apiKey":"1acca465cd19291fd2e30fc0bde470b9","indexName":"search","hits":{"per_page":10},"languages":{"input_placeholder":"搜索文章","hits_empty":"找不到您查询的内容:${query}","hits_stats":"找到 ${hits} 条结果，用时 ${time} 毫秒"}},
+  localSearch: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  }
+} </script></head><body><canvas class="fireworks"></canvas><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar"><div class="toggle-sidebar-info text-center"><span data-toggle="切换文章详情">切换站点概览</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#MongoDB介绍"><span class="toc-number">1.</span> <span class="toc-text">MongoDB介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#MongoDB简介"><span class="toc-number">1.1.</span> <span class="toc-text">MongoDB简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MongoDB特点"><span class="toc-number">1.2.</span> <span class="toc-text">MongoDB特点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MongoDB基本概念"><span class="toc-number">1.3.</span> <span class="toc-text">MongoDB基本概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#扩展"><span class="toc-number">1.3.1.</span> <span class="toc-text">扩展</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MongoDB安装"><span class="toc-number">2.</span> <span class="toc-text">MongoDB安装</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#tgz安装"><span class="toc-number">2.1.</span> <span class="toc-text">.tgz安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#yum安装"><span class="toc-number">2.2.</span> <span class="toc-text">yum安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用Docker安装"><span class="toc-number">2.3.</span> <span class="toc-text">使用Docker安装</span></a></li></ol></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="/img/avatar_b.png"></div><div class="author-info__name text-center">imxushuai</div><div class="author-info__description text-center">本站是imxushuai的个人博客。内容包含有学习资源分享、IT技术分享和生活周边，记录下生活的点滴，愿与君共勉。</div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">文章</span><span class="pull-right">87</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">标签</span><span class="pull-right">276</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">分类</span><span class="pull-right">37</span></a></div><hr><div class="author-info-links"><div class="author-info-links__title text-center">Links</div><a class="author-info-links__name text-center" href="https://github.com/imxushuai">GitHub</a><a class="author-info-links__name text-center" href="https://me.csdn.net/qq1031893936">CSDN</a><a class="author-info-links__name text-center" href="https://spring.io/projects">Spring</a><a class="author-info-links__name text-center" href="http://www.cx1314.cn/forum.php">IT资源</a></div></div></div><div id="content-outer"><div id="top-container" style="background-image: url(https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/background.jpg)"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">imxushuai</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus"><a class="site-page social-icon search"><i class="fa fa-search"></i><span> 站内搜索</span></a><a class="site-page" href="/">首页</a><a class="site-page" href="/categories">分类</a><a class="site-page" href="/archives">文章总览</a><a class="site-page" href="/2000/01/01/%e5%ad%a6%e4%b9%a0%e8%b5%84%e6%ba%90/">学习资源</a><a class="site-page" href="/about">关于</a></span></div><div id="post-info"><div id="post-title">MongoDB介绍和安装</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2019-04-20</time><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/MongoDB/">MongoDB</a><div class="post-meta-wordcount"><span>字数总计: </span><span class="word-count">1.4k</span><span class="post-meta__separator">|</span><span>阅读时长: 4 分钟</span></div></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><center><i>MongoDB简介以及安装</i></center>
+
+<p><img src="https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/Mongodb.png" alt></p>
+<a id="more"></a>
+<h1 id="MongoDB介绍"><a href="#MongoDB介绍" class="headerlink" title="MongoDB介绍"></a>MongoDB介绍</h1><h2 id="MongoDB简介"><a href="#MongoDB简介" class="headerlink" title="MongoDB简介"></a>MongoDB简介</h2><p><code>MongoDB</code> 是由<code>C++</code>语言编写的，是一个基于分布式文件存储的开源数据库系统。</p>
+<p>在高负载的情况下，添加更多的节点，可以保证服务器性能。</p>
+<p><code>MongoDB</code> 旨在为WEB应用提供可扩展的高性能数据存储解决方案。</p>
+<p><code>MongoDB</code> 将数据存储为一个文档，数据结构由键值(key=&gt;value)对组成。<code>MongoDB</code>文档类似于 <code>JSON</code> 对象。字段值可以包含其他文档，数组及文档数组。</p>
+<h2 id="MongoDB特点"><a href="#MongoDB特点" class="headerlink" title="MongoDB特点"></a>MongoDB特点</h2><p><code>MongoDB</code> 最大的特点是他支持的查询语言非常强大，其语法有点类似于面向对象的查询语言，几乎可以实现类似关系数据库单表查询的绝大部分功能，而且还支持对数据建立索引。它是一个面向集合的,模式自由的文档型数据库。<br>具体特点总结如下：</p>
+<ul>
+<li>面向集合存储，易于存储对象类型的数据</li>
+<li>模式自由</li>
+<li>支持动态查询</li>
+<li>支持完全索引，包含内部对象</li>
+<li>支持复制和故障恢复</li>
+<li>使用高效的二进制数据存储，包括大型对象（如视频等）</li>
+<li>自动处理碎片，以支持云计算层次的扩展性</li>
+<li>支持Python，PHP，Ruby，Java，C，C#，Javascript，Perl 及C++语言的驱动程<br>序，社区中也提供了对Erlang 及.NET 等平台的驱动程序</li>
+<li>文件存储格式为<code>BSON</code>（一种<code>JSON</code>的扩展）</li>
+</ul>
+<h2 id="MongoDB基本概念"><a href="#MongoDB基本概念" class="headerlink" title="MongoDB基本概念"></a>MongoDB基本概念</h2><p>MongoDB 的逻辑结构是一种层次结构。主要构成分别为：</p>
+<ul>
+<li>文档(document)：相当于关系数据库中的一行记录</li>
+<li>集合(collection)：相当于关系数据库的表</li>
+<li>数据库(database)：逻辑上组织在一起，就是数据库（database）</li>
+</ul>
+<p><strong>一个<code>MongoDB</code> 实例支持多个数据库（database）。<code>文档(document)</code>、<code>集合(collection)</code>、<code>数据库(database)</code>的层次结构。</strong></p>
+<h3 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h3><p>与关系型数据库对应关系表格，截取自[<a href="https://www.runoob.com/mongodb/mongodb-databases-documents-collections.html" target="_blank" rel="noopener">菜鸟教程</a>]：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">SQL术语/概念</th>
+<th style="text-align:left">MongoDB术语/概念</th>
+<th style="text-align:left">解释/说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">database</td>
+<td style="text-align:left">database</td>
+<td style="text-align:left">数据库</td>
+</tr>
+<tr>
+<td style="text-align:left">table</td>
+<td style="text-align:left">collection</td>
+<td style="text-align:left">数据库表/集合</td>
+</tr>
+<tr>
+<td style="text-align:left">row</td>
+<td style="text-align:left">document</td>
+<td style="text-align:left">数据记录行/文档</td>
+</tr>
+<tr>
+<td style="text-align:left">column</td>
+<td style="text-align:left">field</td>
+<td style="text-align:left">数据字段/域</td>
+</tr>
+<tr>
+<td style="text-align:left">index</td>
+<td style="text-align:left">index</td>
+<td style="text-align:left">索引</td>
+</tr>
+<tr>
+<td style="text-align:left">table joins</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">表连接,MongoDB不支持</td>
+</tr>
+<tr>
+<td style="text-align:left">primary key</td>
+<td style="text-align:left">primary key</td>
+<td style="text-align:left">主键,MongoDB自动将_id字段设置为主键</td>
+</tr>
+</tbody>
+</table>
+<p>看下图更直观：</p>
+<p><img src="https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/Figure-1-Mapping-Table-to-Collection-1.png" alt></p>
+<h1 id="MongoDB安装"><a href="#MongoDB安装" class="headerlink" title="MongoDB安装"></a>MongoDB安装</h1><p><strong>注意：下面的安装环境为：<code>CentOS 7</code></strong></p>
+<h2 id="tgz安装"><a href="#tgz安装" class="headerlink" title=".tgz安装"></a>.tgz安装</h2><p>官方下载地址：<a href="https://www.mongodb.com/download-center/community" target="_blank" rel="noopener">download-center</a></p>
+<ol>
+<li><p>选择<code>MongoDB</code>版本和操作系统版本，我这里是安装到<code>CentOS 7</code>上。</p>
+<p><img src="https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/20190616212311.png" alt></p>
+</li>
+<li><p>下载完毕后将下载的<code>.tgz</code>的包上传到服务器。</p>
+<p><img src="https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/1560692109626.png" alt></p>
+</li>
+<li><p>解压压缩包</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf mongodb-linux-x86_64-4.0.10.tgz</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建数据存放目录</p>
+<p><code>MongoDB</code>的数据存储在data目录的db目录下，但是这个目录在安装过程不会自动创建，所以你需要手动创建data目录，并在data目录中创建db目录。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /date/db</span><br></pre></td></tr></table></figure>
+<p>也可以在启动时，使用<code>--dbpath</code>手动指定数据存放位置。</p>
+</li>
+<li><p>运行</p>
+<p>进入解压后的文件夹中的<code>bin</code>目录，执行下方命令</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./mongod</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看是否成功启动</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 如果没有此命令，需要安装net-tools：yum install net-tools -y</span><br><span class="line">netstat -neplt</span><br></pre></td></tr></table></figure>
+<p><img src="https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/1560692613635.png" alt></p>
+</li>
+<li><p>绑定通配IP访问</p>
+<p>在上面安装完成后，可以看到<code>MongoDB</code>的<code>27017</code>端口监听的IP是<code>127.0.0.1</code>，这就意味着，外网是连不到的，这显然不是我们想要的效果，这里需要配置外网IP也能够访问到安装好的<code>MongoDB</code>。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 停止之前的MongoDB</span><br><span class="line">kill -9 19353</span><br><span class="line"><span class="meta">#</span> 使用参数启动并绑定通配IP访问，更多参数可以使用 ./mongod --help查看（全英文）</span><br><span class="line">./mongod --bind_ip_all</span><br><span class="line"><span class="meta">#</span> 再提一嘴，这里都是前台运行，意思就是关掉当前连接的session，mongodb就没了</span><br><span class="line"><span class="meta">#</span> 我们可以使用 --fork 和 --logpath 配合使用（如果要使用--fork就必须使用--logpath）</span><br><span class="line"><span class="meta">#</span> 日志路径随意，你喜欢就行，但是如果日志目录不存在需要先行创建</span><br><span class="line">./mongod --bnd_ip_all --fork --logpath=/logs/mongodb/mongodb.log</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>再次查看</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -neplt</span><br></pre></td></tr></table></figure>
+<p><img src="https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/20190616220302.png" alt></p>
+<p>搞定！！！</p>
+</li>
+</ol>
+<h2 id="yum安装"><a href="#yum安装" class="headerlink" title="yum安装"></a>yum安装</h2><blockquote>
+<p>注意：yum安装方式必须在服务器有网的情况下才行，否则请使用<code>.tgz</code>方式安装</p>
+</blockquote>
+<ol>
+<li><p>创建<code>MongoDB</code>的<code>yum</code>源文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/yum.repos.d/mongodb-org-4.0.repo</span><br></pre></td></tr></table></figure>
+<p>文件内容如下：</p>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[mongodb-org-4.0]</span><br><span class="line">name=MongoDB Repository</span><br><span class="line">baseurl=https://repo.mongodb.org/yum/redhat/<span class="formula">$releasever/mongodb-org/4.0/x86_64/</span></span><br><span class="line"><span class="formula">gpgcheck=1</span></span><br><span class="line"><span class="formula">enabled=1</span></span><br><span class="line"><span class="formula">gpgkey=https://www.mongodb.org/static/pgp/server-4.0.asc</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装<code>MongoDB</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 安装可能会花费一些时间，请耐心等待</span><br><span class="line">yum install -y mongodb-org</span><br></pre></td></tr></table></figure>
+<p>这样是安装的最新版本，如果需要指定的版本话可以执行下面这条命令并修改版本号</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install -y mongodb-org-4.0.10 mongodb-org-server-4.0.10 mongodb-org-shell-4.0.10 mongodb-org-mongos-4.0.10 mongodb-org-tools-4.0.10</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建<code>MongoDB</code>需要的文件夹并设置权限</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 创建目录</span><br><span class="line">mkdir -p /var/lib/mongo</span><br><span class="line">mkdir -p /var/log/mongodb</span><br><span class="line"><span class="meta">#</span> 设置权限</span><br><span class="line">chown -R mongod:mongod /var/lib/mongo</span><br><span class="line">chown -R mongod:mongod /var/log/mongodb</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>启动</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl start mongod</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看是否成功启动</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -neplt</span><br></pre></td></tr></table></figure>
+<p><img src="https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/20190616231210.png" alt></p>
+</li>
+<li><p>配置通配IP访问</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 修改配置文件（yum安装才自带配置文件哦）</span><br><span class="line"><span class="meta">#</span> .tgz方式安装需要配置文件的话需要自己创建，启动时使用 -f 指定配置文件位置</span><br><span class="line">vim /etc/mongod.conf</span><br></pre></td></tr></table></figure>
+<p><img src="https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/20190616231600.png" alt></p>
+</li>
+<li><p>重新启动</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart mongod.service</span><br></pre></td></tr></table></figure>
+<p><img src="https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/20190616231736.png" alt></p>
+<p>搞定！！！</p>
+</li>
+</ol>
+<h2 id="使用Docker安装"><a href="#使用Docker安装" class="headerlink" title="使用Docker安装"></a>使用Docker安装</h2><blockquote>
+<p>注意：需要先安装<code>docker</code>环境。参考：<a href="https://www.runoob.com/docker/centos-docker-install.html" target="_blank" rel="noopener">docker安装</a></p>
+</blockquote>
+<ol>
+<li><p>搜索<code>MongoDB</code>镜像</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker search mongodb</span><br></pre></td></tr></table></figure>
+<p><img src="https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/20190616232951.png" alt></p>
+</li>
+<li><p>拉取<code>MongoDB</code>镜像</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull mongo</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用镜像创建容器</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -di --name=mymongodb -p 27017:27017 mongo</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<blockquote>
+<p>hey，is done，f**k easy？？！！</p>
+</blockquote>
+</div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">imxushuai</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://www.imxushuai.com/2019/04/20/MongoDB介绍和安装/">https://www.imxushuai.com/2019/04/20/MongoDB介绍和安装/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://www.imxushuai.com">imxushuai</a>！</span></div></div><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/MongoDB/">MongoDB</a><a class="post-meta__tags" href="/tags/MongoDB教程/">MongoDB教程</a><a class="post-meta__tags" href="/tags/MongoDB安装/">MongoDB安装</a></div><div class="post-qr-code"><div class="post-qr-code-item"><img class="post-qr-code__img" src="/img/alipay.jpg"><div class="post-qr-code__desc">支付宝打赏</div></div><div class="post-qr-code-item"><img class="post-qr-code__img" src="/img/wechatpay.jpg"><div class="post-qr-code__desc">微信打赏</div></div></div><nav id="pagination"><div class="prev-post pull-left"><a href="/2019/04/20/使用Java操作MongoDB/"><i class="fa fa-chevron-left">  </i><span>使用Java操作MongoDB</span></a></div><div class="next-post pull-right"><a href="/2019/04/01/RabbitMQ详解/"><span>RabbitMQ详解</span><i class="fa fa-chevron-right"></i></a></div></nav><div id="gitalk-container"></div><script>var gitalk = new Gitalk({
+  clientID: '5d894987ff69ff0ceb17',
+  clientSecret: '411e2ea94ae376885bd6355986f98bf42462b8f3',
+  repo: 'gitalk',
+  owner: 'imxushuai',
+  admin: 'imxushuai',
+  id: md5(decodeURI(location.pathname)),
+  language: 'zh-CN'
+})
+gitalk.render('gitalk-container')</script></div></div><footer class="footer-bg" style="background-image: url(https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/background.jpg)"><div class="layout" id="footer"><div class="copyright">&copy;2018 - 2022 By imxushuai</div><div class="framework-info"><span>驱动 - </span><a href="http://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 - </span><a href="https://github.com/Molunerfinn/hexo-theme-melody"><span>Melody</span></a></div><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_site_uv"><i class="fa fa-user"></i><span id="busuanzi_value_site_uv"></span><span></span></span><span class="footer-separator">|</span><span id="busuanzi_container_site_pv"><i class="fa fa-eye"></i><span id="busuanzi_value_site_pv"></span><span></span></span></div><script>(function (T, h, i, n, k, P, a, g, e) {
+    g = function () {
+        P = h.createElement(i);
+        a = h.getElementsByTagName(i)[0];
+        P.src = k;
+        P.charset = "utf-8";
+        P.async = 1;
+        a.parentNode.insertBefore(P, a)
+    };
+    T["ThinkPageWeatherWidgetObject"] = n;
+    T[n] || (T[n] = function () {
+        (T[n].q = T[n].q || []).push(arguments)
+    });
+    T[n].l = +new Date();
+    if (T.attachEvent) {
+        T.attachEvent("onload", g)
+    } else {
+        T.addEventListener("load", g, false)
+    }
+}(window, document, "script", "tpwidget", "//widget.seniverse.com/widget/chameleon.js"))</script><script>var showFlag = true;
+var os = function() {var ua = navigator.userAgent,isWindowsPhone = /(?:Windows Phone)/.test(ua),isSymbian = /(?:SymbianOS)/.test(ua) || isWindowsPhone, isAndroid = /(?:Android)/.test(ua), isFireFox = /(?:Firefox)/.test(ua), isChrome = /(?:Chrome|CriOS)/.test(ua), isTablet = /(?:iPad|PlayBook)/.test(ua) || (isAndroid && !/(?:Mobile)/.test(ua)) || (isFireFox && /(?:Tablet)/.test(ua)), isPhone = /(?:iPhone)/.test(ua) && !isTablet, isPc = !isPhone && !isAndroid && !isSymbian;return {isTablet: isTablet, isPhone: isPhone, isAndroid : isAndroid, isPc : isPc};}();
+if (os.isAndroid || os.isPhone) {
+    showFlag = false;
+}
+tpwidget("init", {
+    "flavor": "bubble",
+    "location": "WM6N2PM3WY2K",
+    "geolocation": "enabled",
+    "position": "bottom-right",
+    "margin": "17px 70px",
+    "language": "auto",
+    "unit": "c",
+    "theme": "chameleon",
+    "uid": "UEB839A1CD",
+    "hash": "28ca33b0751401a8e994a76ed0e253cd"
+})
+if (showFlag) {
+    tpwidget("show");
+}
+window.addEventListener("resize", function(){
+    console.log(document.documentElement.clientWidth)
+    if (document.documentElement.clientWidth < 1065) {
+        console.log("false")
+    } else {
+        console.log("true")
+    }
+})</script></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.6.1"></script><script src="/js/fancybox.js?version=1.6.1"></script><script src="/js/sidebar.js?version=1.6.1"></script><script src="/js/copy.js?version=1.6.1"></script><script src="/js/fireworks.js?version=1.6.1"></script><script src="/js/transition.js?version=1.6.1"></script><script src="/js/scroll.js?version=1.6.1"></script><script src="/js/head.js?version=1.6.1"></script><script src="/js/search/algolia.js"></script><script>if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+  $('#nav').addClass('is-mobile')
+  $('footer').addClass('is-mobile')
+}</script><div class="search-dialog" id="algolia-search"><div class="search-dialog__title" id="algolia-search-title">Algolia</div><div id="algolia-input-panel"><div id="algolia-search-input"></div></div><hr><div id="algolia-search-results"><div id="algolia-hits"></div><div id="algolia-pagination"></div><div id="algolia-stats"></div></div><span class="search-close-button"><i class="fa fa-times"></i></span></div><div class="search-mask"></div></body></html>

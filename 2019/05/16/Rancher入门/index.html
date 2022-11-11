@@ -1,0 +1,161 @@
+<!-- - var pageTitle = page.title || config.subtitle || ''// 修改首页的title--><!DOCTYPE html><html lang="zh-Hans"><head><meta name="generator" content="Hexo 3.9.0"><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="Rancher入门"><meta name="keywords" content="Rancher,Rancher安装,容器管理"><meta name="author" content="imxushuai"><meta name="copyright" content="imxushuai"><meta name="baidu-site-verification" content="B3htTw43Gg"><meta name="google-site-verification" content="o2KrBdxV2bs7OPjZSdarNWbV6uC2WAtFOGQEbGAZJOo"><title>Rancher入门 | imxushuai</title><link rel="shortcut icon" href="/B.png"><link rel="stylesheet" href="/css/index.css?version=1.6.1"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css?version=1.6.1"><link rel="dns-prefetch" href="https://cdn.staticfile.org"><link rel="dns-prefetch" href="https://cdn.bootcss.com"><link rel="dns-prefetch" href="https://creativecommons.org"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.1.1/dist/instantsearch.min.css"><script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.1.1/dist/instantsearch.min.js" defer></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css"><script src="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js"></script><script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.10.0/js/md5.min.js"></script><script>((function(){
+  var bp = document.createElement('script');
+  var curProtocol = window.location.protocol.split(':')[0];
+  if (curProtocol === 'https') {
+  bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+}
+  else {
+  bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+}
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(bp, s);
+})());
+
+</script><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><script>(adsbygoogle = window.adsbygoogle || []).push({
+  google_ad_client: 'ca-pub-8123778246943935',
+  enable_page_level_ads: true
+});
+</script><link rel="dns-prefetch" href="https://hm.baidu.com"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?ee77185761e9c3e3a277dac848c66c44";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();</script><link rel="dns-prefetch" href="https://www.google-analytics.com"><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-140233731-1', 'auto');
+ga('send', 'pageview');</script><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: {"appId":"0AG6VKDJB8","apiKey":"1acca465cd19291fd2e30fc0bde470b9","indexName":"search","hits":{"per_page":10},"languages":{"input_placeholder":"搜索文章","hits_empty":"找不到您查询的内容:${query}","hits_stats":"找到 ${hits} 条结果，用时 ${time} 毫秒"}},
+  localSearch: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  }
+} </script></head><body><canvas class="fireworks"></canvas><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar"><div class="toggle-sidebar-info text-center"><span data-toggle="切换文章详情">切换站点概览</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Rancher介绍"><span class="toc-number">1.</span> <span class="toc-text">Rancher介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是Rancher"><span class="toc-number">1.1.</span> <span class="toc-text">什么是Rancher</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Rancher特性"><span class="toc-number">1.2.</span> <span class="toc-text">Rancher特性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#基础设置编排"><span class="toc-number">1.2.1.</span> <span class="toc-text">基础设置编排</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#容器编排与调度"><span class="toc-number">1.2.2.</span> <span class="toc-text">容器编排与调度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#应用商店"><span class="toc-number">1.2.3.</span> <span class="toc-text">应用商店</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#企业级权限控制"><span class="toc-number">1.2.4.</span> <span class="toc-text">企业级权限控制</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Rancher安装"><span class="toc-number">2.</span> <span class="toc-text">Rancher安装</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Docker-安装"><span class="toc-number">2.1.</span> <span class="toc-text">Docker 安装</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Rancher使用"><span class="toc-number">3.</span> <span class="toc-text">Rancher使用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#添加应用"><span class="toc-number">3.1.</span> <span class="toc-text">添加应用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#添加主机"><span class="toc-number">3.2.</span> <span class="toc-text">添加主机</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#添加服务"><span class="toc-number">3.3.</span> <span class="toc-text">添加服务</span></a></li></ol></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="/img/avatar_b.png"></div><div class="author-info__name text-center">imxushuai</div><div class="author-info__description text-center">本站是imxushuai的个人博客。内容包含有学习资源分享、IT技术分享和生活周边，记录下生活的点滴，愿与君共勉。</div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">文章</span><span class="pull-right">87</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">标签</span><span class="pull-right">276</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">分类</span><span class="pull-right">37</span></a></div><hr><div class="author-info-links"><div class="author-info-links__title text-center">Links</div><a class="author-info-links__name text-center" href="https://github.com/imxushuai">GitHub</a><a class="author-info-links__name text-center" href="https://me.csdn.net/qq1031893936">CSDN</a><a class="author-info-links__name text-center" href="https://spring.io/projects">Spring</a><a class="author-info-links__name text-center" href="http://www.cx1314.cn/forum.php">IT资源</a></div></div></div><div id="content-outer"><div id="top-container" style="background-image: url(https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/background.jpg)"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">imxushuai</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus"><a class="site-page social-icon search"><i class="fa fa-search"></i><span> 站内搜索</span></a><a class="site-page" href="/">首页</a><a class="site-page" href="/categories">分类</a><a class="site-page" href="/archives">文章总览</a><a class="site-page" href="/2000/01/01/%e5%ad%a6%e4%b9%a0%e8%b5%84%e6%ba%90/">学习资源</a><a class="site-page" href="/about">关于</a></span></div><div id="post-info"><div id="post-title">Rancher入门</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2019-05-16</time><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/Rancher/">Rancher</a><div class="post-meta-wordcount"><span>字数总计: </span><span class="word-count">1k</span><span class="post-meta__separator">|</span><span>阅读时长: 3 分钟</span></div></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><center><i>容器管理工具 Rancher 的安装和使用</i></center>
+
+<p><img src="https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/rancher.png" alt></p>
+<a id="more"></a>
+<h1 id="Rancher介绍"><a href="#Rancher介绍" class="headerlink" title="Rancher介绍"></a>Rancher介绍</h1><p>Rancher官方文档：<a href="https://rancher.com/docs/rancher/v1.6/zh/" target="_blank" rel="noopener">Rancher</a></p>
+<h2 id="什么是Rancher"><a href="#什么是Rancher" class="headerlink" title="什么是Rancher"></a>什么是Rancher</h2><p>Rancher是一个开源的企业级容器管理平台。通过Rancher，企业再也不必自己使用一系列的开源软件去从头搭建容器服务平台。Rancher提供了在生产环境中使用的管理Docker和Kubernetes的全栈化容器部署与管理平台。</p>
+<h2 id="Rancher特性"><a href="#Rancher特性" class="headerlink" title="Rancher特性"></a>Rancher特性</h2><h3 id="基础设置编排"><a href="#基础设置编排" class="headerlink" title="基础设置编排"></a>基础设置编排</h3><p>Rancher可以使用任何公有云或者私有云的Linux主机资源。Linux主机可以是虚拟机，也可以是物理机。Rancher仅需要主机有CPU，内存，本地磁盘和网络资源。从Rancher的角度来说，一台云厂商提供的云主机和一台自己的物理机是一样的。</p>
+<p>Rancher为运行容器化的应用实现了一层灵活的基础设施服务。Rancher的基础设施服务包括网络， 存储， 负载均衡， DNS和安全模块。Rancher的基础设施服务也是通过容器部署的，所以同样Rancher的基础设施服务可以运行在任何Linux主机上。</p>
+<h3 id="容器编排与调度"><a href="#容器编排与调度" class="headerlink" title="容器编排与调度"></a>容器编排与调度</h3><p>很多用户都会选择使用容器编排调度框架来运行容器化应用。Rancher包含了当前全部主流的编排调度引擎，例如<a href="https://rancher.com/docs/rancher/v1.6/zh/swarm" target="_blank" rel="noopener">Docker Swarm</a>， <a href="https://rancher.com/docs/rancher/v1.6/zh/kubernetes" target="_blank" rel="noopener">Kubernetes</a>， 和<a href="https://rancher.com/docs/rancher/v1.6/zh/mesos/" target="_blank" rel="noopener">Mesos</a>。同一个用户可以创建Swarm或者Kubernetes集群。并且可以使用原生的Swarm或者Kubernetes工具管理应用。</p>
+<p>除了Swarm，Kubernetes和Mesos之外，Rancher还支持自己的Cattle容器编排调度引擎。Cattle被广泛用于编排Rancher自己的基础设施服务以及用于Swarm集群，Kubernetes集群和Mesos集群的配置，管理与升级。</p>
+<h3 id="应用商店"><a href="#应用商店" class="headerlink" title="应用商店"></a>应用商店</h3><p>Rancher的用户可以在<a href="https://rancher.com/docs/rancher/v1.6/zh/catalog" target="_blank" rel="noopener">应用商店</a>里一键部署由多个容器组成的应用。用户可以管理这个部署的应用，并且可以在这个应用有新的可用版本时进行自动化的升级。Rancher提供了一个由Rancher社区维护的应用商店，其中包括了一系列的流行应用。Rancher的用户也可以<a href="https://rancher.com/docs/rancher/v1.6/zh/catalog/private-catalog/" target="_blank" rel="noopener">创建自己的私有应用商店</a>。</p>
+<h3 id="企业级权限控制"><a href="#企业级权限控制" class="headerlink" title="企业级权限控制"></a>企业级权限控制</h3><p>Rancher支持灵活的插件式的用户认证。支持Active Directory，LDAP， Github等 <a href="https://rancher.com/docs/rancher/v1.6/zh/configuration/access-control/" target="_blank" rel="noopener">认证方式</a>。 Rancher支持在<a href="https://rancher.com/docs/rancher/v1.6/zh/environments/" target="_blank" rel="noopener">环境</a>级别的基于角色的访问控制 (RBAC)，可以通过角色来配置某个用户或者用户组对开发环境或者生产环境的访问权限。</p>
+<p>下图展示了Rancher的主要组件和功能：</p>
+<p><img src="https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/rancher_overview_2.png" alt></p>
+<blockquote>
+<p>综上所述，反正吹爆就完事了。</p>
+</blockquote>
+<h1 id="Rancher安装"><a href="#Rancher安装" class="headerlink" title="Rancher安装"></a>Rancher安装</h1><h2 id="Docker-安装"><a href="#Docker-安装" class="headerlink" title="Docker 安装"></a>Docker 安装</h2><ol>
+<li><p>拉取Rancher镜像</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull rancher/server</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>制作容器并运行</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -di --name=rancher --restart=unless-stopped -p 8080:8080 rancher/server</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>访问<code>http://ip:port</code></p>
+<p><img src="https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/20190701152621.png" alt></p>
+<p>安装完毕。</p>
+</li>
+</ol>
+<h1 id="Rancher使用"><a href="#Rancher使用" class="headerlink" title="Rancher使用"></a>Rancher使用</h1><h2 id="添加应用"><a href="#添加应用" class="headerlink" title="添加应用"></a>添加应用</h2><p>点击<code>用户应用 -&gt; 添加应用</code>，输入<code>名称</code>和<code>描述</code>，最后点击<code>创建</code>即可。</p>
+<p><img src="https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/20190701152748.png" alt></p>
+<h2 id="添加主机"><a href="#添加主机" class="headerlink" title="添加主机"></a>添加主机</h2><p>这里有个地方注意：如果你的机器是你自建的服务器，比如说：虚拟机。</p>
+<p>再第一步中，选择<code>驱动</code>时，就选择<code>Custome</code>。</p>
+<ol>
+<li><p>进入<code>基础架构 -&gt; 主机 -&gt; 添加主机</code>，然后按下图操作：</p>
+<p><img src="https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/20190701154928.png" alt></p>
+<p><strong>注意：需要开放UDP的<code>500</code>和<code>4500</code>端口，需要填写IP后，再复制命令到服务器执行，命令是输入IP时同步生成的。执行了命令后可直接点击关闭，关闭添加主机页面</strong></p>
+</li>
+<li><p>等待服务器执行命令完成后，刷新<code>主机列表</code>，就会显示添加好的主机</p>
+<p><img src="https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/20190701160935.png" alt></p>
+</li>
+<li><p>查看主机情况</p>
+<p><img src="https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/20190701180240.png" alt></p>
+</li>
+</ol>
+<h2 id="添加服务"><a href="#添加服务" class="headerlink" title="添加服务"></a>添加服务</h2><p>进入<code>应用 -&gt; 全部</code>，选择第一步中创建的应用，选择<code>添加服务</code></p>
+<ul>
+<li><p><img src="https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/20190701164101.png" alt></p>
+</li>
+<li><p>录入基本信息</p>
+<p><img src="https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/20190701161508.png" alt></p>
+<p>选择镜像，建议到服务器粘贴复制，免得手写输错。</p>
+</li>
+<li><p>其他信息，例如：挂载目录</p>
+<p><img src="https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/20190701161508.png" alt></p>
+<p>我这里创建的是<code>Mongodb</code>的容器，所以不需要特别的配置，只需要录入基本信息就OK了。</p>
+</li>
+<li><p>点击<code>创建</code></p>
+</li>
+<li><p>远程连接一下<code>mongodb</code>容器，测试是否能连接上</p>
+<p><img src="https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/20190701180723.png" alt></p>
+<p>成功连接！</p>
+</li>
+</ul>
+</div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">imxushuai</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://www.imxushuai.com/2019/05/16/Rancher入门/">https://www.imxushuai.com/2019/05/16/Rancher入门/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://www.imxushuai.com">imxushuai</a>！</span></div></div><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Rancher/">Rancher</a><a class="post-meta__tags" href="/tags/Rancher安装/">Rancher安装</a><a class="post-meta__tags" href="/tags/容器管理/">容器管理</a></div><div class="post-qr-code"><div class="post-qr-code-item"><img class="post-qr-code__img" src="/img/alipay.jpg"><div class="post-qr-code__desc">支付宝打赏</div></div><div class="post-qr-code-item"><img class="post-qr-code__img" src="/img/wechatpay.jpg"><div class="post-qr-code__desc">微信打赏</div></div></div><nav id="pagination"><div class="prev-post pull-left"><a href="/2019/06/01/13.Spring-Boot-Quartz-实现动态配置定时任务/"><i class="fa fa-chevron-left">  </i><span>Spring Boot + Quartz 实现动态配置定时任务</span></a></div><div class="next-post pull-right"><a href="/2019/05/13/Jenkins安装/"><span>Jenkins安装</span><i class="fa fa-chevron-right"></i></a></div></nav><div id="gitalk-container"></div><script>var gitalk = new Gitalk({
+  clientID: '5d894987ff69ff0ceb17',
+  clientSecret: '411e2ea94ae376885bd6355986f98bf42462b8f3',
+  repo: 'gitalk',
+  owner: 'imxushuai',
+  admin: 'imxushuai',
+  id: md5(decodeURI(location.pathname)),
+  language: 'zh-CN'
+})
+gitalk.render('gitalk-container')</script></div></div><footer class="footer-bg" style="background-image: url(https://imxushuai-blog.oss-cn-chengdu.aliyuncs.com/background.jpg)"><div class="layout" id="footer"><div class="copyright">&copy;2018 - 2022 By imxushuai</div><div class="framework-info"><span>驱动 - </span><a href="http://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 - </span><a href="https://github.com/Molunerfinn/hexo-theme-melody"><span>Melody</span></a></div><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_site_uv"><i class="fa fa-user"></i><span id="busuanzi_value_site_uv"></span><span></span></span><span class="footer-separator">|</span><span id="busuanzi_container_site_pv"><i class="fa fa-eye"></i><span id="busuanzi_value_site_pv"></span><span></span></span></div><script>(function (T, h, i, n, k, P, a, g, e) {
+    g = function () {
+        P = h.createElement(i);
+        a = h.getElementsByTagName(i)[0];
+        P.src = k;
+        P.charset = "utf-8";
+        P.async = 1;
+        a.parentNode.insertBefore(P, a)
+    };
+    T["ThinkPageWeatherWidgetObject"] = n;
+    T[n] || (T[n] = function () {
+        (T[n].q = T[n].q || []).push(arguments)
+    });
+    T[n].l = +new Date();
+    if (T.attachEvent) {
+        T.attachEvent("onload", g)
+    } else {
+        T.addEventListener("load", g, false)
+    }
+}(window, document, "script", "tpwidget", "//widget.seniverse.com/widget/chameleon.js"))</script><script>var showFlag = true;
+var os = function() {var ua = navigator.userAgent,isWindowsPhone = /(?:Windows Phone)/.test(ua),isSymbian = /(?:SymbianOS)/.test(ua) || isWindowsPhone, isAndroid = /(?:Android)/.test(ua), isFireFox = /(?:Firefox)/.test(ua), isChrome = /(?:Chrome|CriOS)/.test(ua), isTablet = /(?:iPad|PlayBook)/.test(ua) || (isAndroid && !/(?:Mobile)/.test(ua)) || (isFireFox && /(?:Tablet)/.test(ua)), isPhone = /(?:iPhone)/.test(ua) && !isTablet, isPc = !isPhone && !isAndroid && !isSymbian;return {isTablet: isTablet, isPhone: isPhone, isAndroid : isAndroid, isPc : isPc};}();
+if (os.isAndroid || os.isPhone) {
+    showFlag = false;
+}
+tpwidget("init", {
+    "flavor": "bubble",
+    "location": "WM6N2PM3WY2K",
+    "geolocation": "enabled",
+    "position": "bottom-right",
+    "margin": "17px 70px",
+    "language": "auto",
+    "unit": "c",
+    "theme": "chameleon",
+    "uid": "UEB839A1CD",
+    "hash": "28ca33b0751401a8e994a76ed0e253cd"
+})
+if (showFlag) {
+    tpwidget("show");
+}
+window.addEventListener("resize", function(){
+    console.log(document.documentElement.clientWidth)
+    if (document.documentElement.clientWidth < 1065) {
+        console.log("false")
+    } else {
+        console.log("true")
+    }
+})</script></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.6.1"></script><script src="/js/fancybox.js?version=1.6.1"></script><script src="/js/sidebar.js?version=1.6.1"></script><script src="/js/copy.js?version=1.6.1"></script><script src="/js/fireworks.js?version=1.6.1"></script><script src="/js/transition.js?version=1.6.1"></script><script src="/js/scroll.js?version=1.6.1"></script><script src="/js/head.js?version=1.6.1"></script><script src="/js/search/algolia.js"></script><script>if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+  $('#nav').addClass('is-mobile')
+  $('footer').addClass('is-mobile')
+}</script><div class="search-dialog" id="algolia-search"><div class="search-dialog__title" id="algolia-search-title">Algolia</div><div id="algolia-input-panel"><div id="algolia-search-input"></div></div><hr><div id="algolia-search-results"><div id="algolia-hits"></div><div id="algolia-pagination"></div><div id="algolia-stats"></div></div><span class="search-close-button"><i class="fa fa-times"></i></span></div><div class="search-mask"></div></body></html>
